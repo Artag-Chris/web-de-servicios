@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import HeaderMain from "@/components/page_components/Headermain"
 import Hero from "@/components/page_components/Hero"
+import Skills from "@/components/page_components/Skills"
+import Proyects from "@/components/page_components/Proyects"
 
 export default function Home() {
   return (
@@ -16,111 +18,8 @@ export default function Home() {
 
       <main>
        <Hero />
-
-        {/* Skills Section */}
-        <section id="skills" className="bg-zinc-900 py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">
-              Technical <span className="text-emerald-500">Skills</span>
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {[
-                { name: "JavaScript", level: "Advanced" },
-                { name: "TypeScript", level: "Advanced" },
-                { name: "React", level: "Advanced" },
-                { name: "Next.js", level: "Advanced" },
-                { name: "Node.js", level: "Advanced" },
-                { name: "Express", level: "Intermediate" },
-                { name: "MongoDB", level: "Intermediate" },
-                { name: "PostgreSQL", level: "Intermediate" },
-                { name: "GraphQL", level: "Intermediate" },
-                { name: "Docker", level: "Intermediate" },
-                { name: "AWS", level: "Intermediate" },
-                { name: "Git", level: "Advanced" },
-              ].map((skill, index) => (
-                <Card key={index} className="bg-zinc-800 border-zinc-700 hover:border-emerald-500 transition-all">
-                  <CardContent className="p-6">
-                    <h3 className="font-medium text-lg mb-1">{skill.name}</h3>
-                    <p className="text-zinc-400 text-sm">{skill.level}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="py-20">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">
-              Featured <span className="text-emerald-500">Projects</span>
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "E-Commerce Platform",
-                  description:
-                    "A full-featured online store with payment processing, user authentication, and admin dashboard.",
-                  tech: ["Next.js", "Node.js", "MongoDB", "Stripe"],
-                  image: "/placeholder.svg?height=400&width=600",
-                },
-                {
-                  title: "Task Management App",
-                  description:
-                    "A collaborative project management tool with real-time updates and team collaboration features.",
-                  tech: ["React", "Firebase", "Tailwind CSS", "Redux"],
-                  image: "/placeholder.svg?height=400&width=600",
-                },
-                {
-                  title: "Social Media Dashboard",
-                  description:
-                    "Analytics dashboard for social media managers with data visualization and reporting tools.",
-                  tech: ["TypeScript", "D3.js", "Express", "PostgreSQL"],
-                  image: "/placeholder.svg?height=400&width=600",
-                },
-              ].map((project, index) => (
-                <Card
-                  key={index}
-                  className="bg-zinc-900 border-zinc-800 overflow-hidden hover:border-emerald-500 transition-all"
-                >
-                  <div className="relative h-48 w-full">
-                    <Image
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                    <p className="text-zinc-400 mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tech.map((tech, i) => (
-                        <Badge key={i} variant="secondary" className="bg-zinc-800">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <Link
-                        href="#"
-                        className="text-emerald-500 hover:text-emerald-400 flex items-center gap-1 text-sm"
-                      >
-                        View Project <ExternalLink className="h-3 w-3" />
-                      </Link>
-                      <Link
-                        href="#"
-                        className="text-emerald-500 hover:text-emerald-400 flex items-center gap-1 text-sm"
-                      >
-                        Source Code <Github className="h-3 w-3" />
-                      </Link>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        <Skills/>
+        <Proyects/>
 
         {/* About Section */}
         <section id="about" className="bg-zinc-900 py-20">
