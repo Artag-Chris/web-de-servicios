@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { Button } from '../ui/button'
 import { Badge } from '../ui/badge'
@@ -12,15 +11,6 @@ function Hero() {
       <section className="container mx-auto px-4 py-20 md:py-32">
         <div className="max-w-3xl">
           <Badge className="mb-4 bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500/20 transition-colors">
-            Fullstack Developer
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Creating exceptional <span className="text-emerald-500">digital experiences</span> through code
-          </h1>
-          <p className="text-zinc-400 text-lg md:text-xl mb-8 max-w-2xl">
-            I build scalable, responsive, and user-friendly web applications using modern technologies and best
-            practices.
-          </p>
           <TypingAnimation
             phrases={[
               "Fullstack Developer",
@@ -32,6 +22,15 @@ function Hero() {
             delayBetweenPhrases={1500}  // 1.5s pause before erasing
             loop={true}           // Continuously cycle through phrases
           />
+          </Badge>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            Creating exceptional <span className="text-emerald-500">digital experiences</span> through code
+          </h1>
+          <p className="text-zinc-400 text-lg md:text-xl mb-8 max-w-2xl">
+            I build scalable, responsive, and user-friendly web applications using modern technologies and best
+            practices.
+          </p>
+         
           <div className="flex flex-col sm:flex-row gap-4">
             <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
               View Projects
