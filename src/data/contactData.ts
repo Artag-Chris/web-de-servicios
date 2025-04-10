@@ -1,4 +1,4 @@
-import { Github, Linkedin, Youtube, Twitter, Instagram } from "lucide-react"
+import { Github, Linkedin, Twitter, Instagram, Youtube,} from '@styled-icons/simple-icons'
 
 export const socialLinksContact = [
     {

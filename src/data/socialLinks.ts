@@ -1,34 +1,34 @@
-import { GithubIcon, LinkedinIcon, YoutubeIcon, TwitterIcon, InstagramIcon, MailIcon } from "lucide-react";
-
+import { MailIcon } from "lucide-react";
+import { Github, Linkedin, Twitter, Instagram, Youtube, } from '@styled-icons/simple-icons'
 // Social media links data
 export const socialLinks = [
     {
       name: "GitHub",
-      icon: GithubIcon,
+      icon: Github,
       url: "https://github.com/Artag-Chris",
       color: "hover:text-[#6e5494]",
     },
     {
       name: "LinkedIn",
-      icon: LinkedinIcon,
+      icon: Linkedin,
       url: "https://linkedin.com/in/yourusername",
       color: "hover:text-[#0077b5]",
     },
     {
       name: "YouTube",
-      icon: YoutubeIcon,
+      icon: Youtube,
       url: "https://www.youtube.com/@Artag888",
       color: "hover:text-[#ff0000]",
     },
     {
       name: "Twitter",
-      icon: TwitterIcon,
+      icon: Twitter,
       url: "https://twitter.com/yourusername",
       color: "hover:text-[#1DA1F2]",
     },
     {
       name: "Instagram",
-      icon: InstagramIcon,
+      icon: Instagram,
       url: "https://instagram.com/yourusername",
       color: "hover:text-[#E1306C]",
     },

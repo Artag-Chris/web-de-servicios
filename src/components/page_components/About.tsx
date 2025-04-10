@@ -50,7 +50,7 @@ function About() {
                   />
                   {isHovered && (
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center p-4">
-                      <p className="text-white text-sm font-medium">Hello, I'm </p>
+                      <p className="text-white text-sm font-medium">Hello, I'm Christian</p>
                     </div>
                   )}
                 </div>

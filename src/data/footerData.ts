@@ -1,4 +1,5 @@
-import { Github, Linkedin, Twitter, Instagram, Youtube, Dribbble, Codepen, Figma, Mail } from "lucide-react"
+import { Mail } from "lucide-react"
+import { Github, Linkedin, Twitter, Instagram, Youtube, Dribbble, Codepen, Figma } from '@styled-icons/simple-icons'
 
 export const socialLinksFooter = [
     {
