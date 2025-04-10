@@ -24,11 +24,11 @@ function Hero() {
         playerVars: {
           autoplay: 1,
           loop: 1,
-          playlist: "sQ22pm-xvrE", // Required for looping
+          playlist: "sQ22pm-xvrE", 
           controls: 0,
           showinfo: 0,
           rel: 0,
-          mute: 1, // Mute the video
+          mute: 1, 
           playsinline: 1,
         },
         events: {
@@ -44,9 +44,8 @@ function Hero() {
     <div className="relative overflow-hidden">
       {/* Background Video Container */}
       <div ref={videoContainerRef} className="absolute inset-0 w-full h-full overflow-hidden">
-        <div className="absolute inset-0 bg-black/50 z-10" /> {/* Overlay to darken video */}
+        <div className="absolute inset-0 bg-black/50 z-10" /> 
         <div id="youtube-player" className="absolute inset-0 w-[100vw] h-[100vh] -z-0 pointer-events-none">
-          {/* YouTube player will be inserted here */}
         </div>
       </div>
 
@@ -63,11 +62,10 @@ function Hero() {
             />
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-            Creating exceptional <span className="text-emerald-500">digital experiences</span> through code
+          Creando experiencias digitales<span className="text-emerald-500">excepcionales </span> a través del código
           </h1>
           <p className="text-zinc-200 text-lg md:text-xl mb-8 max-w-2xl">
-            I build scalable, responsive, and user-friendly web applications using modern technologies and best
-            practices.
+          Desarrollo aplicaciones web escalables, responsivas y centradas en el usuario, utilizando tecnologías modernas y las mejores prácticas del sector.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">

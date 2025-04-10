@@ -7,7 +7,7 @@ function HeaderMain() {
     <header className="container mx-auto py-6 px-4">
         <nav className="flex items-center justify-between">
           <div className="text-xl font-bold">
-            <span className="text-emerald-500">Dev</span>Portfolio
+            <span className="text-emerald-500">Artag</span>Dev
           </div>
           <div className="hidden md:flex items-center gap-6">
             <Link href="#about" className="hover:text-emerald-400 transition-colors">

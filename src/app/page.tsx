@@ -11,11 +11,11 @@ export default function Home() {
     <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <HeaderMain />
       <main>
-       <Hero />
-        <Skills/>
-        <Proyects/>
-        <About/>
-        <Contact/>
+        <Hero />
+        <Skills />
+        <Proyects />
+        <About />
+        <Contact />
       </main>
       <FooterMain />
     </div>
