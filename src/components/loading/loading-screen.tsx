@@ -13,7 +13,7 @@ const LoadingScreen = () => {
     }, 5000)
 
     return () => clearTimeout(timer)
-  }, [])
+  }, []) 
 
   return (
     <AnimatePresence>
