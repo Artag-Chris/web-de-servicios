@@ -21,59 +21,10 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
+import { socialLinksContact, testimonials } from "@/data/contactData"
 
-// Social media links data
-const socialLinks = [
-  {
-    name: "GitHub",
-    icon: Github,
-    url: "https://github.com/yourusername",
-    color: "hover:text-[#6e5494]",
-  },
-  {
-    name: "LinkedIn",
-    icon: Linkedin,
-    url: "https://linkedin.com/in/yourusername",
-    color: "hover:text-[#0077b5]",
-  },
-  {
-    name: "YouTube",
-    icon: Youtube,
-    url: "https://youtube.com/@yourusername",
-    color: "hover:text-[#ff0000]",
-  },
-  {
-    name: "Twitter",
-    icon: Twitter,
-    url: "https://twitter.com/yourusername",
-    color: "hover:text-[#1DA1F2]",
-  },
-  {
-    name: "Instagram",
-    icon: Instagram,
-    url: "https://instagram.com/yourusername",
-    color: "hover:text-[#E1306C]",
-  },
-]
 
-// Testimonials data
-const testimonials = [
-  {
-    name: "Sarah Johnson",
-    company: "TechStart Inc.",
-    text: "Working with John was a game-changer for our project. His technical expertise and attention to detail exceeded our expectations.",
-  },
-  {
-    name: "Michael Chen",
-    company: "Innovate Solutions",
-    text: "John delivered our web application ahead of schedule and with all the features we needed. Highly recommended!",
-  },
-  {
-    name: "Emily Rodriguez",
-    company: "Creative Digital",
-    text: "The website John built for us has significantly increased our conversion rate. His understanding of UX is exceptional.",
-  },
-]
+
 
 function Contact() {
   const [formState, setFormState] = useState({
@@ -160,14 +111,14 @@ function Contact() {
                       <div className="space-y-4">
                         <div>
                           <Label htmlFor="name" className="text-zinc-300 mb-1 block">
-                            Your Name
+                            Tu Nombre
                           </Label>
                           <Input
                             id="name"
                             name="name"
                             value={formState.name}
                             onChange={handleChange}
-                            placeholder="John Doe"
+                            placeholder="Pedro Parques"
                             required
                             className="mt-1 bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:ring-emerald-500"
                           />
@@ -183,7 +134,7 @@ function Contact() {
                             type="email"
                             value={formState.email}
                             onChange={handleChange}
-                            placeholder="john@example.com"
+                            placeholder="info@gmail.com"
                             required
                             className="mt-1 bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:ring-emerald-500"
                           />
@@ -191,32 +142,32 @@ function Contact() {
 
                         <div>
                           <Label htmlFor="projectType" className="text-zinc-300 mb-1 block">
-                            Type of Project
+                            Tipo de proyecto
                           </Label>
                           <Select value={formState.projectType} onValueChange={handleSelectChange}>
                             <SelectTrigger className="mt-1 bg-zinc-800 border-zinc-700 text-white focus:border-emerald-500 focus:ring-emerald-500">
                               <SelectValue placeholder="Select project type" />
                             </SelectTrigger>
                             <SelectContent className="bg-zinc-800 border-zinc-700 text-white">
-                              <SelectItem value="web-development">Web Development</SelectItem>
+                              <SelectItem value="web-development">Desarollo web</SelectItem>
                               <SelectItem value="mobile-app">Mobile App</SelectItem>
                               <SelectItem value="ui-ux-design">UI/UX Design</SelectItem>
-                              <SelectItem value="consulting">Consulting</SelectItem>
-                              <SelectItem value="other">Other</SelectItem>
+                              <SelectItem value="consulting">Consulta</SelectItem>
+                              <SelectItem value="other">Otro</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
 
                         <div>
                           <Label htmlFor="message" className="text-zinc-300 mb-1 block">
-                            Your Message
+                            Tu mensaje
                           </Label>
                           <Textarea
                             id="message"
                             name="message"
                             value={formState.message}
                             onChange={handleChange}
-                            placeholder="Tell me about your project..."
+                            placeholder="Cuentame que tienes en mente..."
                             required
                             className="mt-1 min-h-[120px] bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:ring-emerald-500"
                           />
@@ -242,9 +193,9 @@ function Contact() {
                       transition={{ duration: 0.3 }}
                     >
                       <CheckCircle2 className="h-16 w-16 text-emerald-500 mb-4" />
-                      <h3 className="text-xl font-bold text-white mb-2">Message Sent Successfully!</h3>
+                      <h3 className="text-xl font-bold text-white mb-2">envio de mensaje exitoso!</h3>
                       <p className="text-zinc-300">
-                        Thank you for reaching out. I'll get back to you as soon as possible.
+                      Gracias por ponerse en contacto conmigo. Me pondré en contacto con usted lo antes posible.
                       </p>
                     </motion.div>
                   )}
@@ -262,12 +213,12 @@ function Contact() {
               {/* Contact Info */}
               <Card className="bg-zinc-900 border-zinc-800 mb-6">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-6 text-white">Contact Information</h3>
+                  <h3 className="text-xl font-bold mb-6 text-white">Información de contacto</h3>
 
                   <div className="space-y-5">
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                        <Mail className="h-4 w-4 text-emerald-500" />
+                        <Mail  className="h-4 w-4 text-emerald-500" />
                       </div>
                       <div>
                         <p className="text-zinc-300 font-medium">Email</p>
@@ -275,7 +226,7 @@ function Contact() {
                           href="mailto:contact@johndoe.com"
                           className="text-emerald-400 hover:text-emerald-300 transition-colors"
                         >
-                          contact@johndoe.com
+                          artagdev@gmail.com
                         </a>
                       </div>
                     </div>
@@ -287,7 +238,7 @@ function Contact() {
                       <div>
                         <p className="text-zinc-300 font-medium">Phone</p>
                         <a href="tel:+1234567890" className="text-emerald-400 hover:text-emerald-300 transition-colors">
-                          +1 (234) 567-890
+                          +57 3205711428
                         </a>
                       </div>
                     </div>
@@ -298,7 +249,7 @@ function Contact() {
                       </div>
                       <div>
                         <p className="text-zinc-300 font-medium">Location</p>
-                        <p className="text-zinc-400">San Francisco, California</p>
+                        <p className="text-zinc-400">Pereira Risaralda Colombia</p>
                       </div>
                     </div>
                   </div>
@@ -307,7 +258,7 @@ function Contact() {
                   <div className="mt-6">
                     <p className="text-zinc-300 font-medium mb-3">Connect with me</p>
                     <div className="flex gap-3">
-                      {socialLinks.map((social) => {
+                      {socialLinksContact.map((social) => {
                         const Icon = social.icon
                         return (
                           <motion.a
