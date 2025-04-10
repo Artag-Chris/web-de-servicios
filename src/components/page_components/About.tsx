@@ -163,8 +163,8 @@ function About() {
                   <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
                     <FileText className="mr-2 h-4 w-4" /> Download Resume
                   </Button>
-                  <Button variant="outline" className="border-zinc-700 hover:border-emerald-500 hover:bg-zinc-800">
-                    <ExternalLink className="mr-2 h-4 w-4" /> View Portfolio
+                  <Button variant="outline" className="border-zinc-700 hover:border-emerald-500 hover:bg-zinc-800 text-black">
+                    <ExternalLink className="mr-2 h-4 w-4 text-black" /> View Portfolio
                   </Button>
                 </div>
               </motion.div>
