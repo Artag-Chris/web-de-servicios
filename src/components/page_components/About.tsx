@@ -3,60 +3,12 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import {
-  GithubIcon,
-  LinkedinIcon,
-  MailIcon,
-  YoutubeIcon,
-  TwitterIcon,
-  InstagramIcon,
-  FileText,
-  ExternalLink,
-} from "lucide-react"
+import { FileText, ExternalLink, Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
+import { socialLinks } from "@/data/socialLinks"
+import AnimatedButton from "@/components/ui/animated-button"
+import { skills } from "@/data/skillsData"
 
-// Social media links data
-const socialLinks = [
-  {
-    name: "GitHub",
-    icon: GithubIcon,
-    url: "https://github.com/yourusername",
-    color: "hover:text-[#6e5494]",
-  },
-  {
-    name: "LinkedIn",
-    icon: LinkedinIcon,
-    url: "https://linkedin.com/in/yourusername",
-    color: "hover:text-[#0077b5]",
-  },
-  {
-    name: "YouTube",
-    icon: YoutubeIcon,
-    url: "https://youtube.com/@yourusername",
-    color: "hover:text-[#ff0000]",
-  },
-  {
-    name: "Twitter",
-    icon: TwitterIcon,
-    url: "https://twitter.com/yourusername",
-    color: "hover:text-[#1DA1F2]",
-  },
-  {
-    name: "Instagram",
-    icon: InstagramIcon,
-    url: "https://instagram.com/yourusername",
-    color: "hover:text-[#E1306C]",
-  },
-  {
-    name: "Email",
-    icon: MailIcon,
-    url: "mailto:your.email@example.com",
-    color: "hover:text-[#D44638]",
-  },
-]
-
-// Skills for the rotating text effect
-const skills = ["React Developer", "UI/UX Enthusiast", "Next.js Expert", "Problem Solver", "Full Stack Developer"]
 
 function About() {
   const [currentSkill, setCurrentSkill] = useState(0)
@@ -98,7 +50,7 @@ function About() {
                   />
                   {isHovered && (
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center p-4">
-                      <p className="text-white text-sm font-medium">Hello, I'm John Doe</p>
+                      <p className="text-white text-sm font-medium">Hello, I'm </p>
                     </div>
                   )}
                 </div>
@@ -159,14 +111,65 @@ function About() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4 mb-8">
                   <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
                     <FileText className="mr-2 h-4 w-4" /> Download Resume
                   </Button>
-                  <Button variant="outline" className="border-zinc-700 hover:border-emerald-500 hover:bg-zinc-800 text-black">
-                    <ExternalLink className="mr-2 h-4 w-4 text-black" /> View Portfolio
+                  <Button
+                    variant="outline"
+                    className="border-zinc-700 hover:border-emerald-500 hover:bg-zinc-800 text-black"
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" /> View Portfolio
                   </Button>
                 </div>
+
+                {/* Special "More About Me" Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="mt-2"
+                >
+                  <div className="relative inline-block">
+                    <AnimatedButton
+                      href="/about-me"
+                      variant="glow"
+                      icon={<Sparkles className="h-5 w-5" />}
+                      className="font-medium text-base"
+                    >
+                      Discover My Journey
+                    </AnimatedButton>
+
+                    {/* Floating particles */}
+                    <motion.div
+                      className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-300"
+                      animate={{
+                        y: [0, -15, -5],
+                        x: [0, 5, 10],
+                        opacity: [0, 1, 0],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Number.POSITIVE_INFINITY,
+                        repeatType: "loop",
+                      }}
+                    />
+                    <motion.div
+                      className="absolute -bottom-1 -left-1 w-1.5 h-1.5 rounded-full bg-emerald-400"
+                      animate={{
+                        y: [0, -10, -20],
+                        x: [0, -5, -10],
+                        opacity: [0, 1, 0],
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        delay: 0.3,
+                        repeat: Number.POSITIVE_INFINITY,
+                        repeatType: "loop",
+                      }}
+                    />
+                  </div>
+                </motion.div>
               </motion.div>
             </div>
           </div>

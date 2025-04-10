@@ -99,3 +99,5 @@ export const skillsData = [
     color: string;
   }
 
+
+export const skills = ["React Developer", "UI/UX Enthusiast", "Next.js Expert", "Problem Solver", "Full Stack Developer"]
