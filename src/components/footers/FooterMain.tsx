@@ -3,98 +3,13 @@
 import { useState, FormEvent } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Instagram,
-  Youtube,
-  Mail,
-  ArrowRight,
-  Heart,
-  Codepen,
-  Dribbble,
-  Figma,
-} from "lucide-react"
+import { ArrowRight, Heart } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { navLinks, services, socialLinksFooter } from "@/data/footerData"
 
 // Social media links data with additional icons
-const socialLinks = [
-  {
-    name: "GitHub",
-    icon: Github,
-    url: "https://github.com/yourusername",
-    color: "hover:text-[#6e5494] hover:border-[#6e5494]",
-  },
-  {
-    name: "LinkedIn",
-    icon: Linkedin,
-    url: "https://linkedin.com/in/yourusername",
-    color: "hover:text-[#0077b5] hover:border-[#0077b5]",
-  },
-  {
-    name: "Twitter",
-    icon: Twitter,
-    url: "https://twitter.com/yourusername",
-    color: "hover:text-[#1DA1F2] hover:border-[#1DA1F2]",
-  },
-  {
-    name: "Instagram",
-    icon: Instagram,
-    url: "https://instagram.com/yourusername",
-    color: "hover:text-[#E1306C] hover:border-[#E1306C]",
-  },
-  {
-    name: "YouTube",
-    icon: Youtube,
-    url: "https://youtube.com/@yourusername",
-    color: "hover:text-[#ff0000] hover:border-[#ff0000]",
-  },
-  {
-    name: "Dribbble",
-    icon: Dribbble,
-    url: "https://dribbble.com/yourusername",
-    color: "hover:text-[#ea4c89] hover:border-[#ea4c89]",
-  },
-  {
-    name: "CodePen",
-    icon: Codepen,
-    url: "https://codepen.io/yourusername",
-    color: "hover:text-[#47cf73] hover:border-[#47cf73]",
-  },
-  {
-    name: "Figma",
-    icon: Figma,
-    url: "https://figma.com/@yourusername",
-    color: "hover:text-[#f24e1e] hover:border-[#f24e1e]",
-  },
-  {
-    name: "Email",
-    icon: Mail,
-    url: "mailto:your.email@example.com",
-    color: "hover:text-[#D44638] hover:border-[#D44638]",
-  },
-]
 
-// Navigation links
-const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
-]
-
-// Services offered
-const services = [
-  "Web Development",
-  "UI/UX Design",
-  "Mobile Applications",
-  "API Development",
-  "E-commerce Solutions",
-  "Technical Consulting",
-]
 
 function Footer() {
   const [email, setEmail] = useState("")
@@ -121,9 +36,9 @@ function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
-                <span className="text-white font-bold text-xl">JD</span>
+                <span className="text-white font-bold text-xl">AD</span>
               </div>
-              <h3 className="text-xl font-bold text-white">John Doe</h3>
+              <h3 className="text-xl font-bold text-white">Artag Dev</h3>
             </div>
 
             <p className="text-zinc-400 text-sm">
@@ -131,7 +46,7 @@ function Footer() {
             </p>
 
             <div className="flex flex-wrap gap-2 pt-2">
-              {socialLinks.map((social) => {
+              {socialLinksFooter.map((social) => {
                 const Icon = social.icon
                 return (
                   <motion.a
@@ -236,7 +151,7 @@ function Footer() {
       <div className="border-t border-zinc-800 py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-zinc-500 text-sm mb-4 md:mb-0">© {currentYear} John Doe. All rights reserved.</div>
+            <div className="text-zinc-500 text-sm mb-4 md:mb-0">© {currentYear} Artag Dev. Todos los.</div>
 
             <div className="flex items-center gap-4">
               <Link href="#" className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">
@@ -248,7 +163,7 @@ function Footer() {
               </Link>
               <span className="text-zinc-700">•</span>
               <div className="text-zinc-500 text-sm flex items-center">
-                Made with <Heart className="h-3 w-3 text-emerald-500 mx-1" /> in San Francisco
+                hecho con <Heart className="h-3 w-3 text-emerald-500 mx-1" /> en Pereira
               </div>
             </div>
           </div>

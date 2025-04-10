@@ -4,7 +4,7 @@ export const socialLinksContact = [
     {
       name: "GitHub",
       icon: Github,
-      url: "https://github.com/yourusername",
+      url: "https://github.com/Artag-Chris",
       color: "hover:text-[#6e5494]",
     },
     {
@@ -16,7 +16,7 @@ export const socialLinksContact = [
     {
       name: "YouTube",
       icon: Youtube,
-      url: "https://youtube.com/@yourusername",
+      url: "https://www.youtube.com/@Artag888",
       color: "hover:text-[#ff0000]",
     },
     {
