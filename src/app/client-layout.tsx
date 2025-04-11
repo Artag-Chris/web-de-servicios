@@ -4,25 +4,31 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import { Inter } from "next/font/google"
-import LoadingScreen from "@/components/loading/loading-screen"
 import { ThemeProvider } from "next-themes"
-
+import CityLoader from "@/components/loading/city-loader"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    // This will hide the loading screen after the page is fully loaded
-    if (document.readyState === "complete") {
-      setIsLoading(false)
-    } else {
-      window.addEventListener("load", () => setIsLoading(false))
+  const handleLoadingComplete = () => {
+    setIsLoading(false)
+  }
 
-      // Fallback in case the load event doesn't fire
-      const timeout = setTimeout(() => setIsLoading(false), 3500)
-      return () => clearTimeout(timeout)
+  useEffect(() => {
+    // This will handle any additional loading logic if needed
+    // The CityLoader component will handle the minimum display time
+    const handlePageFullyLoaded = () => {
+      // We don't set isLoading to false here because the CityLoader
+      // will handle that after its minimum display time
+    }
+
+    if (document.readyState === "complete") {
+      handlePageFullyLoaded()
+    } else {
+      window.addEventListener("load", handlePageFullyLoaded)
+      return () => window.removeEventListener("load", handlePageFullyLoaded)
     }
   }, [])
 
@@ -30,8 +36,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <LoadingScreen />
-          {children}
+          <CityLoader onLoadingComplete={handleLoadingComplete} minDisplayTime={5000} />
+          <div className={isLoading ? "hidden" : "block"}>{children}</div>
         </ThemeProvider>
       </body>
     </html>

@@ -10,7 +10,7 @@ export const socialLinksContact = [
     {
       name: "LinkedIn",
       icon: Linkedin,
-      url: "https://linkedin.com/in/yourusername",
+      url: "https://www.linkedin.com/in/artag/",
       color: "hover:text-[#0077b5]",
     },
     {
@@ -28,7 +28,7 @@ export const socialLinksContact = [
     {
       name: "Instagram",
       icon: Instagram,
-      url: "https://instagram.com/yourusername",
+      url: "https://www.instagram.com/artagdev/",
       color: "hover:text-[#E1306C]",
     },
   ]
