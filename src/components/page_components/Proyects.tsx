@@ -5,7 +5,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { projectsData } from "@/data/proyectData"
-import { ProjectCard } from "../sub-sections/ProyectCard"
 import { ProjectPopup } from "../sub-sections/Propyect-PopUp"
 import GlowProjectCard from "@/components/compontents/GlowProyectCard";
 

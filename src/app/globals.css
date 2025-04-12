@@ -4,6 +4,16 @@
 
 @layer base {
   :root {
+    --start:0;
+    --end:360;
+    --duration:10s;
+    --delay:0s;
+    --ease:ease-in-out;
+    --iteration-count:infinite;
+    --direction:normal;
+    --fill-mode:forwards;
+    --play-state:running;
+    --color-mode:light;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
