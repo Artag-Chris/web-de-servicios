@@ -1,5 +1,6 @@
 
 import { Code2, Database, Server, GitGraphIcon as Git, Cloud, Terminal } from "lucide-react"
+import React from "react";
 
 export const skillsData = [
     {

@@ -3,10 +3,9 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { FileText, ExternalLink, Sparkles } from "lucide-react"
+import { FileText, ExternalLink } from "lucide-react"
 import { motion } from "framer-motion"
 import { socialLinks } from "@/data/socialLinks"
-import AnimatedButton from "@/components/ui/animated-button"
 import { skills } from "@/data/skillsData"
 import MoreAboutmeButton from "../compontents/MoreAboutmeButton"
 

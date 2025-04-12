@@ -55,7 +55,7 @@ export default function CityLoader({ onLoadingComplete, minDisplayTime = 5000 }:
 
   useEffect(() => {
     // Ensure the loader is displayed for at least minDisplayTime milliseconds
-    const startTime = Date.now()
+  //  const startTime = Date.now()
 
     const timer = setTimeout(() => {
       setIsVisible(false)

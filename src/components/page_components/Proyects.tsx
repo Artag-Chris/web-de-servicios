@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import React, { useState, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useMediaQuery } from "@/hooks/use-media-query"
@@ -125,7 +125,7 @@ function Projects() {
             {!isMobile && hoveredIndex !== null && (
               <ProjectPopup
                 project={projectsData[hoveredIndex]}
-                isVisible={hoveredIndex !== null}
+                isVisible={true}
                 position={popupPosition}
               />
             )}

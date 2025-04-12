@@ -1,17 +1,12 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import {
   Send,
   Mail,
   Phone,
   MapPin,
-  Github,
-  Linkedin,
-  Twitter,
-  Instagram,
-  Youtube,
   MessageSquare,
   CheckCircle2,
 } from "lucide-react"
@@ -23,24 +18,25 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
 import { socialLinksContact, testimonials } from "@/data/contactData"
 
+type FormState = {
+  [key: string]: string; // Or a more specific mapping of object keys to their types
+};
+
 
 
 
 function Contact() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    projectType: "",
-    message: "",
-  })
+  const [formState, setFormState] = useState<FormState>({});
+
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormState((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target; // Ensure name is defined and matches FormState keys
+    setFormState((prev) => ({ ...prev, [name]: value }));
+  };
+
 
   const handleSelectChange = (value: string) => {
     setFormState((prev) => ({ ...prev, projectType: value }))
