@@ -1,12 +1,21 @@
-'use client'
+"use client"
+import { useRef } from "react"
 import { skillsData } from "@/data/skillsData"
 import { SkillCard } from "../sub-sections/SkillCard"
+import { GeometricBackground } from "../compontents/GeometricBackground"
+
 
 function Skills() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+
   return (
     <div>
-      <section id="skills" className="bg-zinc-900 py-20">
-        <div className="container mx-auto px-4">
+      <section id="skills" className="bg-zinc-900 py-20 relative overflow-hidden" ref={sectionRef}>
+        {/* Geometric Background */}
+        <GeometricBackground />
+
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-3xl font-bold mb-12 text-center">
             Technical <span className="text-emerald-500">Skills</span>
           </h2>
