@@ -1,15 +1,20 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { Button } from "@/components/ui/button"
+import { useEffect, useRef, useState } from "react"
 import { Badge } from "@/components/ui/badge"
-import { ChevronRight } from "lucide-react"
 import TypingAnimation from "../animations/typingAnimation"
 import MoreAboutmeButton from "../compontents/MoreAboutmeButton"
 
+declare global {
+  interface Window {
+    YT: any
+    onYouTubeIframeAPIReady: () => void
+  }
+}
 
 function Hero() {
   const videoContainerRef = useRef<HTMLDivElement>(null)
+  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     // Create YouTube Player API script
@@ -25,11 +30,11 @@ function Hero() {
         playerVars: {
           autoplay: 1,
           loop: 1,
-          playlist: "sQ22pm-xvrE", 
+          playlist: "sQ22pm-xvrE",
           controls: 0,
           showinfo: 0,
           rel: 0,
-          mute: 1, 
+          mute: 1,
           playsinline: 1,
         },
         events: {
@@ -39,15 +44,43 @@ function Hero() {
         },
       })
     }
+
+    // Add scroll event listener for parallax effect
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+
+    // Add event listener
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    // Clean up
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
   }, [])
+
+  // Calculate parallax effect - video moves slower than scroll
+  const parallaxOffset = scrollY * 0.4 // Adjust this multiplier to control the effect intensity
 
   return (
     <div className="relative overflow-hidden">
-      {/* Background Video Container */}
-      <div ref={videoContainerRef} className="absolute inset-0 w-full h-full overflow-hidden">
-        <div className="absolute inset-0 bg-black/50 z-10" /> 
-        <div id="youtube-player" className="absolute inset-0 w-[100vw] h-[100vh] -z-0 pointer-events-none">
-        </div>
+      {/* Background Video Container with Parallax Effect */}
+      <div
+        ref={videoContainerRef}
+        className="absolute inset-0 w-full h-full overflow-hidden"
+        style={{
+          transform: `translateY(${parallaxOffset}px)`,
+          height: "calc(100% + 200px)", // Add extra height to prevent seeing the bottom edge
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div
+          id="youtube-player"
+          className="absolute inset-0 w-[100vw] h-[100vh] -z-0 pointer-events-none"
+          style={{
+            top: "-50px", // Start video slightly above to prevent seeing the top edge
+          }}
+        ></div>
       </div>
 
       {/* Hero Section Content */}
@@ -63,14 +96,15 @@ function Hero() {
             />
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-          Creando experiencias  <span className="text-emerald-500">digitales excepcionales </span> a través del código
+            Creando experiencias <span className="text-emerald-500">digitales excepcionales </span> a través del código
           </h1>
           <p className="text-zinc-200 text-lg md:text-xl mb-8 max-w-2xl">
-          Desarrollo aplicaciones web escalables, responsivas y centradas en el usuario, utilizando tecnologías modernas y las mejores prácticas del sector.
+            Desarrollo aplicaciones web escalables, responsivas y centradas en el usuario, utilizando tecnologías
+            modernas y las mejores prácticas del sector.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-          <MoreAboutmeButton  />
+            <MoreAboutmeButton />
           </div>
         </div>
       </section>
