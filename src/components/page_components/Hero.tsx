@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ChevronRight } from "lucide-react"
 import TypingAnimation from "../animations/typingAnimation"
+import MoreAboutmeButton from "../compontents/MoreAboutmeButton"
 
 
 function Hero() {
@@ -69,13 +70,7 @@ function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white">
-              View Projects
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button variant="outline" className="border-zinc-700 hover:bg-zinc-800 text-emerald-500">
-              Contact Me
-            </Button>
+          <MoreAboutmeButton  />
           </div>
         </div>
       </section>
