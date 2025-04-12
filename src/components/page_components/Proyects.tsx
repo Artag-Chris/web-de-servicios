@@ -7,6 +7,7 @@ import { useMediaQuery } from "@/hooks/use-media-query"
 import { projectsData } from "@/data/proyectData"
 import { ProjectCard } from "../sub-sections/ProyectCard"
 import { ProjectPopup } from "../sub-sections/Propyect-PopUp"
+import GlowProjectCard from "@/components/compontents/GlowProyectCard";
 
 
 
@@ -111,11 +112,15 @@ function Projects() {
                     onMouseEnter={(e) => handleHover(startIndex + index, true, e)}
                     onMouseLeave={() => handleHover(startIndex + index, false, null)}
                   >
-                    <ProjectCard
-                      project={project}
-                      onHover={(isHovered: boolean) => handleHover(startIndex + index, isHovered, null)}
-                      isHovered={hoveredIndex === startIndex + index}
+                    <GlowProjectCard
+                        project={project}
+                        index={startIndex + index}
+                        onHover={(isHovered: boolean) =>
+                            handleHover(startIndex + index, isHovered, null)
+                        }
+                        isHovered={hoveredIndex === startIndex + index}
                     />
+
                   </motion.div>
                 ))}
               </AnimatePresence>

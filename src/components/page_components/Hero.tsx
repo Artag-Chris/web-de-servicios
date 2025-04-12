@@ -63,52 +63,51 @@ function Hero() {
   const parallaxOffset = scrollY * 0.4 // Adjust this multiplier to control the effect intensity
 
   return (
-    <div className="relative overflow-hidden">
-      {/* Background Video Container with Parallax Effect */}
-      <div
-        ref={videoContainerRef}
-        className="absolute inset-0 w-full h-full overflow-hidden"
-        style={{
-          transform: `translateY(${parallaxOffset}px)`,
-          height: "calc(100% + 200px)", // Add extra height to prevent seeing the bottom edge
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50 z-10" />
+      <div className="relative overflow-hidden h-screen w-full">
+        {/* Background Video Container with Parallax Effect */}
         <div
-          id="youtube-player"
-          className="absolute inset-0 w-[100vw] h-[100vh] -z-0 pointer-events-none"
-          style={{
-            top: "-50px", // Start video slightly above to prevent seeing the top edge
-          }}
-        ></div>
-      </div>
-
-      {/* Hero Section Content */}
-      <section className="container mx-auto px-4 py-20 md:py-32 relative z-20">
-        <div className="max-w-3xl">
-          <Badge className="mb-4 bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500/20 transition-colors">
-            <TypingAnimation
-              phrases={["Fullstack Developer", "UI/UX Designer", "Problem Solver"]}
-              typeSpeed={80}
-              eraseSpeed={40}
-              delayBetweenPhrases={1500}
-              loop={true}
-            />
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-            Creando experiencias <span className="text-emerald-500">digitales excepcionales </span> a través del código
-          </h1>
-          <p className="text-zinc-200 text-lg md:text-xl mb-8 max-w-2xl">
-            Desarrollo aplicaciones web escalables, responsivas y centradas en el usuario, utilizando tecnologías
-            modernas y las mejores prácticas del sector.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <MoreAboutmeButton />
-          </div>
+            ref={videoContainerRef}
+            className="absolute inset-0 w-full h-full overflow-hidden"
+            style={{
+              transform: `translateY(${parallaxOffset}px)`,
+            }}
+        >
+          <div className="absolute inset-0 bg-black/50 z-10" />
+          <div
+              id="youtube-player"
+              className="absolute inset-0 w-full h-full -z-0 pointer-events-none"
+              style={{
+                top: 0,
+              }}
+          ></div>
         </div>
-      </section>
-    </div>
+
+        {/* Hero Section Content */}
+        <section className="container mx-auto px-4 h-full flex items-center relative z-20">
+          <div className="max-w-3xl">
+            <Badge className="mb-4 bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500/20 transition-colors">
+              <TypingAnimation
+                  phrases={["Fullstack Developer", "UI/UX Designer", "Problem Solver"]}
+                  typeSpeed={80}
+                  eraseSpeed={40}
+                  delayBetweenPhrases={1500}
+                  loop={true}
+              />
+            </Badge>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+              Creando experiencias <span className="text-emerald-500">digitales excepcionales </span> a través del código
+            </h1>
+            <p className="text-zinc-200 text-lg md:text-xl mb-8 max-w-2xl">
+              Desarrollo aplicaciones web escalables, responsivas y centradas en el usuario, utilizando tecnologías
+              modernas y las mejores prácticas del sector.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <MoreAboutmeButton />
+            </div>
+          </div>
+        </section>
+      </div>
   )
 }
 

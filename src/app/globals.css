@@ -47,6 +47,35 @@
     --input: 240 3.7% 15.9%;
     --ring: 160 84% 39%;
   }
+
+  .card {
+    position: relative;
+    background: #1a1a1a;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+            from calc(var(--start, 0) * 1deg),
+            #ff6ec4,
+            #9dffac,
+            #ff6ec4,
+            #9dffac
+    );
+    filter: blur(30px); /* Ajuste para un brillo más definido */
+    opacity: 0.9; /* Incrementamos ligeramente la opacidad */
+    pointer-events: none;
+    mix-blend-mode: screen; /* Cambiamos a un blend más visualmente atractivo */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: scale(1); /* Permite animaciones de escalado de brillo */
+  }
+
 }
 
 @layer base {
