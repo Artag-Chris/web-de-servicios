@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { motion } from "framer-motion"
 
 interface CityLoaderProps {
@@ -13,6 +13,10 @@ export default function CityLoader({ onLoadingComplete, minDisplayTime = 5000 }:
   const [showBlimp, setShowBlimp] = useState(false)
   const [showMotorcycle, setShowMotorcycle] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
+  const [isClient, setIsClient] = useState(false)
+
+  // Store random values in a ref to maintain consistency between renders
+  const starsRef = useRef<Array<{ width: number; height: number; left: number; top: number; delay: number }>>([])
 
   // Color palette based on the cyberpunk city image
   const skyColors = [
@@ -30,6 +34,24 @@ export default function CityLoader({ onLoadingComplete, minDisplayTime = 5000 }:
     ["#4ade80", "#7b68ee", "#00ffff"], // Light Green, Blue-Purple, Cyan
     ["#10b981", "#4ade80", "#7b68ee"], // Emerald, Light Green, Blue-Purple
   ]
+
+  // Initialize stars only once on client-side
+  useEffect(() => {
+    // Mark that we're on the client
+    setIsClient(true)
+
+    // Generate star positions only once
+    if (starsRef.current.length === 0) {
+      const stars = Array.from({ length: 100 }).map(() => ({
+        width: Math.random() * 2 + 1,
+        height: Math.random() * 2 + 1,
+        left: Math.random() * 100,
+        top: Math.random() * 60,
+        delay: Math.random() * 3,
+      }))
+      starsRef.current = stars
+    }
+  }, [])
 
   useEffect(() => {
     // Ensure the loader is displayed for at least minDisplayTime milliseconds
@@ -74,31 +96,33 @@ export default function CityLoader({ onLoadingComplete, minDisplayTime = 5000 }:
         transition: "background 1s ease-in-out",
       }}
     >
-      {/* Stars */}
-      <div className="absolute inset-0">
-        {Array.from({ length: 100 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white"
-            style={{
-              width: Math.random() * 2 + 1 + "px",
-              height: Math.random() * 2 + 1 + "px",
-              left: Math.random() * 100 + "%",
-              top: Math.random() * 60 + "%",
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.8, 0.4, 0.8] }}
-            transition={{
-              duration: 3,
-              repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 3,
-            }}
-          />
-        ))}
-      </div>
+      {/* Stars - only render on client side to avoid hydration mismatch */}
+      {isClient && (
+        <div className="absolute inset-0">
+          {starsRef.current.map((star, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-white"
+              style={{
+                width: `${star.width}px`,
+                height: `${star.height}px`,
+                left: `${star.left}%`,
+                top: `${star.top}%`,
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.8, 0.4, 0.8] }}
+              transition={{
+                duration: 3,
+                repeat: Number.POSITIVE_INFINITY,
+                delay: star.delay,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Blimp */}
-      {showBlimp && (
+      {isClient && showBlimp && (
         <motion.div
           className="absolute"
           initial={{ right: "-20%", top: "15%" }}
@@ -177,34 +201,36 @@ export default function CityLoader({ onLoadingComplete, minDisplayTime = 5000 }:
                 }}
               />
 
-              {/* Windows */}
-              {Array.from({ length: building.windows }).map((_, j) => {
-                const windowWidth = (building.width * 0.6) / 3
-                const windowHeight = 15
-                const windowX = building.x + (building.width - windowWidth * 3) / 2
-                const rows = Math.floor(building.height / 40)
-                const row = j % rows
-                const col = Math.floor(j / rows) % 3
+              {/* Windows - use deterministic positioning */}
+              {isClient &&
+                Array.from({ length: building.windows }).map((_, j) => {
+                  const windowWidth = (building.width * 0.6) / 3
+                  const windowHeight = 15
+                  const windowX = building.x + (building.width - windowWidth * 3) / 2
+                  const rows = Math.floor(building.height / 40)
+                  const row = j % rows
+                  const col = Math.floor(j / rows) % 3
+                  const windowDelay = building.delay + 1 + ((j * 0.1) % 2)
 
-                return (
-                  <motion.rect
-                    key={`window-${i}-${j}`}
-                    x={windowX + col * windowWidth * 1.5}
-                    y={600 - building.height + 40 + row * 40}
-                    width={windowWidth}
-                    height={windowHeight}
-                    fill={neonColors[colorPhase][j % 3]}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 0.8, 0.4, 0.8] }}
-                    transition={{
-                      duration: 2,
-                      delay: building.delay + 1 + Math.random() * 2,
-                      repeat: Number.POSITIVE_INFINITY,
-                      repeatType: "reverse",
-                    }}
-                  />
-                )
-              })}
+                  return (
+                    <motion.rect
+                      key={`window-${i}-${j}`}
+                      x={windowX + col * windowWidth * 1.5}
+                      y={600 - building.height + 40 + row * 40}
+                      width={windowWidth}
+                      height={windowHeight}
+                      fill={neonColors[colorPhase][j % 3]}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: [0, 0.8, 0.4, 0.8] }}
+                      transition={{
+                        duration: 2,
+                        delay: windowDelay,
+                        repeat: Number.POSITIVE_INFINITY,
+                        repeatType: "reverse",
+                      }}
+                    />
+                  )
+                })}
             </g>
           ))}
 
@@ -296,7 +322,7 @@ export default function CityLoader({ onLoadingComplete, minDisplayTime = 5000 }:
           ))}
 
           {/* Motorcycle */}
-          {showMotorcycle && (
+          {isClient && showMotorcycle && (
             <motion.g initial={{ x: -100 }} animate={{ x: 1300 }} transition={{ duration: 6, ease: "linear" }}>
               {/* Motorcycle body */}
               <motion.path

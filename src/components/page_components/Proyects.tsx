@@ -1,17 +1,13 @@
 "use client"
 
-import type React from "react"
-
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { projectsData } from "@/data/proyectData"
 import { ProjectCard } from "../sub-sections/ProyectCard"
 import { ProjectPopup } from "../sub-sections/Propyect-PopUp"
-import { LightningBackground } from "../compontents/LightingBackground"
 
-// Lightning bolt SVG paths
 
 
 function Projects() {
@@ -20,6 +16,7 @@ function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const isMobile = !useMediaQuery("(min-width: 768px)")
   const carouselRef = useRef(null)
+
 
   const getItemsPerSlide = () => {
     if (typeof window !== "undefined") {
@@ -62,15 +59,10 @@ function Projects() {
 
   return (
     <div>
+      
       {/* Projects Section */}
-      <section id="projects" className="py-20 relative">
-        {/* Lightning Background */}
-        <LightningBackground />
-
-        {/* Subtle gradient overlay to enhance lightning visibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40 pointer-events-none"></div>
-
-        <div className="container mx-auto px-4 relative z-10">
+      <section id="projects" className="py-20">
+        <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">
             Featured <span className="text-emerald-500">Projects</span>
           </h2>
