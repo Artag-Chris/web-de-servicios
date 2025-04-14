@@ -9,19 +9,19 @@ export function ProjectPopup({ project, isVisible, position }: { project: Projec
   
     return (
       <AnimatePresence>
-        {isVisible && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="fixed z-50 bg-zinc-800 border border-emerald-500 rounded-lg shadow-xl shadow-emerald-500/20 w-[350px] md:w-[400px]"
-            style={{
-              top: `${position.y + 20}px`,
-              left: `${position.x}px`,
-              transform: "translateX(-50%)",
-            }}
-          >
+          {isVisible && (
+              <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="fixed z-50 bg-zinc-800 border border-emerald-500 rounded-lg shadow-xl shadow-emerald-500/20 w-[350px] md:w-[400px]"
+                  style={{
+                      top: `${position.y + 20}px`,
+                      left: `${position.x}px`,
+                      transform: "translateX(-50%)",
+                  }}
+              >
             <div className="p-6">
               <div className="relative h-40 w-full mb-4 rounded-md overflow-hidden">
                 <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
