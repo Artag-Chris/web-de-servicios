@@ -1,15 +1,12 @@
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import CosmicNavbar from "@/components/compontents/cosmic-navbar";
+import {navLinks} from "@/data/navlinks";
+import AdvancedHorizontalScroll from "@/components/compontents/AdvancedHorizontalScroll";
+import {contentSections} from "@/data/cardsContentSections";
 
 
 export default function AboutMePage() {
-  const navLinks = [
-    { href: "/favorites", label: "Mis juegos favoritos" },
-    { href: "/private-servers", label: "Mis servidores privados" },
-    { href: "/my-faith", label: "Mi Fe" },
-    { href: "/about-me", label: "Mi Historia" },
-  ]
 
   return (
       <main className="bg-zinc-900 min-h-screen">
@@ -37,7 +34,23 @@ export default function AboutMePage() {
               share with visitors who want to learn more about you.
             </p>
           </div>
+          <AdvancedHorizontalScroll
+              contentSections={contentSections}
+              afterScrollContent={afterScrollContent}
+              // videoSrc="/path-to-your-video.mp4" // Opcional: URL del video de fondo
+          />
         </div>
       </main>
   )
 }
+const afterScrollContent = (
+    <div className="max-w-2xl text-center">
+      <h2 className="text-4xl font-bold mb-6">Tu Aventura Continúa</h2>
+      <p className="text-xl mb-8">
+        Has visto solo el comienzo. Hay muchos más mundos por explorar y desafíos que enfrentar.
+      </p>
+      <button className="px-6 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition">
+        Comenzar Aventura
+      </button>
+    </div>
+)

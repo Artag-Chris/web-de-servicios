@@ -106,3 +106,109 @@
     @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))];
   }
 }
+/* Clases personalizadas para navegación horizontal con scroll */
+/* Prefijo 'hs-' para evitar conflictos con otras clases */
+
+/* Contenedor principal para scroll horizontal */
+.hs-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Panel horizontal */
+.hs-panel {
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Indicadores de paso numerados */
+.hs-step-indicator {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.hs-step-indicator.hs-active {
+  background-color: white;
+  color: black;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Indicadores de paso tipo punto */
+.hs-step-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid white;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.hs-step-dot.hs-active {
+  background-color: white;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Barra de progreso */
+.hs-progress-container {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 50;
+}
+
+.hs-progress-bar {
+  height: 100%;
+  background-color: white;
+  width: 0;
+  transition: width 0.1s ease;
+}
+
+/* Div proxy para triggers de animación */
+.hs-proxy-div {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Sección de contenido */
+.hs-content-section {
+  max-width: 42rem;
+  width: 100%;
+  padding: 2rem;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Ocultar scrollbar para Chrome, Safari y Opera */
+.hs-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ocultar scrollbar para IE, Edge y Firefox */
+.hs-no-scrollbar {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Smooth scrolling */
+.hs-smooth-scroll {
+  scroll-behavior: smooth;
+}
