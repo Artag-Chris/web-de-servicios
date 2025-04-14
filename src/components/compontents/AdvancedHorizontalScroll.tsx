@@ -1,30 +1,17 @@
 "use client"
 
-import { useEffect, useRef, type ReactNode } from "react"
+import { useEffect, useRef } from "react"
 import Image from "next/image"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import {AdvancedHorizontalScrollProps} from "@/lib/interfaces/scrollInterfaces";
+import {animateSection} from "@/components/animations/animateSection";
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger)
 }
 
-// TypeScript interfaces
-export interface ContentSection {
-    title: string
-    description: string
-    imageUrl: string
-    buttonText?: string
-    buttonUrl?: string
-}
-
-export interface AdvancedHorizontalScrollProps {
-    contentSections: ContentSection[]
-    videoSrc?: string
-    afterScrollContent?: ReactNode
-    className?: string
-}
 
 export default function AdvancedHorizontalScroll({
                                                      contentSections,
@@ -92,35 +79,7 @@ export default function AdvancedHorizontalScroll({
     }, [contentSections])
 
     // Function to animate sections
-    const animateSection = (index: number) => {
-        const sections = document.querySelectorAll<HTMLElement>(".hs-content-section")
 
-        // Hide all sections first
-        sections.forEach((section) => {
-            gsap.to(section, { opacity: 0, y: 50, duration: 0.3 })
-        })
-
-        // Show the active section
-        if (sections[index]) {
-            gsap.to(sections[index], {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                delay: 0.1,
-                ease: "power2.out",
-            })
-        }
-
-        // Update active step indicator
-        const steps = document.querySelectorAll<HTMLElement>(".hs-step-dot")
-        steps.forEach((step, i) => {
-            if (i === index) {
-                step.classList.add("hs-active")
-            } else {
-                step.classList.remove("hs-active")
-            }
-        })
-    }
 
     return (
         <main className={`bg-black text-white hs-no-scrollbar hs-smooth-scroll ${className}`}>
