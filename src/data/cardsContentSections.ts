@@ -1,4 +1,5 @@
-import {ContentSection} from "@/components/compontents/AdvancedHorizontalScroll";
+
+import type {ContentSection} from "@/lib/interfaces/scrollInterfaces";
 
 export const contentSections: ContentSection[] = [
     {
