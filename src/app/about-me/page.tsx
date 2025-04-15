@@ -1,9 +1,11 @@
+'use client'
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import CosmicNavbar from "@/components/compontents/cosmic-navbar";
 import {navLinks} from "@/data/navlinks";
 import AdvancedHorizontalScroll from "@/components/compontents/AdvancedHorizontalScroll";
 import {contentSections} from "@/data/cardsContentSections";
+
 
 
 export default function AboutMePage() {
@@ -34,11 +36,13 @@ export default function AboutMePage() {
               share with visitors who want to learn more about you.
             </p>
           </div>
-          <AdvancedHorizontalScroll
+
+            <AdvancedHorizontalScroll
               contentSections={contentSections}
               afterScrollContent={afterScrollContent}
               // videoSrc="/path-to-your-video.mp4" // Opcional: URL del video de fondo
           />
+
         </div>
       </main>
   )
