@@ -16,7 +16,7 @@ function Hero() {
   const videoContainerRef = useRef<HTMLDivElement>(null)
   const [scrollY, setScrollY] = useState(0)
 
-  useEffect(() => {
+  useEffect(() => {  
     // Create YouTube Player API script
     const tag = document.createElement("script")
     tag.src = "https://www.youtube.com/iframe_api"
