@@ -10,7 +10,7 @@ declare global {
     YT: any
     onYouTubeIframeAPIReady: () => void
   }
-}
+}  
 
 function Hero() {
   const videoContainerRef = useRef<HTMLDivElement>(null)
