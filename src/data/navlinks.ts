@@ -1,6 +1,7 @@
 export const navLinks = [
-    { href: "/favorites", label: "Mis juegos favoritos" },
-    { href: "/private-servers", label: "Mis servidores privados" },
-    { href: "/my-faith", label: "Mi Fe" },
-    { href: "/about-me", label: "Mi Historia" },
+    { href: "/", label: "My current topics of study" },
+    { href: "/favorites", label: "My favorite games" },
+    { href: "/private-servers", label: "My private servers" },
+    { href: "/my-faith", label: "My faith" },
+    { href: "/about-me", label: "My History" },
 ]
