@@ -13,7 +13,7 @@ export default function AboutMePage() {
   return (
       <main className="bg-zinc-900 min-h-screen">
         {/* Cosmic Navbar */}
-        <CosmicNavbar links={navLinks} currentPath="/about-me" />
+        <CosmicNavbar links={navLinks} currentPath="/about-me" /> 
 
         <div className="container mx-auto px-4 py-10">
           {/* Botón de regresar */}
