@@ -1,0 +1,77 @@
+/* Optional: Add this to your global CSS or a separate timeline.css file */
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for horizontal sections */
+.timeline-scroll-section::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timeline-scroll-section::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.timeline-scroll-section::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.5);
+  border-radius: 4px;
+}
+
+.timeline-scroll-section::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.7);
+}
+
+/* Horizontal scrolling sections */
+.timeline-scroll-section {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.timeline-scroll-section > div > div {
+  scroll-snap-align: center;
+}
+
+/* Timeline connector styles */
+.timeline-connector {
+  position: absolute;
+  background-color: rgba(16, 185, 129, 0.8);
+  z-index: 10;
+}
+
+.timeline-connector-vertical {
+  width: 2px;
+}
+
+.timeline-connector-horizontal {
+  height: 2px;
+}
+
+/* Animation for direction indicators */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.direction-indicator {
+  animation: pulse 2s infinite;
+}
+
+/* Make sure horizontal sections are visible and scrollable on mobile */
+@media (max-width: 768px) {
+  .timeline-scroll-section {
+    padding-bottom: 20px;
+  }
+
+  .timeline-scroll-section > div {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
