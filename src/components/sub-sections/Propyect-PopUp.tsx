@@ -1,39 +1,70 @@
-import { Project, Position } from "@/data/proyectData";
-import { AnimatePresence, motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
-import Image from "next/image"
-import { Badge } from "@/components/ui/badge"
+"use client"
 
-export function ProjectPopup({ project, isVisible, position }: { project: Project; isVisible: boolean; position: Position }) {
-    if (!isVisible) return null
-  
-    return (
-      <AnimatePresence>
-          {isVisible && (
-              <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  className="fixed z-50 bg-zinc-800 border border-emerald-500 rounded-lg shadow-xl shadow-emerald-500/20 w-[350px] md:w-[400px]"
-                  style={{
-                      top: `${position.y + 20}px`,
-                      left: `${position.x}px`,
-                      transform: "translateX(-50%)",
-                  }}
-              >
-            <div className="p-6">
-              <div className="relative h-40 w-full mb-4 rounded-md overflow-hidden">
-                <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent opacity-70" />
-                <div className="absolute bottom-0 left-0 p-4">
-                  <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+import { motion, AnimatePresence } from "framer-motion"
+import { Badge } from "@/components/ui/badge"
+import { ProjectProps } from "@/data/proyectData"
+import { extractYouTubeId } from "@/lib/youtubeUtils/youtube-utils"
+import { Play, ExternalLink, Github } from "lucide-react"
+
+
+interface ProjectPopupProps {
+  project: ProjectProps
+  isVisible: boolean
+  position: { x: number; y: number }
+}
+
+export function ProjectPopup({ project, isVisible, position }: ProjectPopupProps) {
+  const videoId = extractYouTubeId(project.youtubeUrl) || ""
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          className="fixed z-50 w-72 bg-zinc-900/95 backdrop-blur-sm border border-zinc-700 rounded-lg shadow-xl overflow-hidden"
+          initial={{ opacity: 0, scale: 0.9, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 10 }}
+          transition={{ duration: 0.2 }}
+          style={{
+            left: `${position.x - 136}px`, // Center horizontally (272/2 = 136)
+            top: `${position.y - 200}px`, // Position above the card
+          }}
+        >
+          {/* YouTube thumbnail with play button */}
+          {videoId && (
+            <div className="relative h-36 w-full overflow-hidden group">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url(https://img.youtube.com/vi/${videoId}/mqdefault.jpg)` }}
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                <div className="w-12 h-12 rounded-full bg-emerald-500/90 flex items-center justify-center">
+                  <Play className="h-6 w-6 text-white fill-white" />
                 </div>
               </div>
-  
-              <p className="text-zinc-300 mb-4">{project.description}</p>
-  
-              <div className="mb-4">
+            </div>
+          )}
+
+          <div className="p-4">
+            <h3 className="text-lg font-bold mb-2">{project.title}</h3>
+            <p className="text-zinc-300 text-sm mb-3">{project.description}</p>
+
+            <div className="flex flex-wrap gap-1 mb-3">
+              {project.tech.slice(0, 3).map((tech, i) => (
+                <Badge key={i} variant="outline" className="bg-zinc-800 text-xs py-0">
+                  {tech}
+                </Badge>
+              ))}
+              {project.tech.length > 3 && (
+                <Badge variant="outline" className="bg-zinc-800 text-xs py-0">
+                  +{project.tech.length - 3}
+                </Badge>
+              )}
+            </div>
+
+            {/* Features section - only show if features exist */}
+            {project.features && project.features.length > 0 && (
+              <div className="mb-3">
                 <h4 className="text-sm font-semibold text-emerald-500 mb-2">Key Features:</h4>
                 <ul className="grid grid-cols-2 gap-x-2 gap-y-1">
                   {project.features.map((feat, idx) => (
@@ -44,36 +75,29 @@ export function ProjectPopup({ project, isVisible, position }: { project: Projec
                   ))}
                 </ul>
               </div>
-  
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech, i) => (
-                  <Badge key={i} variant="secondary" className="bg-zinc-700">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-  
-              <div className="flex gap-2">
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded text-sm font-medium flex items-center gap-1.5 transition-colors"
-                >
-                  Live Demo <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded text-sm font-medium flex items-center gap-1.5 transition-colors"
-                >
-                  GitHub <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-              </div>
+            )}
+
+            <div className="flex justify-between items-center text-xs">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-500 hover:text-emerald-400 flex items-center gap-1"
+              >
+                View <ExternalLink className="h-3 w-3" />
+              </a>
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-500 hover:text-emerald-400 flex items-center gap-1"
+              >
+                Code <Github className="h-3 w-3" />
+              </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    )
-  }
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}

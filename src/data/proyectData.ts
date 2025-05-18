@@ -1,74 +1,104 @@
-// Project data with GitHub and live URLs
-export const projectsData = [
-    {
-      title: "E-Commerce Platform",
-      description:
-        "A full-featured online store with payment processing, user authentication, and admin dashboard. Includes responsive design and SEO optimization.",
-      tech: ["Next.js", "Node.js", "MongoDB", "Stripe"],
-      image: "/placeholder.svg?height=400&width=600",
-      githubUrl: "https://github.com/yourusername/ecommerce",
-      liveUrl: "https://ecommerce-example.com",
-      features: ["User authentication", "Payment processing", "Admin dashboard", "Order tracking"],
-    },
-    {
-      title: "Task Management App",
-      description:
-        "A collaborative project management tool with real-time updates and team collaboration features. Includes drag-and-drop task organization and notification system.",
-      tech: ["React", "Firebase", "Tailwind CSS", "Redux"],
-      image: "/placeholder.svg?height=400&width=600",
-      githubUrl: "https://github.com/yourusername/task-manager",
-      liveUrl: "https://taskmanager-example.com",
-      features: ["Real-time updates", "Team collaboration", "Task assignment", "Progress tracking"],
-    },
-    {
-      title: "Social Media Dashboard",
-      description:
-        "Analytics dashboard for social media managers with data visualization and reporting tools. Includes customizable widgets and exportable reports.",
-      tech: ["TypeScript", "D3.js", "Express", "PostgreSQL"],
-      image: "/placeholder.svg?height=400&width=600",
-      githubUrl: "https://github.com/yourusername/social-dashboard",
-      liveUrl: "https://social-dashboard-example.com",
-      features: ["Data visualization", "Custom reports", "Multi-platform analytics", "Trend analysis"],
-    },
-    {
-      title: "Weather Forecast App",
-      description:
-        "A weather application that provides real-time forecasts, radar maps and severe weather alerts for locations worldwide.",
-      tech: ["React Native", "Redux", "Weather API", "Geolocation"],
-      image: "/placeholder.svg?height=400&width=600",
-      githubUrl: "https://github.com/yourusername/weather-app",
-      liveUrl: "https://weather-app-example.com",
-      features: ["Real-time forecasts", "Location tracking", "Weather alerts", "Interactive maps"],
-    },
-    {
-      title: "Recipe Finder",
-      description:
-        "A web application that helps users find recipes based on ingredients they have, dietary restrictions, and cuisine preferences.",
-      tech: ["Vue.js", "Express", "MongoDB", "Recipe API"],
-      image: "/placeholder.svg?height=400&width=600",
-      githubUrl: "https://github.com/yourusername/recipe-finder",
-      liveUrl: "https://recipe-finder-example.com",
-      features: ["Ingredient search", "Dietary filters", "Saved recipes", "Meal planning"],
-    },
-  ]
-  
-  export interface ProjectCardProps {
-    project: Project;
-    onHover: (isHovered: boolean) => void;
-    isHovered: boolean;
-  }
+export interface ProjectProps {
+  title: string
+  description: string
+  youtubeUrl: string
+  tech: string[]
+  features?: string[] // Make features optional
+  liveUrl: string
+  githubUrl: string
+}
 
-  export interface Project {
-    title: string;
-    description: string;
-    tech: string[];
-    image: string;
-    githubUrl: string;
-    liveUrl: string;
-    features: string[];
-  }
-
-  export interface Position {
-    x: number;
-    y: number;
-  }
+export const projectsData: ProjectProps[] = [
+  {
+    title: "Portfolio Website",
+    description:
+      "A modern portfolio website built with Next.js and TailwindCSS featuring smooth animations and responsive design.",
+    youtubeUrl: "https://www.youtube.com/watch?v=LvsgCdWss4I&ab_channel=YourAverageTechBro", // Replace with your actual YouTube URL
+    tech: ["Next.js", "React", "TailwindCSS", "Framer Motion"],
+    features: [
+      "Responsive design",
+      "Dark/light mode",
+      "Animated transitions",
+      "Contact form",
+      "Project showcase",
+      "Blog integration",
+    ],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/yourusername/portfolio",
+  },
+  {
+    title: "E-commerce Platform",
+    description:
+      "A full-featured e-commerce platform with product management, cart functionality, and payment processing.",
+    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with your actual YouTube URL
+    tech: ["React", "Node.js", "MongoDB", "Stripe"],
+    features: [
+      "User authentication",
+      "Product search",
+      "Shopping cart",
+      "Payment processing",
+      "Order tracking",
+      "Admin dashboard",
+    ],
+    liveUrl: "https://example.com/ecommerce",
+    githubUrl: "https://github.com/yourusername/ecommerce",
+  },
+  {
+    title: "Task Management App",
+    description: "A productivity app for managing tasks, projects, and deadlines with team collaboration features.",
+    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with your actual YouTube URL
+    tech: ["TypeScript", "React", "Firebase", "TailwindCSS"],
+    features: [
+      "Task creation",
+      "Project organization",
+      "Due date reminders",
+      "Team collaboration",
+      "Progress tracking",
+      "File attachments",
+    ],
+    liveUrl: "https://example.com/tasks",
+    githubUrl: "https://github.com/yourusername/task-manager",
+  },
+  {
+    title: "Weather Dashboard",
+    description:
+      "A real-time weather dashboard that displays current conditions and forecasts for locations worldwide.",
+    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with your actual YouTube URL
+    tech: ["JavaScript", "React", "OpenWeather API", "ChartJS"],
+    features: [
+      "Location search",
+      "Current conditions",
+      "5-day forecast",
+      "Weather maps",
+      "Historical data",
+      "Weather alerts",
+    ],
+    liveUrl: "https://example.com/weather",
+    githubUrl: "https://github.com/yourusername/weather-app",
+  },
+  {
+    title: "Social Media Platform",
+    description: "A social networking platform with user profiles, posts, comments, and real-time messaging.",
+    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with your actual YouTube URL
+    tech: ["Next.js", "GraphQL", "PostgreSQL", "Socket.io"],
+    features: ["User profiles", "News feed", "Real-time chat", "Post creation", "Friend connections", "Notifications"],
+    liveUrl: "https://example.com/social",
+    githubUrl: "https://github.com/yourusername/social-network",
+  },
+  {
+    title: "Fitness Tracker",
+    description: "An application for tracking workouts, nutrition, and fitness progress with data visualization.",
+    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // Replace with your actual YouTube URL
+    tech: ["React Native", "Redux", "Firebase", "D3.js"],
+    features: [
+      "Workout logging",
+      "Nutrition tracking",
+      "Progress charts",
+      "Goal setting",
+      "Exercise library",
+      "Personalized plans",
+    ],
+    liveUrl: "https://example.com/fitness",
+    githubUrl: "https://github.com/yourusername/fitness-tracker",
+  },
+]
