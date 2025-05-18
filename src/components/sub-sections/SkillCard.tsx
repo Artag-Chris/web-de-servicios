@@ -29,7 +29,7 @@ export function SkillCard({ skill, index }: { skill: Skill; index: number }) {
                         <Icon className={`h-5 w-5 ${skill.color}`} />
                         <h3 className="font-medium text-lg">{skill.name}</h3>
                     </div>
-                    <p className="text-zinc-400 text-sm">{skill.level}</p>
+                   
 
                     <div
                         className={`absolute inset-x-0 bottom-0 bg-zinc-800 p-4 transform transition-all duration-300 ease-in-out ${isHovered ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
