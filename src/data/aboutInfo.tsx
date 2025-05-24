@@ -1,4 +1,4 @@
-import { FileText, ExternalLink, ChevronDown, Award, Briefcase, GraduationCap, Code } from "lucide-react"
+import {  Award, Briefcase, GraduationCap, Code } from "lucide-react"
 
 export const tabs: TabItem[] = [
     {
