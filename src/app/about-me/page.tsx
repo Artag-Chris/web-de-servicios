@@ -21,7 +21,7 @@ export default function AboutMePage() {
         </Link>
 
         {/* Contenido de la sección */}
-        <h1 className="text-4xl md:text-5xl font-bold mb-8">
+        <h1 className="text-4xl md:text-5xl font-bold mb-8 text-white">
           My <span className="text-emerald-500">Journey</span>
         </h1>
 
@@ -30,7 +30,7 @@ export default function AboutMePage() {
             Explore the timeline of my development career, from my first coding experiences to my current professional
             endeavors.
           </p>
-          <p>
+          <p className="text-white">
             This interactive journey highlights the key milestones, challenges, and achievements that have shaped me as
             a developer and person.
           </p>

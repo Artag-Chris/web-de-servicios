@@ -379,7 +379,7 @@ function About() {
                     <span className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </Button>
                   <Button
-                    variant="outline"
+                  //  variant="outline"
                     className="border-zinc-700 hover:border-emerald-500 hover:bg-zinc-800 text-white"
                   >
                     <ExternalLink className="mr-2 h-4 w-4" /> View Portfolio

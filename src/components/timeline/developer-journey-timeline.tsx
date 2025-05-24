@@ -192,7 +192,7 @@ export default function DeveloperJourneyTimeline() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">My Development Journey</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">My Development Journey</h2>
         <p className="text-zinc-300 max-w-2xl mx-auto">
           Follow the path of my evolution as a developer, from my first lines of code to becoming a professional
           software engineer. Each milestone represents growth, challenges overcome, and skills acquired along the way.
