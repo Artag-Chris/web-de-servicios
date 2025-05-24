@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -11,14 +10,10 @@ import { socialLinks } from "@/data/socialLinks"
 import { skills } from "@/data/skillsData"
 import MoreAboutmeButton from "../compontents/MoreAboutmeButton"
 import { AnimatePresence } from "framer-motion"
+import { tabs } from "@/data/aboutInfo"
+import { handleResumeDownload } from "@/functions/handleResumenDownload"
+import ImageFrame from "../sub-sections/imageFrame"
 
-// Define tab interfaces
-interface TabItem {
-  id: string
-  label: string
-  icon: React.ElementType
-  content: React.ReactNode
-}
 
 function About() {
   const [currentSkill, setCurrentSkill] = useState(0)
@@ -45,107 +40,6 @@ function About() {
     }
   }, [controls, isInView])
 
-  // Define tabs content
-  const tabs: TabItem[] = [
-    {
-      id: "experience",
-      label: "Experience",
-      icon: Briefcase,
-      content: (
-        <div className="space-y-4">
-          <div className="relative pl-6 border-l-2 border-emerald-500/30">
-            <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[7px] top-1"></div>
-            <h4 className="text-white font-medium">Senior Developer</h4>
-            <p className="text-emerald-400 text-sm">TechCorp Inc. • 2020 - Present</p>
-            <p className="text-zinc-400 text-sm mt-2">
-              Led development of multiple web applications using React and Node.js. Implemented CI/CD pipelines and
-              mentored junior developers.
-            </p>
-          </div>
-          <div className="relative pl-6 border-l-2 border-emerald-500/30">
-            <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[7px] top-1"></div>
-            <h4 className="text-white font-medium">Web Developer</h4>
-            <p className="text-emerald-400 text-sm">Digital Solutions • 2018 - 2020</p>
-            <p className="text-zinc-400 text-sm mt-2">
-              Developed responsive websites and e-commerce platforms. Worked with React, Vue.js, and PHP backends.
-            </p>
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: "education",
-      label: "Education",
-      icon: GraduationCap,
-      content: (
-        <div className="space-y-4">
-          <div className="relative pl-6 border-l-2 border-emerald-500/30">
-            <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[7px] top-1"></div>
-            <h4 className="text-white font-medium">Master's in Computer Science</h4>
-            <p className="text-emerald-400 text-sm">Tech University • 2016 - 2018</p>
-            <p className="text-zinc-400 text-sm mt-2">
-              Specialized in web technologies and distributed systems. Graduated with honors.
-            </p>
-          </div>
-          <div className="relative pl-6 border-l-2 border-emerald-500/30">
-            <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[7px] top-1"></div>
-            <h4 className="text-white font-medium">Bachelor's in Software Engineering</h4>
-            <p className="text-emerald-400 text-sm">State University • 2012 - 2016</p>
-            <p className="text-zinc-400 text-sm mt-2">
-              Focused on programming fundamentals, algorithms, and software development methodologies.
-            </p>
-          </div>
-        </div>
-      ),
-    },
-    {
-      id: "achievements",
-      label: "Achievements",
-      icon: Award,
-      content: (
-        <div className="space-y-3">
-          <div className="flex items-start gap-3">
-            <div className="p-1.5 bg-emerald-500/10 rounded-full text-emerald-500">
-              <Award className="h-4 w-4" />
-            </div>
-            <div>
-              <h4 className="text-white text-sm font-medium">Best Web Application Award</h4>
-              <p className="text-zinc-400 text-xs">Regional Tech Conference 2022</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="p-1.5 bg-emerald-500/10 rounded-full text-emerald-500">
-              <Code className="h-4 w-4" />
-            </div>
-            <div>
-              <h4 className="text-white text-sm font-medium">Open Source Contributor</h4>
-              <p className="text-zinc-400 text-xs">100+ contributions to major projects</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="p-1.5 bg-emerald-500/10 rounded-full text-emerald-500">
-              <Award className="h-4 w-4" />
-            </div>
-            <div>
-              <h4 className="text-white text-sm font-medium">Hackathon Winner</h4>
-              <p className="text-zinc-400 text-xs">First place at CodeFest 2021</p>
-            </div>
-          </div>
-        </div>
-      ),
-    },
-  ]
-
-  // Handle resume download
-  const handleResumeDownload = () => {
-    // Create a link to your resume PDF
-    const link = document.createElement("a")
-    link.href = "/resume.pdf" // Path to your resume PDF in the public folder
-    link.download = "Christian_Resume.pdf" // Name for the downloaded file
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
 
   return (
     <div>
@@ -157,90 +51,7 @@ function About() {
 
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/3">
-              <motion.div
-                className="relative w-64 h-64 mx-auto"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                {/* Animated glow effect */}
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 blur-lg opacity-50"
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [0.5, 0.6, 0.5],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatType: "reverse",
-                  }}
-                ></motion.div>
-
-                {/* Photo container with interactive effects */}
-                <div
-                  className="relative overflow-hidden rounded-full border-4 border-zinc-800 w-full h-full group"
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-                  <Image
-                    src="https://res.cloudinary.com/dfg2xrsqz/image/upload/v1747582652/aefuflson0wfblt5szrk.jpg"
-                    alt="Christian's portrait"
-                    fill
-                    className={`object-cover transition-transform duration-700 ${isHovered ? "scale-110" : "scale-100"}`}
-                  />
-
-                  {/* Animated overlay on hover */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end justify-center p-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: isHovered ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.p
-                      className="text-white text-sm font-medium"
-                      initial={{ y: 20 }}
-                      animate={{ y: isHovered ? 0 : 20 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      Hello, I'm Christian
-                    </motion.p>
-                  </motion.div>
-                </div>
-
-                {/* Floating particles */}
-                <motion.div
-                  className="absolute w-2 h-2 rounded-full bg-emerald-400"
-                  style={{ top: "10%", right: "5%" }}
-                  animate={{
-                    y: [0, -15, 0],
-                    opacity: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatType: "loop",
-                    delay: 0.5,
-                  }}
-                />
-                <motion.div
-                  className="absolute w-1.5 h-1.5 rounded-full bg-blue-400"
-                  style={{ bottom: "15%", left: "10%" }}
-                  animate={{
-                    y: [0, -10, 0],
-                    opacity: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Number.POSITIVE_INFINITY,
-                    repeatType: "loop",
-                    delay: 0.2,
-                  }}
-                />
-              </motion.div>
-            </div>
+            <ImageFrame setIsHovered={setIsHovered} isHovered={isHovered} />
 
             <div className="md:w-2/3" ref={bioRef}>
               <motion.div
