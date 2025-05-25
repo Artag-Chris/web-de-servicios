@@ -1,9 +1,12 @@
+"use client"
 import Link from 'next/link'
 import React from 'react'
 import { Button } from '../ui/button'
+import { handleResumeDownload } from '@/functions/handleResumenDownload'
 
 function HeaderMain() {
   return (
+    <>
     <header className="container mx-auto py-6 px-4">
         <nav className="flex items-center justify-between">
           <div className="text-xl font-bold">
@@ -23,11 +26,13 @@ function HeaderMain() {
               Contact
             </Link>
           </div>
-          <Button variant="outline" className="border-emerald-500 text-emerald-500 hover:bg-emerald-500/10">
+          <Button variant="outline" className="border-emerald-500 text-emerald-500 hover:bg-emerald-500/10"
+           onClick={handleResumeDownload}>
             Resume
           </Button>
         </nav>
       </header>
+      </>
   )
 }
 
