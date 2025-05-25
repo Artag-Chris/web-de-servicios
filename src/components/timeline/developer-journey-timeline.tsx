@@ -28,7 +28,12 @@ export default function DeveloperJourneyTimeline() {
           scrollTrigger: {
             trigger: event as Element,
             start: "top center",
-            end:'70% center'
+            end:'70% center',
+            onUpdate:(self)=>{
+              gsap.to('.timeline-event',{
+                // scaleX:1- self.progress
+              })
+            }
           },
         });
       });
