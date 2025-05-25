@@ -1,228 +1,257 @@
 "use client"
 
 import type React from "react"
-
 import { useRef } from "react"
 import Image from "next/image"
-import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion"
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Calendar, Code, Award, Briefcase, Lightbulb, Rocket, GraduationCap, Heart } from "lucide-react"
+import { timelineEvents } from "./timelineData/timelineEvents"
 
-interface TimelineEvent {
-  id: number
-  year: string
-  title: string
-  description: string
-  icon: React.ReactNode
-  imageUrl: string
-  imageAlt: string
-  category: "education" | "work" | "project" | "achievement"
-}
+gsap.registerPlugin(ScrollTrigger)
 
-// Sample timeline data - replace with your actual journey
-const timelineEvents: TimelineEvent[] = [
-  {
-    id: 1,
-    year: "2012",
-    title: "First Steps in Programming",
-    description:
-      "Discovered my passion for coding through a web development course. Built my first HTML and CSS website, sparking a lifelong journey into the world of programming.",
-    icon: <Code className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "First coding experience",
-    category: "education",
-  },
-  {
-    id: 2,
-    year: "2014",
-    title: "Computer Science Degree",
-    description:
-      "Enrolled in a Computer Science program where I built a strong foundation in algorithms, data structures, and software engineering principles. Participated in coding competitions and hackathons.",
-    icon: <GraduationCap className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "University graduation",
-    category: "education",
-  },
-  {
-    id: 3,
-    year: "2016",
-    title: "First Professional Role",
-    description:
-      "Joined a startup as a junior developer where I worked on real-world projects. Learned to collaborate with a team and deliver under tight deadlines. Developed skills in React and Node.js.",
-    icon: <Briefcase className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "First job experience",
-    category: "work",
-  },
-  {
-    id: 4,
-    year: "2018",
-    title: "Major Project Launch",
-    description:
-      "Led the development of a critical e-commerce platform that significantly increased company revenue. Implemented modern architecture patterns and optimized for performance and scalability.",
-    icon: <Rocket className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "Project launch celebration",
-    category: "project",
-  },
-  {
-    id: 5,
-    year: "2020",
-    title: "Overcoming Challenges",
-    description:
-      "Navigated through the pandemic by adapting to remote work and leading digital transformation initiatives. Learned new technologies and methodologies to stay relevant in a changing landscape.",
-    icon: <Lightbulb className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "Remote work setup",
-    category: "achievement",
-  },
-  {
-    id: 6,
-    year: "2022",
-    title: "Industry Recognition",
-    description:
-      "Received an industry award for innovative solutions in web development. Published technical articles and spoke at conferences, establishing myself as a thought leader in the development community.",
-    icon: <Award className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "Award ceremony",
-    category: "achievement",
-  },
-  {
-    id: 7,
-    year: "2024",
-    title: "Current Journey",
-    description:
-      "Currently focused on exploring emerging technologies like AI and blockchain while mentoring the next generation of developers. Building a personal brand and contributing to open-source projects.",
-    icon: <Heart className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "Current workspace",
-    category: "work",
-  },
-]
 
-const TimelineEvent = ({ event, index }: { event: TimelineEvent; index: number }) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px 0px" })
 
-  const isEven = index % 2 === 0
-
-  return (
-    <div className="mb-24 last:mb-0 relative" ref={ref}>
-      {/* Timeline line */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-emerald-500/20 to-emerald-500/80"></div>
-
-      {/* Year marker */}
-      <motion.div
-        className="absolute left-1/2 transform -translate-x-1/2 -top-6 z-10 flex flex-col items-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        <div className="w-12 h-12 rounded-full bg-zinc-800 border-2 border-emerald-500 flex items-center justify-center">
-          <Calendar className="h-5 w-5 text-emerald-500" />
-        </div>
-        <span className="mt-1 text-emerald-500 font-bold">{event.year}</span>
-      </motion.div>
-
-      <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 ${isEven ? "md:flex-row-reverse" : ""}`}>
-        {/* Description side */}
-        <motion.div
-          className={`bg-zinc-800/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-700 shadow-xl ${
-            isEven ? "md:text-right" : ""
-          }`}
-          initial={{ opacity: 0, x: isEven ? 50 : -50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <div className={`flex items-center gap-3 mb-3 ${isEven ? "md:flex-row-reverse" : ""}`}>
-            <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-              {event.icon}
-            </div>
-            <h3 className="text-xl font-bold text-white">{event.title}</h3>
-          </div>
-          <p className="text-zinc-300">{event.description}</p>
-
-          <div
-            className={`mt-4 inline-block px-3 py-1 rounded-full text-xs font-medium ${
-              event.category === "education"
-                ? "bg-blue-500/20 text-blue-300"
-                : event.category === "work"
-                  ? "bg-purple-500/20 text-purple-300"
-                  : event.category === "project"
-                    ? "bg-amber-500/20 text-amber-300"
-                    : "bg-emerald-500/20 text-emerald-300"
-            }`}
-          >
-            {event.category.charAt(0).toUpperCase() + event.category.slice(1)}
-          </div>
-        </motion.div>
-
-        {/* Image side */}
-        <motion.div
-          className="relative h-64 md:h-80 overflow-hidden rounded-xl"
-          initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-transparent z-10 rounded-xl"></div>
-          <Image src={event.imageUrl || "/placeholder.svg"} alt={event.imageAlt} fill className="object-cover" />
-        </motion.div>
-      </div>
-    </div>
-  )
-}
-
-const ProgressIndicator = () => {
-  const { scrollYProgress } = useScroll()
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 })
-
-  const width = useTransform(smoothProgress, [0, 1], ["0%", "100%"])
-
-  return <motion.div className="fixed top-0 left-0 right-0 h-1 bg-emerald-500 z-50" style={{ width, originX: 0 }} />
-}
 
 export default function DeveloperJourneyTimeline() {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(
+    () => {
+      // Animate timeline events coming in from alternating sides
+      gsap.utils.toArray(".timeline-event").forEach((event, index) => {
+        const isEven = index % 2 === 0
+
+        gsap.from(event as Element, {
+          xPercent: isEven ? -100 : 100,
+          opacity: 0,
+          duration: 1,
+          ease: "power2.inOut",
+          scrollTrigger: {
+            trigger: event as Element,
+            start: "top 80%",
+          },
+        })
+      })
+
+      // Animate year markers
+      gsap.utils.toArray(".year-marker").forEach((marker) => {
+        gsap.from(marker as Element, {
+          scale: 0,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: marker as Element,
+            start: "top 85%",
+          },
+        })
+      })
+
+      // Animate timeline line progress
+      gsap.set(".timeline-line", {
+        scaleY: 0,
+        transformOrigin: "top top",
+      })
+
+      gsap.to(".timeline-line", {
+        scaleY: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".timeline-container",
+          start: "top center",
+          end: "bottom center",
+          scrub: 1, // This makes it respond to scroll in both directions
+          onUpdate: (self) => {
+            // Additional control for smooth line growth
+            gsap.to(".timeline-line", {
+              scaleY: self.progress,
+              duration: 0.1,
+              ease: "none",
+            })
+          },
+        },
+      })
+
+      // Optional: Add a glow effect that follows the line progress
+      gsap.to(".timeline-glow", {
+        scaleY: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".timeline-container",
+          start: "top center",
+          end: "bottom center",
+          scrub: 1,
+          onUpdate: (self) => {
+            gsap.to(".timeline-glow", {
+              scaleY: self.progress,
+              duration: 0.1,
+              ease: "none",
+            })
+          },
+        },
+      })
+
+      // Animate images with parallax effect
+      gsap.utils.toArray(".timeline-image").forEach((image) => {
+        gsap.to(image as Element, {
+          yPercent: -20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: image as Element,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        })
+      })
+
+      // Animate text content
+      gsap.utils.toArray(".timeline-content").forEach((content) => {
+        gsap.from(content as Element, {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: content as Element,
+            start: "top 75%",
+          },
+        })
+      })
+
+      // Animate category badges
+      gsap.utils.toArray(".category-badge").forEach((badge) => {
+        gsap.from(badge as Element, {
+          scale: 0,
+          rotation: 180,
+          opacity: 0,
+          duration: 0.6,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: badge as Element,
+            start: "top 70%",
+          },
+        })
+      })
+
+      // Progress bar animation
+      gsap.to(".progress-bar", {
+        scaleX: 1,
+        transformOrigin: "left left",
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      })
+    },
+    { scope: containerRef },
+  )
+
   return (
-    <div className="relative py-16">
-      <ProgressIndicator />
+    <div ref={containerRef} className="relative py-16 bg-zinc-900 min-h-screen">
+      {/* Progress indicator */}
+      <div className="fixed top-0 left-0 right-0 h-1 bg-zinc-800 z-50">
+        <div className="progress-bar h-full bg-emerald-500 scale-x-0"></div>
+      </div>
 
       {/* Timeline intro */}
-      <motion.div
-        className="text-center mb-24"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
+      <div className="text-center mb-24 px-4">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">My Development Journey</h2>
         <p className="text-zinc-300 max-w-2xl mx-auto">
           Follow the path of my evolution as a developer, from my first lines of code to becoming a professional
           software engineer. Each milestone represents growth, challenges overcome, and skills acquired along the way.
         </p>
-      </motion.div>
+      </div>
 
-      {/* Timeline events */}
-      <div className="max-w-5xl mx-auto px-4">
-        {timelineEvents.map((event, index) => (
-          <TimelineEvent key={event.id} event={event} index={index} />
-        ))}
+      {/* Timeline container */}
+      <div className="timeline-container max-w-6xl mx-auto px-4 relative">
+        {/* Main timeline line */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-zinc-700/30">
+          <div className="timeline-line absolute inset-0 bg-gradient-to-b from-emerald-500 to-emerald-400 scale-y-0"></div>
+          <div className="timeline-glow absolute inset-0 bg-gradient-to-b from-emerald-400/50 to-emerald-300/50 scale-y-0 blur-sm"></div>
+        </div>
+
+        {/* Timeline events */}
+        {timelineEvents.map((event, index) => {
+          const isEven = index % 2 === 0
+
+          return (
+            <div key={event.id} className="timeline-event mb-24 last:mb-0 relative">
+              {/* Year marker */}
+              <div className="year-marker absolute left-1/2 transform -translate-x-1/2 -translate-y-6 z-20 flex flex-col items-center">
+                <div className="w-12 h-12 rounded-full bg-zinc-800 border-2 border-emerald-500 flex items-center justify-center shadow-lg">
+                  <Calendar className="h-5 w-5 text-emerald-500" />
+                </div>
+                <span className="mt-2 text-emerald-500 font-bold bg-zinc-900 px-2 py-1 rounded text-sm">
+                  {event.year}
+                </span>
+              </div>
+
+              <div
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
+                  isEven ? "" : "lg:grid-flow-col-dense"
+                }`}
+              >
+                {/* Content side */}
+                <div className={`timeline-content ${isEven ? "lg:pr-16" : "lg:pl-16 lg:col-start-2"}`}>
+                  <div className="bg-zinc-800/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-700 shadow-xl">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                        {event.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-white">{event.title}</h3>
+                    </div>
+                    <p className="text-zinc-300 mb-4">{event.description}</p>
+                    <div
+                      className={`category-badge inline-block px-3 py-1 rounded-full text-xs font-medium ${
+                        event.category === "education"
+                          ? "bg-blue-500/20 text-blue-300"
+                          : event.category === "work"
+                            ? "bg-purple-500/20 text-purple-300"
+                            : event.category === "project"
+                              ? "bg-amber-500/20 text-amber-300"
+                              : "bg-emerald-500/20 text-emerald-300"
+                      }`}
+                    >
+                      {event.category.charAt(0).toUpperCase() + event.category.slice(1)}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Image side */}
+                <div className={`${isEven ? "lg:pl-16" : "lg:pr-16 lg:col-start-1"}`}>
+                  <div className="timeline-image relative h-64 lg:h-80 overflow-hidden rounded-xl shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-transparent z-10 rounded-xl"></div>
+                    <Image
+                      src={event.imageUrl || "/placeholder.svg"}
+                      alt={event.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-110"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        })}
       </div>
 
       {/* Timeline conclusion */}
-      <motion.div
-        className="text-center mt-24 max-w-2xl mx-auto px-4"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true, margin: "-100px 0px" }}
-      >
+      <div className="text-center mt-24 max-w-2xl mx-auto px-4">
         <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
           <Rocket className="h-8 w-8 text-emerald-500" />
         </div>
-        <h3 className="text-2xl font-bold mb-4">The Journey Continues...</h3>
+        <h3 className="text-2xl font-bold mb-4 text-white">The Journey Continues...</h3>
         <p className="text-zinc-300">
           This timeline represents my journey so far, but the story is still being written. I'm constantly learning,
           growing, and seeking new challenges to expand my skills and make a positive impact.
         </p>
-      </motion.div>
+      </div>
     </div>
   )
 }
