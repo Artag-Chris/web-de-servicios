@@ -1,3 +1,5 @@
+
+
 export interface ProjectProps {
   title: string
   description: string
@@ -6,6 +8,10 @@ export interface ProjectProps {
   features?: string[] // Make features optional
   liveUrl: string
   githubUrl: string
+  
+  project?: any;
+  onHover?: (hovered: boolean) => void;
+  isHovered?: boolean;
 }
 
 export const projectsData: ProjectProps[] = [

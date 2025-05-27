@@ -1,22 +1,21 @@
-import { ProjectCardProps } from "@/data/proyectData";
+import { ProjectProps } from "@/data/proyectData";
 import { Github } from '@styled-icons/simple-icons'
 import { ExternalLink } from "lucide-react";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 
-export function ProjectCard({ project, onHover, isHovered }: ProjectCardProps) {
+export function ProjectCard({ project, onHover, isHovered }: ProjectProps) {
     return (
       <Card
         className={`bg-zinc-900 border-zinc-800 overflow-hidden transition-all duration-300 h-full ${
           isHovered ? "border-emerald-500 shadow-lg shadow-emerald-500/10" : "hover:border-emerald-500/50"
         }`}
-        onMouseEnter={() => onHover(true)}
-        onMouseLeave={() => onHover(false)}
+        onMouseEnter={() => onHover!!(false)}
       >
         <div className="relative h-48 w-full overflow-hidden group">
           <Image
-            src={project.image || "/placeholder.svg"}
+            src={project!.image || "/placeholder.svg"}
             alt={project.title}
             fill
             className={`object-cover transition-transform duration-700 ${
