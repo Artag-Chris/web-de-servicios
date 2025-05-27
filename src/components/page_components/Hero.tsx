@@ -95,7 +95,7 @@ function Hero() {
               />
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-               Creating exceptional digital <span className="text-emerald-500"> experiencess </span> through code
+               Creating exceptional digital <span className="text-emerald-500"> experiences </span> through code
             </h1>
             <p className="text-zinc-200 text-lg md:text-xl mb-8 max-w-2xl">
              I design and develop scalable, responsive, and user-focused web applications by leveraging cutting-edge technologies and adhering to industry-leading best practices.
