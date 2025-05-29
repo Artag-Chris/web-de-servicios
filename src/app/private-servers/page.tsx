@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import CosmicNavbar from "@/components/compontents/cosmic-navbar";
 import {navLinks} from "@/data/navlinks";
+import ResourcesPage from "@/components/sub-sections/resources-page";
 
 
 export default function PrivateServersPage() {
@@ -24,7 +25,7 @@ export default function PrivateServersPage() {
                 </h1>
 
                 <div className="prose prose-lg prose-invert max-w-none prose-headings:text-emerald-400 prose-a:text-emerald-400">
-                    <p className="lead text-xl text-zinc-300">Información sobre tus servidores privados de juegos.</p>
+                    <ResourcesPage />
                 </div>
             </div>
         </main>
