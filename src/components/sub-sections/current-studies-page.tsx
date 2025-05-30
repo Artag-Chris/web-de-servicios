@@ -158,7 +158,7 @@ const StudyIcon = ({ study, index }: { study: Study; index: number }) => {
   return (
     <div
       ref={iconRef}
-      className="study-icon group relative flex flex-col items-center p-6 bg-zinc-800/30 backdrop-blur-sm rounded-3xl border border-zinc-700/50 hover:border-blue-400/50 transition-all duration-500 cursor-pointer"
+      className="study-icon group relative flex flex-col items-center p-6 bg-zinc-800/30 backdrop-blur-sm rounded-3xl border border-zinc-700/50 hover:border-blue-400/50 transition-all duration-500 cursor-pointer hover:shadow-lg hover:shadow-blue-500/10 hover:z-50"
     >
       {/* Glow effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
@@ -211,8 +211,8 @@ const StudyIcon = ({ study, index }: { study: Study; index: number }) => {
         </div>
       </div>
 
-      {/* Hover details */}
-      <div className="absolute inset-x-0 top-full mt-4 p-4 bg-zinc-800/95 backdrop-blur-sm rounded-xl border border-zinc-700 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-10">
+      {/* Hover details - Z-INDEX ALTO */}
+      <div className="absolute inset-x-0 top-full mt-4 p-4 bg-zinc-800/95 backdrop-blur-sm rounded-xl border border-zinc-700 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-[9999] shadow-2xl shadow-black/50">
         <p className="text-sm text-zinc-300 mb-3">{study.description}</p>
 
         <div className="space-y-2">
@@ -245,11 +245,11 @@ export default function CurrentStudiesPage() {
     () => {
       // Floating animation for study icons
       gsap.utils.toArray(".study-icon").forEach((icon, index) => {
-        // Initial animation - icons appear with scale and rotation
+        // Initial animation - icons appear with scale (removed rotation)
         gsap.from(icon as Element, {
           scale: 0,
-          rotation: 180,
           opacity: 0,
+          y: 50,
           duration: 1,
           ease: "back.out(1.7)",
           scrollTrigger: {
@@ -259,10 +259,9 @@ export default function CurrentStudiesPage() {
           delay: index * 0.1,
         })
 
-        // Continuous floating animation
+        // Continuous floating animation (removed rotation)
         gsap.to(icon as Element, {
-          y: "random(-3, 3)",
-          rotation: "random(-0.5, 0.5)",
+          y: "random(-8, 8)",
           duration: "random(5, 8)",
           ease: "sine.inOut",
           repeat: -1,
@@ -270,13 +269,13 @@ export default function CurrentStudiesPage() {
           delay: index * 0.2,
         })
 
-        // Hover scale effect
+        // Subtle hover scale effect (reduced scale and removed z)
         const iconElement = icon as HTMLElement
         iconElement.addEventListener("mouseenter", () => {
           gsap.to(icon as Element, {
-            scale: 1.05,
-            z: 20,
-            duration: 0.3,
+            scale: 1.02, // Reduced from 1.05 to 1.02
+            y: -3, // Slight lift instead of z-axis
+            duration: 0.4, // Increased duration for smoother transition
             ease: "power2.out",
           })
         })
@@ -284,8 +283,8 @@ export default function CurrentStudiesPage() {
         iconElement.addEventListener("mouseleave", () => {
           gsap.to(icon as Element, {
             scale: 1,
-            z: 0,
-            duration: 0.3,
+            y: 0,
+            duration: 0.4,
             ease: "power2.out",
           })
         })
@@ -322,12 +321,12 @@ export default function CurrentStudiesPage() {
         delay: 0.5,
       })
 
-      // Background particles animation
+      // Background particles animation (removed rotation)
       gsap.utils.toArray(".particle").forEach((particle) => {
         gsap.to(particle as Element, {
           y: "random(-30, 30)",
           x: "random(-20, 20)",
-          rotation: "random(0, 180)",
+          opacity: "random(0.3, 0.8)",
           duration: "random(15, 25)",
           ease: "none",
           repeat: -1,
