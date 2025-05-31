@@ -14,14 +14,14 @@ export default function PrivateServersPage() {
 
             <div className="container mx-auto px-4 py-10">
                 {/* Botón de regresar */}
-                <Link href="/#about" className="inline-flex items-center text-emerald-500 hover:text-emerald-400 mb-8">
+                <Link href="/#about" className="inline-flex items-center text-purple-300 hover:text-emerald-400 mb-8">
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Back to Home
                 </Link>
 
                 {/* Contenido de la sección */}
                 <h1 className="text-4xl md:text-5xl font-bold mb-8">
-                    Mis <span className="text-emerald-500">Servidores Privados</span>
+                    useful pages and<span className="text-purple-300"> servers</span>
                 </h1>
 
                 <div className="prose prose-lg prose-invert max-w-none prose-headings:text-emerald-400 prose-a:text-emerald-400">
