@@ -1,6 +1,5 @@
 "use client"
 
-import type { JSX } from "react"
 import { ArrowLeft, Heart, Cross, Star, Sun } from "lucide-react"
 import Link from "next/link"
 import { useRef } from "react"
