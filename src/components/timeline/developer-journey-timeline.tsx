@@ -28,12 +28,12 @@ export default function DeveloperJourneyTimeline() {
           scrollTrigger: {
             trigger: event as Element,
             start: "top center",
-            end:'70% center',
-            onUpdate:(self)=>{
-              gsap.to('.timeline-event',{
+            end: "70% center",
+            onUpdate: (self) => {
+              gsap.to(".timeline-event", {
                 // scaleX:1- self.progress
-              })
-            }
+              });
+            },
           },
         });
       });
@@ -78,23 +78,24 @@ export default function DeveloperJourneyTimeline() {
       });
 
       // Optional: Add a glow effect that follows the line progress
-      gsap.to(".timeline-glow", {
-        scaleY: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".timeline-container",
-          start: "top center",
-          end: "bottom center",
-          scrub: 1,
-          onUpdate: (self) => {
-            gsap.to(".timeline-glow", {
-              scaleY: self.progress,
-              duration: 0.1,
-              ease: "none",
-            });
-          },
-        },
-      });
+      //esta es la que se ve feo
+      // gsap.to(".timeline-glow", {
+      //   scaleY: 1,
+      //   ease: "none",
+      //   scrollTrigger: {
+      //     trigger: ".timeline-container",
+      //     start: "top center",
+      //     end: "bottom center",
+      //     scrub: 1,
+      //     onUpdate: (self) => {
+      //       gsap.to(".timeline-glow", {
+      //         scaleY: self.progress,
+      //         duration: 0.1,
+      //         ease: "none",
+      //       });
+      //     },
+      //   },
+      // });
 
       // Animate images with parallax effect
       gsap.utils.toArray(".timeline-image").forEach((image) => {
@@ -168,10 +169,7 @@ export default function DeveloperJourneyTimeline() {
           My Development Journey
         </h2>
         <p className="text-zinc-300 max-w-2xl mx-auto">
-          Follow the path of my evolution as a developer, from my first lines of
-          code to becoming a professional software engineer. Each milestone
-          represents growth, challenges overcome, and skills acquired along the
-          way.
+         Follow the path of my transformation, from uncertain beginnings through life-changing challenges to becoming a resilient full-stack developer. Each milestone represents not just technical growth, but the personal resilience, family inspiration, and unwavering determination that shaped my journey against all odds.
         </p>
       </div>
 

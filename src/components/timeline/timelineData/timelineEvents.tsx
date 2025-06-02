@@ -1,92 +1,113 @@
-import { Calendar, Code, Award, Briefcase, Lightbulb, Rocket, GraduationCap, Heart } from "lucide-react"
+import {
+  Calendar,
+  Code,
+  Award,
+  Briefcase,
+  Lightbulb,
+  Rocket,
+  GraduationCap,
+  Heart,
+  BookOpen,
+  MapPin,
+  Shield,
+  Sparkles,
+  TrendingUp,
+} from "lucide-react";
 
 export const timelineEvents: TimelineEvent[] = [
   {
     id: 1,
-    year: "2012",
-    title: "First Steps in Programming",
+    year: "2006",
+    title: "English Studies and Exploration",
     description:
-      "Discovered my passion for coding through a web development course. Built my first HTML and CSS website, sparking a lifelong journey into the world of programming.",
-    icon: <Code className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
+      "After high school, I pursued English studies at university. This period was marked by exploring diverse interests and learning new skills, but I hadn't yet found a stable career path or defined a clear professional direction.",
+    icon: <BookOpen className="h-6 w-6 text-emerald-500" />,
+    imageUrl:
+      "https://res.cloudinary.com/dfg2xrsqz/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1748870454/DALL_E_2025-06-02_08.20.22_-_A_detailed_manga-style_illustration_of_a_light-skinned_man_inspired_by_a_real_person__he_has_short_dark_hair_styled_upwards_a_trimmed_goatee_beard_a_s8hake.webp",
     imageAlt: "First coding experience",
     category: "education",
   },
   {
     id: 2,
-    year: "2014",
-    title: "Computer Science Degree",
+    year: "2018",
+    title: "A Transformative Encounter",
     description:
-      "Enrolled in a Computer Science program where I built a strong foundation in algorithms, data structures, and software engineering principles. Participated in coding competitions and hackathons.",
-    icon: <GraduationCap className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "University graduation",
-    category: "education",
+      "Met an extraordinary woman who profoundly changed my worldview. Her kindness, work ethic, and beautiful spirit inspired me to reevaluate my path and approach life with greater seriousness and purpose. This period became a cherished turning point in my personal growth journey.",
+    icon: <Heart className="h-6 w-6 text-emerald-500" />,
+    imageUrl:
+      "https://res.cloudinary.com/dfg2xrsqz/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1748873481/3intento_mzvnrz.jpg",
+    imageAlt: "Transformative relationship experience",
+    category: "personal",
   },
   {
     id: 3,
-    year: "2016",
-    title: "First Professional Role",
+    year: "2018",
+    title: "Urban Odyssey in Bogotá",
     description:
-      "Joined a startup as a junior developer where I worked on real-world projects. Learned to collaborate with a team and deliver under tight deadlines. Developed skills in React and Node.js.",
-    icon: <Briefcase className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "First job experience",
+      "Inspired to reshape my life, I moved to Bogotá seeking new opportunities. I navigated the city's vibrant energy, trying various roles from car sales to call center agent. Despite my efforts, I struggled to find stable footing in the bustling metropolis, facing both professional uncertainty and personal growth.",
+    icon: <MapPin className="h-6 w-6 text-emerald-500" />,
+    imageUrl:
+      "https://res.cloudinary.com/dfg2xrsqz/image/upload/v1748875536/4intento_xqus5g.jpg",
+    imageAlt: "Job searching in Bogotá",
     category: "work",
   },
   {
     id: 4,
-    year: "2018",
-    title: "Major Project Launch",
+    year: "2019",
+    title: "Awakening to Code & Fatherhood",
     description:
-      "Led the development of a critical e-commerce platform that significantly increased company revenue. Implemented modern architecture patterns and optimized for performance and scalability.",
-    icon: <Rocket className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "Project launch celebration",
-    category: "project",
+      "After a friend noticed my natural problem-solving abilities (honed from hacking video games as a child), I pursued web application design through a government scholarship. This transformative journey of technical discovery coincided with another life-changing revelation: preparing to become a father, which deepened my sense of purpose and responsibility.",
+    icon: <Lightbulb className="h-6 w-6 text-emerald-500" />,
+    imageUrl:
+      "https://res.cloudinary.com/dfg2xrsqz/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1748875949/5intentop_muv3yv.jpg",
+    imageAlt: "Dual journey of coding studies and impending fatherhood",
+    category: "personal",
   },
   {
     id: 5,
     year: "2020",
-    title: "Overcoming Challenges",
+    title: "Resilience Through Loss",
     description:
-      "Navigated through the pandemic by adapting to remote work and leading digital transformation initiatives. Learned new technologies and methodologies to stay relevant in a changing landscape.",
-    icon: <Lightbulb className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "Remote work setup",
-    category: "achievement",
+      "Faced profound professional and personal challenges: endured multiple software company rejections despite promising interviews, while simultaneously processing the heartbreaking loss of our expected child. Through this darkness, I found strength in continued learning and preparation, holding onto an unwavering conviction that perseverance in my passion would eventually lead to breakthrough.",
+    icon: <Shield className="h-6 w-6 text-emerald-500" />,
+    imageUrl:
+      "https://res.cloudinary.com/dfg2xrsqz/image/upload/v1748876334/6intento_niymlc.jpg",
+    imageAlt: "Perseverance through professional and personal adversity",
+    category: "personal",
   },
   {
     id: 6,
-    year: "2022",
-    title: "Industry Recognition",
+    year: "2020",
+    title: "Renewed Purpose: Fatherhood & Relocation",
     description:
-      "Received an industry award for innovative solutions in web development. Published technical articles and spoke at conferences, establishing myself as a thought leader in the development community.",
-    icon: <Award className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "Award ceremony",
-    category: "achievement",
+      "Amidst continued studies and temporary work, a monumental blessing arrived - the birth of my daughter. Her presence lifted my depression and reignited my determination. After her arrival, we relocated to the calmer city of Pereira, where I dedicated myself fully to securing a career that could provide the future she deserves, intensifying my job search with newfound focus.",
+    icon: <Sparkles className="h-6 w-6 text-emerald-500" />,
+    imageUrl:
+      "https://res.cloudinary.com/dfg2xrsqz/image/upload/v1748876599/7intento_hhofhn.jpg",
+    imageAlt: "New beginnings with daughter in Pereira",
+    category: "personal",
   },
   {
     id: 7,
     year: "2024",
-    title: "Current Journey",
+    title: "Full-Stack Breakthrough & Family Drive",
     description:
-      "Currently focused on exploring emerging technologies like AI and blockchain while mentoring the next generation of developers. Building a personal brand and contributing to open-source projects.",
-    icon: <Heart className="h-6 w-6 text-emerald-500" />,
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    imageAlt: "Current workspace",
+      "Achieved my first developer role starting as front-end, but quickly impressed my employer with full-stack capabilities (APIs, databases, server management) thanks to relentless self-study. While my daughter continues to grow and light up my days, I'm now focused on sharpening my skills to build a better future for my family and help more businesses digitize and thrive through technology.",
+    icon: <TrendingUp className="h-6 w-6 text-emerald-500" />,
+    imageUrl:
+      "https://res.cloudinary.com/dfg2xrsqz/image/upload/v1748877349/8intento_k0isga.jpg",
+    imageAlt: "Developer working with family photo nearby",
     category: "work",
   },
-]
+];
 
 export interface TimelineEvent {
-  id: number
-  year: string
-  title: string
-  description: string
-  icon: React.ReactNode
-  imageUrl: string
-  imageAlt: string
-  category: "education" | "work" | "project" | "achievement"
+  id: number;
+  year: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  imageUrl: string;
+  imageAlt: string;
+  category: "education" | "work" | "project" | "achievement" | "personal";
 }
