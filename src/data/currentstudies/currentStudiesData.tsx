@@ -1,160 +1,301 @@
+"use client"
+
+import type React from "react"
+
 import {
   Code,
   Brain,
   Database,
-  Palette,
   Zap,
-  BookOpen,
   TrendingUp,
   Award,
   Calendar,
   Clock,
   Target,
-} from "lucide-react";
-import { useRef } from "react";
+  Smartphone,
+  Network,
+  Layers,
+  Globe,
+  Shield,
+  Cpu,
+  Container,
+} from "lucide-react"
+import { useRef } from "react"
 
 export interface Study {
-  id: number;
-  title: string;
-  category: string;
-  provider: string;
-  progress: number;
-  duration: string;
-  startDate: string;
-  status: "active" | "completed" | "upcoming";
-  icon: React.ReactNode;
-  description: string;
-  skills: string[];
-  priority: "high" | "medium" | "low";
+  id: number
+  title: string
+  category: string
+  provider: string
+  confidence: "beginner" | "intermediate" | "confident" | "expert"
+  duration: string
+  startDate: string
+  status: "active" | "completed" | "upcoming"
+  icon: React.ReactNode
+  description: string
+  skills: string[]
+  priority: "high" | "medium" | "low"
+  officialLink: string
 }
 
 export const currentStudies: Study[] = [
   {
     id: 1,
-    title: "Advanced React & Next.js",
-    category: "Frontend Development",
-    provider: "Vercel Academy",
-    progress: 75,
-    duration: "8 weeks",
+    title: "Software Architecture Patterns",
+    category: "System Design",
+    provider: "Microsoft Learn",
+    confidence: "confident",
+    duration: "10 weeks",
     startDate: "Jan 2024",
     status: "active",
-    icon: <Code className="h-8 w-8" />,
+    icon: <Layers className="h-8 w-8" />,
     description:
-      "Deep dive into React 18 features, Next.js 14, and modern frontend architecture patterns.",
-    skills: ["React 18", "Next.js 14", "TypeScript", "Server Components"],
+      "Mastering microservices, event-driven architecture, and scalable system design patterns for enterprise applications.",
+    skills: ["Microservices", "Event Sourcing", "CQRS", "Domain-Driven Design"],
     priority: "high",
+    officialLink: "https://docs.microsoft.com/en-us/azure/architecture/",
   },
   {
     id: 2,
-    title: "Machine Learning Fundamentals",
-    category: "Artificial Intelligence",
-    provider: "Stanford Online",
-    progress: 45,
-    duration: "12 weeks",
-    startDate: "Dec 2023",
+    title: "React Native Development",
+    category: "Mobile Development",
+    provider: "Meta Developers",
+    confidence: "intermediate",
+    duration: "8 weeks",
+    startDate: "Feb 2024",
     status: "active",
-    icon: <Brain className="h-8 w-8" />,
+    icon: <Smartphone className="h-8 w-8" />,
     description:
-      "Understanding ML algorithms, neural networks, and practical applications in web development.",
-    skills: ["Python", "TensorFlow", "Neural Networks", "Data Analysis"],
+      "Building cross-platform mobile applications with React Native, focusing on performance optimization and native integrations.",
+    skills: ["React Native", "Expo", "Native Modules", "Performance Optimization"],
     priority: "high",
+    officialLink: "https://reactnative.dev/",
   },
   {
     id: 3,
-    title: "Database Design & Optimization",
-    category: "Backend Development",
-    provider: "MongoDB University",
-    progress: 60,
+    title: "Docker & Containerization",
+    category: "DevOps",
+    provider: "Docker Inc",
+    confidence: "confident",
     duration: "6 weeks",
-    startDate: "Feb 2024",
+    startDate: "Jan 2024",
     status: "active",
-    icon: <Database className="h-8 w-8" />,
+    icon: <Container className="h-8 w-8" />,
     description:
-      "Advanced database design patterns, query optimization, and scalable architecture.",
-    skills: ["MongoDB", "PostgreSQL", "Query Optimization", "Database Design"],
-    priority: "medium",
+      "Advanced containerization strategies, multi-stage builds, and orchestration with Docker Swarm and Kubernetes.",
+    skills: ["Docker", "Kubernetes", "Container Orchestration", "Multi-stage Builds"],
+    priority: "high",
+    officialLink: "https://docs.docker.com/",
   },
   {
     id: 4,
-    title: "UI/UX Design Principles",
-    category: "Design",
-    provider: "Figma Academy",
-    progress: 30,
-    duration: "10 weeks",
+    title: "WebSocket & Real-time Communication",
+    category: "Backend Development",
+    provider: "Socket.IO",
+    confidence: "intermediate",
+    duration: "5 weeks",
     startDate: "Mar 2024",
     status: "active",
-    icon: <Palette className="h-8 w-8" />,
+    icon: <Network className="h-8 w-8" />,
     description:
-      "Modern design principles, user research, and creating intuitive user experiences.",
-    skills: ["Figma", "Design Systems", "User Research", "Prototyping"],
+      "Implementing real-time features with WebSockets, Socket.IO, and building scalable chat applications and live updates.",
+    skills: ["WebSockets", "Socket.IO", "Real-time Apps", "Event Broadcasting"],
     priority: "medium",
+    officialLink: "https://socket.io/",
   },
   {
     id: 5,
-    title: "Cloud Architecture with AWS",
-    category: "DevOps",
-    provider: "AWS Training",
-    progress: 20,
-    duration: "14 weeks",
-    startDate: "Mar 2024",
+    title: "System Scalability & Performance",
+    category: "System Design",
+    provider: "AWS Architecture Center",
+    confidence: "intermediate",
+    duration: "12 weeks",
+    startDate: "Feb 2024",
     status: "active",
-    icon: <Zap className="h-8 w-8" />,
+    icon: <TrendingUp className="h-8 w-8" />,
     description:
-      "Building scalable cloud infrastructure and implementing DevOps best practices.",
-    skills: ["AWS", "Docker", "Kubernetes", "CI/CD"],
-    priority: "low",
+      "Learning horizontal scaling, load balancing, caching strategies, and building systems that handle millions of users.",
+    skills: ["Load Balancing", "Caching", "Database Sharding", "CDN"],
+    priority: "high",
+    officialLink: "https://aws.amazon.com/architecture/",
   },
   {
     id: 6,
     title: "Advanced TypeScript",
     category: "Programming Languages",
-    provider: "TypeScript Deep Dive",
-    progress: 85,
+    provider: "TypeScript Team",
+    confidence: "confident",
     duration: "4 weeks",
     startDate: "Jan 2024",
     status: "active",
-    icon: <BookOpen className="h-8 w-8" />,
+    icon: <Code className="h-8 w-8" />,
     description:
-      "Mastering advanced TypeScript patterns, generics, and type-level programming.",
-    skills: ["TypeScript", "Generics", "Type Guards", "Advanced Patterns"],
+      "Mastering advanced TypeScript patterns, generics, conditional types, and building type-safe applications at scale.",
+    skills: ["Advanced Types", "Generics", "Type Guards", "Utility Types"],
     priority: "high",
+    officialLink: "https://www.typescriptlang.org/",
   },
-];
+  {
+    id: 7,
+    title: "GraphQL & Apollo",
+    category: "API Development",
+    provider: "Apollo GraphQL",
+    confidence: "intermediate",
+    duration: "7 weeks",
+    startDate: "Mar 2024",
+    status: "active",
+    icon: <Globe className="h-8 w-8" />,
+    description:
+      "Building efficient APIs with GraphQL, implementing subscriptions, and optimizing queries for better performance.",
+    skills: ["GraphQL", "Apollo Server", "Subscriptions", "Query Optimization"],
+    priority: "medium",
+    officialLink: "https://graphql.org/",
+  },
+  {
+    id: 8,
+    title: "Cybersecurity Fundamentals",
+    category: "Security",
+    provider: "OWASP Foundation",
+    confidence: "beginner",
+    duration: "9 weeks",
+    startDate: "Apr 2024",
+    status: "upcoming",
+    icon: <Shield className="h-8 w-8" />,
+    description:
+      "Understanding web application security, implementing authentication, authorization, and protecting against common vulnerabilities.",
+    skills: ["OWASP Top 10", "JWT", "OAuth", "Security Best Practices"],
+    priority: "medium",
+    officialLink: "https://owasp.org/",
+  },
+  {
+    id: 9,
+    title: "Machine Learning for Developers",
+    category: "Artificial Intelligence",
+    provider: "TensorFlow",
+    confidence: "beginner",
+    duration: "14 weeks",
+    startDate: "May 2024",
+    status: "upcoming",
+    icon: <Brain className="h-8 w-8" />,
+    description:
+      "Integrating ML models into web applications, understanding neural networks, and building intelligent features.",
+    skills: ["TensorFlow.js", "Neural Networks", "Model Integration", "AI APIs"],
+    priority: "low",
+    officialLink: "https://www.tensorflow.org/",
+  },
+  {
+    id: 10,
+    title: "Serverless Architecture",
+    category: "Cloud Computing",
+    provider: "Vercel",
+    confidence: "intermediate",
+    duration: "6 weeks",
+    startDate: "Mar 2024",
+    status: "active",
+    icon: <Zap className="h-8 w-8" />,
+    description:
+      "Building serverless applications with edge functions, understanding cold starts, and optimizing for performance.",
+    skills: ["Edge Functions", "Serverless", "Edge Computing", "Performance"],
+    priority: "medium",
+    officialLink: "https://vercel.com/docs/functions",
+  },
+  {
+    id: 11,
+    title: "Database Design & Optimization",
+    category: "Backend Development",
+    provider: "PostgreSQL",
+    confidence: "confident",
+    duration: "8 weeks",
+    startDate: "Feb 2024",
+    status: "active",
+    icon: <Database className="h-8 w-8" />,
+    description:
+      "Advanced database design patterns, query optimization, indexing strategies, and building high-performance databases.",
+    skills: ["PostgreSQL", "Query Optimization", "Indexing", "Database Design"],
+    priority: "high",
+    officialLink: "https://www.postgresql.org/",
+  },
+  {
+    id: 12,
+    title: "System Monitoring & Observability",
+    category: "DevOps",
+    provider: "Prometheus",
+    confidence: "beginner",
+    duration: "7 weeks",
+    startDate: "Apr 2024",
+    status: "upcoming",
+    icon: <Cpu className="h-8 w-8" />,
+    description: "Implementing comprehensive monitoring, logging, and alerting systems for production applications.",
+    skills: ["Prometheus", "Grafana", "Logging", "Alerting"],
+    priority: "medium",
+    officialLink: "https://prometheus.io/",
+  },
+]
 
 export const StudyIcon = ({
   study,
   index,
 }: {
-  study: Study;
-  index: number;
+  study: Study
+  index: number
 }) => {
-  const iconRef = useRef<HTMLDivElement>(null);
+  const iconRef = useRef<HTMLDivElement>(null)
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "high":
-        return "from-blue-500 to-cyan-400";
+        return "from-blue-500 to-cyan-400"
       case "medium":
-        return "from-blue-400 to-sky-300";
+        return "from-blue-400 to-sky-300"
       case "low":
-        return "from-sky-300 to-blue-200";
+        return "from-sky-300 to-blue-200"
       default:
-        return "from-blue-500 to-cyan-400";
+        return "from-blue-500 to-cyan-400"
     }
-  };
+  }
+
+  const getConfidenceColor = (confidence: string) => {
+    switch (confidence) {
+      case "expert":
+        return "text-emerald-400 bg-emerald-500/20"
+      case "confident":
+        return "text-blue-400 bg-blue-500/20"
+      case "intermediate":
+        return "text-yellow-400 bg-yellow-500/20"
+      case "beginner":
+        return "text-orange-400 bg-orange-500/20"
+      default:
+        return "text-blue-400 bg-blue-500/20"
+    }
+  }
+
+  const getConfidenceIcon = (confidence: string) => {
+    switch (confidence) {
+      case "expert":
+        return "🚀"
+      case "confident":
+        return "💪"
+      case "intermediate":
+        return "📚"
+      case "beginner":
+        return "🌱"
+      default:
+        return "📚"
+    }
+  }
 
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "active":
-        return <TrendingUp className="h-4 w-4" />;
+        return <TrendingUp className="h-4 w-4" />
       case "completed":
-        return <Award className="h-4 w-4" />;
+        return <Award className="h-4 w-4" />
       case "upcoming":
-        return <Clock className="h-4 w-4" />;
+        return <Clock className="h-4 w-4" />
       default:
-        return <Target className="h-4 w-4" />;
+        return <Target className="h-4 w-4" />
     }
-  };
+  }
 
   return (
     <div
@@ -166,11 +307,7 @@ export const StudyIcon = ({
 
       {/* Priority indicator */}
       <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 flex items-center justify-center">
-        <div
-          className={`w-3 h-3 rounded-full bg-gradient-to-r ${getPriorityColor(
-            study.priority
-          )}`}
-        ></div>
+        <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${getPriorityColor(study.priority)}`}></div>
       </div>
 
       {/* Status badge */}
@@ -184,51 +321,27 @@ export const StudyIcon = ({
           {study.icon}
         </div>
 
-        {/* Progress ring */}
-        <svg
-          className="absolute inset-0 w-20 h-20 -rotate-90"
-          viewBox="0 0 80 80"
-        >
-          <circle
-            cx="40"
-            cy="40"
-            r="36"
-            stroke="currentColor"
-            strokeWidth="2"
-            fill="none"
-            className="text-zinc-700"
-          />
-          <circle
-            cx="40"
-            cy="40"
-            r="36"
-            stroke="currentColor"
-            strokeWidth="2"
-            fill="none"
-            strokeDasharray={`${2 * Math.PI * 36}`}
-            strokeDashoffset={`${
-              2 * Math.PI * 36 * (1 - study.progress / 100)
-            }`}
-            className="text-blue-400 progress-ring transition-all duration-1000"
-            strokeLinecap="round"
-          />
-        </svg>
+        {/* Confidence indicator instead of progress ring */}
+        <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-zinc-800 border-2 border-zinc-600 flex items-center justify-center text-sm">
+          {getConfidenceIcon(study.confidence)}
+        </div>
       </div>
 
       {/* Content */}
       <div className="text-center space-y-2">
-        <h3 className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">
-          {study.title}
-        </h3>
+        <h3 className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">{study.title}</h3>
         <p className="text-sm text-blue-400 font-medium">{study.category}</p>
         <p className="text-xs text-zinc-400">{study.provider}</p>
 
-        {/* Progress */}
-        <div className="flex items-center justify-center gap-2 text-xs text-zinc-500">
-          <span>{study.progress}%</span>
-          <span>•</span>
-          <span>{study.duration}</span>
+        {/* Confidence level */}
+        <div className="flex items-center justify-center">
+          <span className={`px-3 py-1 rounded-full text-xs font-medium ${getConfidenceColor(study.confidence)}`}>
+            {study.confidence.charAt(0).toUpperCase() + study.confidence.slice(1)}
+          </span>
         </div>
+
+        {/* Duration */}
+        <div className="text-xs text-zinc-500">{study.duration}</div>
       </div>
 
       {/* Hover details - Z-INDEX ALTO */}
@@ -239,10 +352,7 @@ export const StudyIcon = ({
           <div className="text-xs text-zinc-500">Skills:</div>
           <div className="flex flex-wrap gap-1">
             {study.skills.map((skill, skillIndex) => (
-              <span
-                key={skillIndex}
-                className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs"
-              >
+              <span key={skillIndex} className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs">
                 {skill}
               </span>
             ))}
@@ -256,7 +366,20 @@ export const StudyIcon = ({
           </span>
           <span className="capitalize">{study.status}</span>
         </div>
+
+        {/* Official link */}
+        <div className="mt-3 pt-3 border-t border-zinc-700">
+          <a
+            href={study.officialLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 text-xs flex items-center gap-1 transition-colors"
+          >
+            <Globe className="h-3 w-3" />
+            Official Documentation
+          </a>
+        </div>
       </div>
     </div>
-  );
-};
+  )
+}
