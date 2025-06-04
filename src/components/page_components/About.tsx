@@ -1,49 +1,50 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useEffect, useRef } from "react"
-import { Button } from "@/components/ui/button"
-import { FileText, ExternalLink } from "lucide-react"
-import { motion, useInView, useAnimation } from "framer-motion"
-import { socialLinks } from "@/data/socialLinks"
-import { skills } from "@/data/skillsData"
-import MoreAboutmeButton from "../compontents/MoreAboutmeButton"
-import { handleResumeDownload } from "@/functions/handleResumenDownload"
-import ImageFrame from "../sub-sections/ImageFrame"
-import ShowmoreInfo from "../sub-sections/ShowmoreInfo"
-import ExperEduAchiComponent from "../sub-sections/ExperEduAchiComponent"
-
+import type React from "react";
+import { useState, useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { FileText, ExternalLink } from "lucide-react";
+import { motion, useInView, useAnimation } from "framer-motion";
+import { socialLinks } from "@/data/socialLinks";
+import { skills } from "@/data/skillsData";
+import MoreAboutmeButton from "../compontents/MoreAboutmeButton";
+import { handleResumeDownload } from "@/functions/handleResumenDownload";
+import ImageFrame from "../sub-sections/ImageFrame";
+import ShowmoreInfo from "../sub-sections/ShowmoreInfo";
+import ExperEduAchiComponent from "../sub-sections/ExperEduAchiComponent";
 
 function About() {
-  const [currentSkill, setCurrentSkill] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
-  const [activeTab, setActiveTab] = useState("experience")
-  const [showMoreBio, setShowMoreBio] = useState(false)
+  const [currentSkill, setCurrentSkill] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [activeTab, setActiveTab] = useState("experience");
+  const [showMoreBio, setShowMoreBio] = useState(false);
 
-  const bioRef = useRef(null)
-  const isInView = useInView(bioRef, { once: true })
-  const controls = useAnimation()
+  const bioRef = useRef(null);
+  const isInView = useInView(bioRef, { once: true });
+  const controls = useAnimation();
 
   // Rotate through skills
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSkill((prev) => (prev + 1) % skills.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
+      setCurrentSkill((prev) => (prev + 1) % skills.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Animate elements when they come into view
   useEffect(() => {
     if (isInView) {
-      controls.start("visible")
+      controls.start("visible");
     }
-  }, [controls, isInView])
-
+  }, [controls, isInView]);
 
   return (
     <div>
       {/* About Section */}
-      <section id="about" className="bg-zinc-900 py-20 relative overflow-hidden">
+      <section
+        id="about"
+        className="bg-zinc-900 py-20 relative overflow-hidden"
+      >
         {/* Background elements */}
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-emerald-500/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-emerald-500/5 rounded-full blur-3xl"></div>
@@ -76,12 +77,15 @@ function About() {
                   </motion.p>
                 </div>
 
-                <ShowmoreInfo showMoreBio={showMoreBio} setShowMoreBio={setShowMoreBio} /> 
+                <ShowmoreInfo
+                  showMoreBio={showMoreBio}
+                  setShowMoreBio={setShowMoreBio}
+                />
 
                 {/* Social Media Icons */}
                 <div className="flex flex-wrap gap-3 my-6">
                   {socialLinks.map((social, index) => {
-                    const Icon = social.icon
+                    const Icon = social.icon;
                     return (
                       <motion.a
                         key={social.name}
@@ -97,12 +101,15 @@ function About() {
                       >
                         <Icon className="h-5 w-5" />
                       </motion.a>
-                    )
+                    );
                   })}
                 </div>
 
                 {/* Tabs for experience, education, achievements */}
-                <ExperEduAchiComponent setActiveTab={setActiveTab}activeTab={activeTab}/>
+                <ExperEduAchiComponent
+                  setActiveTab={setActiveTab}
+                  activeTab={activeTab}
+                />
 
                 {/* Action Buttons */}
                 <div className="flex flex-wrap gap-4 mb-8">
@@ -116,7 +123,7 @@ function About() {
                     <span className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   </Button>
                   <Button
-                  //  variant="outline"
+                    //  variant="outline"
                     className="border-zinc-700 hover:border-emerald-500 hover:bg-zinc-800 text-white"
                   >
                     <ExternalLink className="mr-2 h-4 w-4" /> View Portfolio
@@ -130,7 +137,7 @@ function About() {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default About
+export default About;

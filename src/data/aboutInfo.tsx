@@ -1,4 +1,4 @@
-import {  Award, Briefcase, GraduationCap, Code } from "lucide-react"
+import { Award, Briefcase, GraduationCap, Code } from "lucide-react"
 
 export const tabs: TabItem[] = [
     {
@@ -9,19 +9,29 @@ export const tabs: TabItem[] = [
         <div className="space-y-4">
           <div className="relative pl-6 border-l-2 border-emerald-500/30">
             <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[7px] top-1"></div>
-            <h4 className="text-white font-medium">Senior Developer</h4>
-            <p className="text-emerald-400 text-sm">TechCorp Inc. • 2020 - Present</p>
+            <h4 className="text-white font-medium">Full Stack Developer</h4>
+            <p className="text-emerald-400 text-sm">Finova • Dec 2024 - Present</p>
             <p className="text-zinc-400 text-sm mt-2">
-              Led development of multiple web applications using React and Node.js. Implemented CI/CD pipelines and
-              mentored junior developers.
+              Promoted to Full Stack Developer after demonstrating strong skills in both frontend and backend development.
+              Working with React, Node.js, and various database technologies.
             </p>
           </div>
           <div className="relative pl-6 border-l-2 border-emerald-500/30">
             <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[7px] top-1"></div>
-            <h4 className="text-white font-medium">Web Developer</h4>
-            <p className="text-emerald-400 text-sm">Digital Solutions • 2018 - 2020</p>
+            <h4 className="text-white font-medium">React Developer</h4>
+            <p className="text-emerald-400 text-sm">Finova • aug 2024 - Dec 2024</p>
             <p className="text-zinc-400 text-sm mt-2">
-              Developed responsive websites and e-commerce platforms. Worked with React, Vue.js, and PHP backends.
+              Developed and maintained web applications using React.js, Redux, and modern frontend technologies.
+              Contributed to improving application performance and user experience.
+            </p>
+          </div>
+          <div className="relative pl-6 border-l-2 border-emerald-500/30">
+            <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[7px] top-1"></div>
+            <h4 className="text-white font-medium">Freelance Web Developer</h4>
+            <p className="text-emerald-400 text-sm">Various Platforms • 2021 - 2024</p>
+            <p className="text-zinc-400 text-sm mt-2">
+              Worked on diverse projects across multiple online platforms, building responsive websites and web applications for clients worldwide.
+              Gained experience with different tech stacks and client requirements.
             </p>
           </div>
         </div>
@@ -35,18 +45,10 @@ export const tabs: TabItem[] = [
         <div className="space-y-4">
           <div className="relative pl-6 border-l-2 border-emerald-500/30">
             <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[7px] top-1"></div>
-            <h4 className="text-white font-medium">Master's in Computer Science</h4>
-            <p className="text-emerald-400 text-sm">Tech University • 2016 - 2018</p>
+            <h4 className="text-white font-medium">Web Application Development Program</h4>
+            <p className="text-emerald-400 text-sm">Universidad de Bucaramanga • 2023</p>
             <p className="text-zinc-400 text-sm mt-2">
-              Specialized in web technologies and distributed systems. Graduated with honors.
-            </p>
-          </div>
-          <div className="relative pl-6 border-l-2 border-emerald-500/30">
-            <div className="absolute w-3 h-3 bg-emerald-500 rounded-full -left-[7px] top-1"></div>
-            <h4 className="text-white font-medium">Bachelor's in Software Engineering</h4>
-            <p className="text-emerald-400 text-sm">State University • 2012 - 2016</p>
-            <p className="text-zinc-400 text-sm mt-2">
-              Focused on programming fundamentals, algorithms, and software development methodologies.
+              Specialized training in modern web development technologies and frameworks.
             </p>
           </div>
         </div>
@@ -63,8 +65,8 @@ export const tabs: TabItem[] = [
               <Award className="h-4 w-4" />
             </div>
             <div>
-              <h4 className="text-white text-sm font-medium">Best Web Application Award</h4>
-              <p className="text-zinc-400 text-xs">Regional Tech Conference 2022</p>
+              <h4 className="text-white text-sm font-medium">Pizza Champion</h4>
+              <p className="text-zinc-400 text-xs">Won a pizza for telling the most jokes to colleagues (2020)</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -72,17 +74,8 @@ export const tabs: TabItem[] = [
               <Code className="h-4 w-4" />
             </div>
             <div>
-              <h4 className="text-white text-sm font-medium">Open Source Contributor</h4>
-              <p className="text-zinc-400 text-xs">100+ contributions to major projects</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-3">
-            <div className="p-1.5 bg-emerald-500/10 rounded-full text-emerald-500">
-              <Award className="h-4 w-4" />
-            </div>
-            <div>
-              <h4 className="text-white text-sm font-medium">Hackathon Winner</h4>
-              <p className="text-zinc-400 text-xs">First place at CodeFest 2021</p>
+              <h4 className="text-white text-sm font-medium">Fast Learner Award</h4>
+              <p className="text-zinc-400 text-xs">Recognized for quickly mastering new technologies</p>
             </div>
           </div>
         </div>
