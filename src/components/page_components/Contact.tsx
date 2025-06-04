@@ -22,9 +22,6 @@ type FormState = {
   [key: string]: string; // Or a more specific mapping of object keys to their types
 };
 
-
-
-
 function Contact() {
   const [formState, setFormState] = useState<FormState>({});
 
@@ -36,7 +33,6 @@ function Contact() {
     const { name, value } = e.target; // Ensure name is defined and matches FormState keys
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
-
 
   const handleSelectChange = (value: string) => {
     setFormState((prev) => ({ ...prev, projectType: value }))
@@ -88,7 +84,7 @@ function Contact() {
               Let's <span className="text-emerald-500">Connect</span>
             </h2>
             <p className="text-xl text-zinc-300 max-w-2xl mx-auto">
-              ¿Necesitas una solución web eficiente? ¡Hablemos y hagámoslo posible!
+              Do you need an efficient web solution? Let's talk and make it happen!
             </p>
           </motion.div>
 
@@ -107,14 +103,14 @@ function Contact() {
                       <div className="space-y-4">
                         <div>
                           <Label htmlFor="name" className="text-zinc-300 mb-1 block">
-                            Tu Nombre
+                            Your Name
                           </Label>
                           <Input
                             id="name"
                             name="name"
                             value={formState.name}
                             onChange={handleChange}
-                            placeholder="Pedro Parques"
+                            placeholder="John Doe"
                             required
                             className="mt-1 bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:ring-emerald-500"
                           />
@@ -138,32 +134,32 @@ function Contact() {
 
                         <div>
                           <Label htmlFor="projectType" className="text-zinc-300 mb-1 block">
-                            Tipo de proyecto
+                            Project Type
                           </Label>
                           <Select value={formState.projectType} onValueChange={handleSelectChange}>
                             <SelectTrigger className="mt-1 bg-zinc-800 border-zinc-700 text-white focus:border-emerald-500 focus:ring-emerald-500">
                               <SelectValue placeholder="Select project type" />
                             </SelectTrigger>
                             <SelectContent className="bg-zinc-800 border-zinc-700 text-white">
-                              <SelectItem value="web-development">Desarollo web</SelectItem>
+                              <SelectItem value="web-development">Web Development</SelectItem>
                               <SelectItem value="mobile-app">Mobile App</SelectItem>
                               <SelectItem value="ui-ux-design">UI/UX Design</SelectItem>
-                              <SelectItem value="consulting">Consulta</SelectItem>
-                              <SelectItem value="other">Otro</SelectItem>
+                              <SelectItem value="consulting">Consulting</SelectItem>
+                              <SelectItem value="other">Other</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
 
                         <div>
                           <Label htmlFor="message" className="text-zinc-300 mb-1 block">
-                            Tu mensaje
+                            Your Message
                           </Label>
                           <Textarea
                             id="message"
                             name="message"
                             value={formState.message}
                             onChange={handleChange}
-                            placeholder="Cuentame que tienes en mente..."
+                            placeholder="Tell me what you have in mind..."
                             required
                             className="mt-1 min-h-[120px] bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:ring-emerald-500"
                           />
@@ -176,7 +172,7 @@ function Contact() {
                         className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-3 transition-all duration-300 relative overflow-hidden group"
                       >
                         <span className="relative z-10 flex items-center justify-center gap-2">
-                          {isSubmitting ? "Sending..." : "¡Envíame tu consulta y te responderé pronto!"}
+                          {isSubmitting ? "Sending..." : "Send me your inquiry and I'll get back to you soon!"}
                           <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </span>
                       </Button>
@@ -189,9 +185,9 @@ function Contact() {
                       transition={{ duration: 0.3 }}
                     >
                       <CheckCircle2 className="h-16 w-16 text-emerald-500 mb-4" />
-                      <h3 className="text-xl font-bold text-white mb-2">envio de mensaje exitoso!</h3>
+                      <h3 className="text-xl font-bold text-white mb-2">Message sent successfully!</h3>
                       <p className="text-zinc-300">
-                      Gracias por ponerse en contacto conmigo. Me pondré en contacto con usted lo antes posible.
+                        Thank you for contacting me. I'll get back to you as soon as possible.
                       </p>
                     </motion.div>
                   )}
@@ -209,7 +205,7 @@ function Contact() {
               {/* Contact Info */}
               <Card className="bg-zinc-900 border-zinc-800 mb-6">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-6 text-white">Información de contacto</h3>
+                  <h3 className="text-xl font-bold mb-6 text-white">Contact Information</h3>
 
                   <div className="space-y-5">
                     <div className="flex items-start gap-3">
@@ -300,8 +296,7 @@ function Contact() {
                     </motion.div>
 
                     <p className="text-emerald-400 mt-6 text-sm font-medium">
-                      Más de 50 clientes han confiado en mis soluciones digitales. ¡Te ayudaré a que tu proyecto tenga
-                      éxito!
+                      Over 50 clients have trusted my digital solutions. I'll help make your project successful!
                     </p>
                   </div>
                 </CardContent>
@@ -316,10 +311,9 @@ function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-white mb-3">Estoy listo para ayudarte</h3>
+            <h3 className="text-2xl font-bold text-white mb-3">I'm ready to help you</h3>
             <p className="text-zinc-300 max-w-2xl mx-auto">
-              Cuéntame tu idea y construyamos algo increíble juntos. Ya sea un sitio web, una aplicación o una
-              consultoría, estoy aquí para convertir tu visión en realidad.
+              Tell me your idea and let's build something amazing together. Whether it's a website, an app, or consulting, I'm here to turn your vision into reality.
             </p>
           </motion.div>
         </div>
