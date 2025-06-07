@@ -111,7 +111,7 @@ export const serverCards: ServerCard[] = [
     imageUrl: "https://res.cloudinary.com/dfg2xrsqz/image/upload/v1749090748/almacenamiento-nube_kthcrq.jpg",
     specs: ["2 CPU Cores", "8GB RAM", "4TB RAID"],
     technologies: ["Nextcloud", "PostgreSQL", "Redis", "Nginx"],
-  },
+  }, 
 ]
 
 export const getStatusColor = (status: string) => {
