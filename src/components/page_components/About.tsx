@@ -22,7 +22,7 @@ function About() {
   const bioRef = useRef(null);
   const isInView = useInView(bioRef, { once: true });
   const controls = useAnimation();
-
+ 
   // Rotate through skills
   useEffect(() => {
     const interval = setInterval(() => {
