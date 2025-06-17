@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   // Iconos
   icons: {
     icon: [
-      { url: "/logo.png", sizes: "any" },
+      { url: "/logosinfondo.ico", sizes: "any" },
       { url: "/logo.png", type: "image/png" },
     ],
     apple: [
