@@ -60,8 +60,8 @@ export const metadata: Metadata = {
   // Iconos
   icons: {
     icon: [
-      { url: "/logo-sin-fondo.ico", sizes: "any" },
-      { url: "/logo-sin-fondo.png", type: "image/png" },
+      { url: "/logosinfondo.ico", sizes: "any" },
+      { url: "/logosinfondo.png", type: "image/png" },
     ],
     apple: [
       { url: "/apple-icon.png", sizes: "180x180" },
