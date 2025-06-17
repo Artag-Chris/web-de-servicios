@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Artag",
     images: [
       {
-        url: "/og-artag.png", // Coloca esta imagen en /public
+        url: "/logo.png", // Coloca esta imagen en /public
         width: 1200,
         height: 630,
         alt: "Artag desarrollo de software en Pereira",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/logosinfondo.ico", sizes: "any" },
-      { url: "/logo.png", type: "image/png" },
+      { url: "/logosinfondo.png", type: "image/png" },
     ],
     apple: [
       { url: "/apple-icon.png", sizes: "180x180" },
