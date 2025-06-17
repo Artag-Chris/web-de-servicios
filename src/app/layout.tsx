@@ -1,60 +1,101 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import type { Metadata } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Artag | Desarrollo de Software en Pereira',
-  description: 'Desarrollo de aplicaciones inteligentes móviles y soluciones de software front-end a la medida en Pereira, Colombia. Innovación digital para empresas que buscan destacarse.',
+export const metadata: Metadata = {
+  // Título principal (50-60 caracteres)
+  title: "Artag | Desarrollo de Software y Apps en Pereira",
+  // Alternates para SEO
+  alternates: {
+    canonical: "https://www.artag.com.co",
+  },
+  // Descripción optimizada (150-160 caracteres)
+  description:
+    "Soluciones digitales innovadoras en Pereira. Desarrollo de software, apps móviles y diseño UI/UX para empresas que buscan destacar en el mundo digital.",
+  // Keywords relevantes
+  keywords: [
+    "desarrollo de software",
+    "apps móviles",
+    "Pereira",
+    "front-end",
+    "back-end",
+    "API",
+    "bases de datos",
+    "diseño UI/UX",
+    "diseño gráfico",
+    "arquitectura de software",
+    "Artag",
+    "soluciones digitales",
+  ],
+  // Open Graph para redes sociales
   openGraph: {
-    title: 'Artag | Desarrollo de Software en Pereira',
-    description: 'Creamos soluciones digitales en Pereira: apps móviles inteligentes y software front-end personalizado.',
-    url: 'https://www.artag.com.co',
-    siteName: 'Artag',
+    type: "website",
+    locale: "es_CO",
+    url: "https://www.artag.com.co",
+    title: "Artag | Soluciones Digitales en Pereira",
+    description:
+      "Desarrollo de software, aplicaciones móviles y diseño digital en Pereira. Innovación y tecnología para tu empresa.",
+    siteName: "Artag",
     images: [
       {
-        url: 'https://res.cloudinary.com/dfg2xrsqz/image/upload/v1750004370/Screenshot_2025-06-15_111756_o8mazs.png',
+        url: "/og-artag.png", // Coloca esta imagen en /public
         width: 1200,
         height: 630,
-        alt: 'Artag desarrollo de software en Pereira',
+        alt: "Artag desarrollo de software en Pereira",
       },
     ],
-    locale: 'es_CO',
-    type: 'website',
-     keywords: ['desarrollo de software', 'apps móviles', 'Pereira', 'front-end', 'backe-end', 'api','bases de datos',
-        'diseño ','diseño grafico','artquitectura de softaware'],
   },
+  // Twitter Card
   twitter: {
-    card: 'summary_large_image',
-    title: 'Artag | Desarrollo de Software en Pereira',
-    description: 'Aplicaciones móviles inteligentes y software personalizado desde Pereira, Colombia.',
-    site: '@artagdev',
-    creator: '@artagdev',
-    images: ['https://www.artag.com/twitter-image.jpg'],
+    card: "summary_large_image",
+    title: "Artag | Desarrollo de Software en Pereira",
+    description:
+      "Aplicaciones móviles inteligentes y software personalizado desde Pereira, Colombia.",
+    images: ["/twitter-artag.png"], // Coloca esta imagen en /public
+    site: "@artagdev",
+    creator: "@artagdev",
   },
-  robots: 'index, follow',
+  // Iconos
   icons: {
-    icon: '/logo-sin-fondo.ico',
+    icon: [
+      { url: "/logo-sin-fondo.ico", sizes: "any" },
+      { url: "/logo-sin-fondo.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180" },
+    ],
   },
-  socialLinks: {
-    facebook: 'https://www.facebook.com/christian.dehenao/',
-    instagram: 'https://www.instagram.com/artagdev/',
-    linkedin: 'https://www.linkedin.com/in/artag/',
-    youtube: 'https://www.youtube.com/@Artag888',
-    twitter: 'https://twitter.com/artag',
+  // Información de contacto y branding
+  authors: [{ name: "Artag", url: "https://www.artag.com.co" }],
+  generator: "Next.js",
+  applicationName: "Artag",
+  referrer: "origin-when-cross-origin",
+  creator: "Artag",
+  publisher: "Artag",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
+  // Verificación de Google Search Console (opcional)
+  verification: {
+    google: "tu-codigo-de-verificacion-google",
+  },
+  category: "technology",
 }
 
 export default function RootLayout({
-                                       children,
-                                   }: {
-    children: React.ReactNode
+  children,
+}: {
+  children: React.ReactNode
 }) {
-    return (
-        <html lang="en">
-        <body className={inter.className}>
+  return (
+    <html lang="es">
+      <body className={inter.className}>
         {children}
-        </body>
-        </html>
-    )
+      </body>
+    </html>
+  )
 }
