@@ -45,7 +45,7 @@ export const metadata: Metadata = {
         height: 630,
         alt: "Artag desarrollo de software en Pereira",
       },
-    ],
+    ], 
   },
   // Twitter Card
   twitter: {
