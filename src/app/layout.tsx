@@ -47,7 +47,7 @@ export const metadata: Metadata = {
       },
     ], 
   },
-  // Twitter Card 
+  // Twitter Card  
   twitter: {
     card: "summary_large_image",
     title: "Artag | Desarrollo de Software en Pereira",
