@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   ],
   // Open Graph para redes sociales
   openGraph: {
-    type: "website",
+    type: "website", 
     locale: "es_CO",
     url: "https://www.artag.com.co",
     title: "Artag | Soluciones Digitales en Pereira",
