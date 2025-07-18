@@ -1,6 +1,5 @@
 
 import {
-  SiJavascript,
   SiTypescript,
   SiReact,
   SiNextdotjs,
@@ -13,16 +12,16 @@ import {
   SiAmazon,
   SiGit,
 } from "react-icons/si"
+import { SiN8N } from "react-icons/si";
 
 export const skillsData = [
-  {
-    name: "JavaScript",
-    level: "",
-    description:
-      "A programming language that enables interactive web pages and is an essential part of web applications.",
-    icon: SiJavascript,
-    color: "text-yellow-400",
-  },
+ {
+  name: "n8n",
+  level: "",
+  description: "My visual automation workhorse: Connecting apps and services to transform complex workflows into effortless digital symphonies.",
+  icon: SiN8N, // Asegúrate de tener este icono importado
+  color: "text-blue-500", // Sugerencia de color para n8n
+},
   {
     name: "TypeScript",
     level: "",

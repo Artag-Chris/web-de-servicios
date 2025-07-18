@@ -17,9 +17,9 @@ function Skills() {
         {/* Content */}
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-3xl font-bold mb-12 text-center">
-            Technical <span className="text-emerald-500">Skills</span>
+            Tools of the <span className='text-emerald-500'>Trade</span>
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-white">
             {skillsData.map((skill, index) => (
               <SkillCard key={index} skill={skill} index={index} />
             ))}
