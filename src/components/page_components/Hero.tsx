@@ -211,11 +211,10 @@ function Hero() {
             />
           </Badge>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 text-white">
-            Creating exceptional digital <span className="text-emerald-500"> experiences </span> through code
+            Where Innovation Clicks: <span className="text-emerald-500">Experiences </span>  Designed to Captivate
           </h1>
           <p className="text-zinc-200 text-base sm:text-lg md:text-xl mb-6 md:mb-8 max-w-2xl">
-            I design and develop scalable, responsive, and user-focused web applications by leveraging cutting-edge
-            technologies and adhering to industry-leading best practices.
+            I transform visions into beating-heart realities: crafting emotion-driven web experiences, AI-powered applications, and seamless APIs that make your digital dreams breathe.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
@@ -223,7 +222,7 @@ function Hero() {
           </div>
         </div>
       </section>
-    </div>
+    </div> 
   )
 }
 
