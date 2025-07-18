@@ -11,8 +11,9 @@ import {
   SiDocker,
   SiAmazon,
   SiGit,
+  SiN8N
 } from "react-icons/si"
-import { SiN8N } from "react-icons/si";
+
 
 export const skillsData = [
  {
