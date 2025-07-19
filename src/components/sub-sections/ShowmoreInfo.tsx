@@ -19,22 +19,27 @@ function ShowmoreInfo({
           }`}
         >
           <p>
-            I'm a passionate fullstack developer with over 5 years of experience
-            building web applications. I specialize in creating robust, scalable
-            solutions that solve real-world problems.
+            I transform digital challenges into human connections — a passionate
+            fullstack developer crafting solutions where technology breathes
+            with emotion. For over 5 years, I've engineered web applications
+            that solve real-world problems while creating meaningful digital
+            relationships.
           </p>
+
           <p>
-            My journey in software development began with a curiosity about how
-            things work on the web. That curiosity evolved into a career where
-            I've had the opportunity to work with startups and established
-            companies alike, helping them bring their digital products to life.
+            My journey began with childhood curiosity about the web's magic.
+            Today, I architect hybrid server infrastructures (on-site & cloud)
+            and build WhatsApp Business ecosystems using official APIs, helping
+            startups and enterprises bring conversational experiences to life.
           </p>
+
           <p className={showMoreBio ? "block" : "hidden"}>
-            I believe in writing clean, maintainable code and staying up-to-date
-            with the latest technologies and best practices. When I'm not
-            coding, you can find me exploring new technologies, contributing to
-            open-source projects, or sharing my knowledge through blog posts and
-            community events.
+            I believe in clean code with emotional intelligence — whether
+            creating chatbots that understand intentions or scalable systems
+            that anticipate needs. Beyond coding, I explore how automation
+            fosters genuine connections and share discoveries through
+            open-source contributions. Because the future isn't just built; it's
+            felt.
           </p>
         </motion.div>
 
