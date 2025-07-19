@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import MoreAboutmeButton from "../compontents/MoreAboutmeButton"
 import TypingAnimation from "../animations/typingAnimation"
 import CityLoader from "../loading/city-loader"
+import CTAButton from "../compontents/CTABottom"
+import { Sparkles } from "lucide-react"
 
 
 function Hero() {
@@ -218,7 +220,7 @@ function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <MoreAboutmeButton />
+            <CTAButton text={"Contac me"} icon={<Sparkles/>} />
           </div>
         </div>
       </section>
