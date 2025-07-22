@@ -180,7 +180,6 @@ function Hero() {
             playsInline
             preload="auto"
           >
-            <source src="/tech4k.webm" type="video/webm" />
             <source src="/tech4k.mp4" type="video/mp4" />
           </video>
 
