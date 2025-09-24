@@ -20,14 +20,18 @@ export function SkillCard({ skill, index }: { skill: Skill; index: number }) {
             }}
         >
             <Card
-                className="bg-zinc-800 border-zinc-700 hover:border-emerald-500 transition-all overflow-hidden h-[140px]"
+                className="bg-zinc-800 border-zinc-700 hover:border-emerald-500 transition-all overflow-hidden h-[140px] touch-pan-x"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <CardContent className="p-6 relative h-full">
-                    <div className="flex items-center gap-2 mb-1">
+                <CardContent className="p-4 sm:p-6 relative h-full">
+                    <div className="flex items-center gap-2 mb-2">
                         <Icon className={`h-5 w-5 ${skill.color}`} />
-                        <h3 className="font-medium text-lg">{skill.name}</h3>
+                        <h3 className="font-medium text-base sm:text-lg">{skill.name}</h3>
+                    </div>
+                    {/* Visible description on mobile */}
+                    <div className="md:hidden">
+                        <p className="text-zinc-300 text-sm line-clamp-3">{skill.description}</p>
                     </div>
                    
 
