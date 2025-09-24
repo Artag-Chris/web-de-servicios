@@ -36,7 +36,7 @@ export default function AboutMePage() {
         </div>
 
         {/* Interactive Timeline */}
-        <DeveloperJourneyTimeline />
+        <DeveloperJourneyTimeline/>
       </div>
     </main>
   )

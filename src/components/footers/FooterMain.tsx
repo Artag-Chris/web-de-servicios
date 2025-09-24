@@ -8,8 +8,6 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { navLinks, services, socialLinksFooter } from "@/data/footerData"
 
-// Social media links data with additional icons
-
 
 function Footer() {
   const [email, setEmail] = useState("")

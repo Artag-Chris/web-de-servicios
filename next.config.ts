@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
     reactStrictMode: true,
+    compiler: {
+        styledComponents: true,
+    },
     images: {
         domains: [
             'hebbkx1anhila5yf.public.blob.vercel-storage.com',
@@ -9,7 +12,6 @@ const nextConfig: NextConfig = {
             'res.cloudinary.com'
         ],
     },
-  
 };
 
 export default nextConfig;

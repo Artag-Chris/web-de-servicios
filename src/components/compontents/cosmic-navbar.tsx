@@ -16,11 +16,17 @@ interface CosmicNavbarProps {
 
 const CosmicNavbar = ({ links, currentPath = "" }: CosmicNavbarProps) => {
     const [mounted, setMounted] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     // Only generate stars on client-side to avoid hydration mismatch
     useEffect(() => {
         setMounted(true)
     }, [])
+
+    // Close menu when route changes
+    useEffect(() => {
+        setIsMenuOpen(false)
+    }, [currentPath])
 
     // Generate random stars
     const generateStars = (count: number) => {
@@ -89,10 +95,35 @@ const CosmicNavbar = ({ links, currentPath = "" }: CosmicNavbarProps) => {
 
             {/* Nav content */}
             <div className="container mx-auto px-4 relative z-10">
-                <ul className="flex space-x-6 justify-center py-4">
+                {/* Mobile menu button */}
+                <div className="md:hidden flex justify-end py-4">
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="text-white focus:outline-none"
+                        aria-label="Toggle menu"
+                    >
+                        <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            {isMenuOpen ? (
+                                <path d="M6 18L18 6M6 6l12 12" />
+                            ) : (
+                                <path d="M4 6h16M4 12h16M4 18h16" />
+                            )}
+                        </svg>
+                    </button>
+                </div>
+
+                {/* Desktop menu */}
+                <ul className="hidden md:flex space-x-6 justify-center py-4">
                     {links.map((link) => {
                         const isActive = currentPath === link.href
-
                         return (
                             <li key={link.href}>
                                 <Link
@@ -105,7 +136,7 @@ const CosmicNavbar = ({ links, currentPath = "" }: CosmicNavbarProps) => {
                                     {isActive && (
                                         <motion.span
                                             className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white"
-                                            layoutId="navbar-indicator"
+                                            layoutId="navbar-indicator-desktop"
                                             transition={{ type: "spring", duration: 0.5 }}
                                         />
                                     )}
@@ -114,6 +145,39 @@ const CosmicNavbar = ({ links, currentPath = "" }: CosmicNavbarProps) => {
                         )
                     })}
                 </ul>
+
+                {/* Mobile menu */}
+                <motion.div
+                    className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : -20 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <ul className="py-2 space-y-3">
+                        {links.map((link) => {
+                            const isActive = currentPath === link.href
+                            return (
+                                <motion.li
+                                    key={link.href}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <Link
+                                        href={link.href}
+                                        className={`block px-4 py-2 text-base font-medium transition-colors ${
+                                            isActive
+                                                ? "text-white bg-purple-800/50"
+                                                : "text-zinc-200 hover:text-white hover:bg-purple-800/30"
+                                        } rounded-lg`}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </motion.li>
+                            )
+                        })}
+                    </ul>
+                </motion.div>
             </div>
         </nav>
     )
