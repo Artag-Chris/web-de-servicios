@@ -151,7 +151,7 @@ function Contact() {
                         </div>
 
                         <div>
-                          <Label htmlFor="message" className="text-zinc-300 mb-1 block">
+                          <Label htmlFor="message" className="text-zinc-300 mb-1 block text-sm sm:text-base">
                             Your Message
                           </Label>
                           <Textarea
@@ -161,7 +161,7 @@ function Contact() {
                             onChange={handleChange}
                             placeholder="Tell me what you have in mind..."
                             required
-                            className="mt-1 min-h-[120px] bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:ring-emerald-500"
+                            className="mt-1 min-h-[100px] sm:min-h-[120px] text-sm sm:text-base bg-zinc-800 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:ring-emerald-500 placeholder:text-sm"
                           />
                         </div>
                       </div>
@@ -169,11 +169,18 @@ function Contact() {
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-3 transition-all duration-300 relative overflow-hidden group"
+                        className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-2 sm:py-3 text-sm sm:text-base transition-all duration-300 relative overflow-hidden group"
                       >
-                        <span className="relative z-10 flex items-center justify-center gap-2">
-                          {isSubmitting ? "Sending..." : "Send me your inquiry and I'll get back to you soon!"}
-                          <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <span className="relative z-10 flex items-center justify-center gap-1 sm:gap-2">
+                          {isSubmitting ? "Sending..." : (
+                            <>
+                              <span className="hidden sm:inline">
+                                Send me your inquiry and I'll get back to you soon!
+                              </span>
+                              <span className="sm:hidden">Send Message</span>
+                            </>
+                          )}
+                          <Send className="h-3 w-3 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" />
                         </span>
                       </Button>
                     </form>
@@ -203,20 +210,20 @@ function Contact() {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               {/* Contact Info */}
-              <Card className="bg-zinc-900 border-zinc-800 mb-4 sm:mb-6 w-full">
-                <CardContent className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-white">Contact Information</h3>
+              <Card className="bg-zinc-900 border-zinc-800 mb-3 sm:mb-6 w-full">
+                <CardContent className="p-3 sm:p-6">
+                  <h3 className="text-base sm:text-xl font-bold mb-3 sm:mb-6 text-white">Contact Information</h3>
 
-                  <div className="space-y-5">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                        <Mail  className="h-4 w-4 text-emerald-500" />
+                  <div className="space-y-3 sm:space-y-5">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-emerald-500/10 flex items-center justify-center">
+                        <Mail className="h-3 w-3 sm:h-4 sm:w-4 text-emerald-500" />
                       </div>
                       <div>
-                        <p className="text-zinc-300 font-medium">Email</p>
+                        <p className="text-zinc-300 font-medium text-sm sm:text-base">Email</p>
                         <a
                           href="mailto:contact@johndoe.com"
-                          className="text-emerald-400 hover:text-emerald-300 transition-colors"
+                          className="text-emerald-400 hover:text-emerald-300 transition-colors text-sm sm:text-base"
                         >
                           artagdev@gmail.com
                         </a>
