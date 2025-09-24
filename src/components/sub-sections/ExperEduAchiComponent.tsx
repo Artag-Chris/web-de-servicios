@@ -10,21 +10,21 @@ function ExperEduAchiComponent({
   activeTab: any;
 }) {
   return (
-    <div className="mb-6">
-      <div className="flex border-b border-zinc-800 mb-4">
+    <div className="mb-4 sm:mb-6">
+      <div className="flex border-b border-zinc-800 mb-4 overflow-x-auto scrollbar-hide">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center px-4 py-2 text-sm font-medium transition-colors relative ${
+              className={`flex items-center px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors relative whitespace-nowrap ${
                 activeTab === tab.id
                   ? "text-emerald-500"
                   : "text-zinc-400 hover:text-zinc-200"
               }`}
             >
-              <Icon className="mr-2 h-4 w-4" />
+              <Icon className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4" />
               {tab.label}
               {activeTab === tab.id && (
                 <motion.div
@@ -38,7 +38,7 @@ function ExperEduAchiComponent({
         })}
       </div>
 
-      <div className="min-h-[180px]">
+      <div className="min-h-[200px] sm:min-h-[180px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -46,6 +46,7 @@ function ExperEduAchiComponent({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
+            className="text-sm sm:text-base"
           >
             {tabs.find((tab) => tab.id === activeTab)?.content}
           </motion.div>
