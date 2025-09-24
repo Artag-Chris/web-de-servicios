@@ -96,7 +96,7 @@ function HeaderMain() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="group relative flex items-center gap-2 text-white hover:text-primary transition-all duration-500 hover:scale-110 py-2 px-4 rounded-full hover:bg-white/10 dark:hover:bg-black/20"
+                    className="text-white group relative flex items-center gap-2 text-white hover:text-primary transition-all duration-500 hover:scale-110 py-2 px-4 rounded-full hover:bg-white/10 dark:hover:bg-black/20"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <span className="text-sm opacity-70 group-hover:opacity-100 transition-opacity duration-300">
@@ -123,7 +123,7 @@ function HeaderMain() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-110 rounded-full"
+                className="md:hidden text-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-110 rounded-full text-white"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -219,7 +219,7 @@ function HeaderMain() {
 
               <Button
                 size="sm"
-                className="bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-primary-foreground border-0 transition-all duration-500 hover:scale-105 glow-emerald flex items-center gap-2 px-4 py-2 rounded-full font-semibold group relative overflow-hidden"
+                className="text-white bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary text-primary-foreground border-0 transition-all duration-500 hover:scale-105 glow-emerald flex items-center gap-2 px-4 py-2 rounded-full font-semibold group relative overflow-hidden"
                 onClick={handleResumeDownload}
               >
                 <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
