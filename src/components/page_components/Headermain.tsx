@@ -36,9 +36,9 @@ function HeaderMain() {
         }`}
       >
         <div className="backdrop-blur-md bg-black/20 border-b border-white/10">
-          <div className="container mx-auto py-4 px-4">
-            <nav className="flex items-center justify-between">
-              <div className="text-xl font-bold">
+          <div className="max-w-7xl mx-auto py-2 sm:py-4 px-3 sm:px-4 w-full">
+            <nav className="flex items-center justify-between w-full">
+              <div className="text-base sm:text-lg lg:text-xl font-bold">
                 <span className="text-emerald-400">Artag</span>
                 <span className="text-white">Dev</span>
               </div>
@@ -71,10 +71,10 @@ function HeaderMain() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden text-white hover:text-emerald-400 hover:bg-emerald-400/10"
+                className="md:hidden text-white hover:text-emerald-400 hover:bg-emerald-400/10 -mr-2"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
-                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {isMobileMenuOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
               </Button>
             </nav>
           </div>
@@ -89,7 +89,7 @@ function HeaderMain() {
       >
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
         <div
-          className={`absolute top-0 right-0 h-full w-64 bg-black/90 backdrop-blur-md border-l border-white/10 transform transition-transform duration-300 ${
+          className={`absolute top-0 right-0 h-full w-[240px] sm:w-64 bg-black/90 backdrop-blur-md border-l border-white/10 transform transition-transform duration-300 ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -128,10 +128,10 @@ function HeaderMain() {
         }`}
       >
         <div className="backdrop-blur-md bg-black/30 border-t border-white/10">
-          <div className="container mx-auto px-4 py-3">
+          <div className="max-w-7xl mx-auto px-3 sm:px-4 py-2 sm:py-3">
             <nav className="flex items-center justify-between">
               {/* Logo */}
-              <div className="text-lg font-bold">
+              <div className="text-base sm:text-lg font-bold">
                 <span className="text-emerald-400">A</span>
                 <span className="text-white">D</span>
               </div>
@@ -150,12 +150,12 @@ function HeaderMain() {
               </div>
 
               {/* Mobile Navigation */}
-              <div className="flex md:hidden items-center gap-4">
+              <div className="flex md:hidden items-center gap-2 sm:gap-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-white/70 hover:text-emerald-400 transition-colors text-xs"
+                    className="text-white/70 hover:text-emerald-400 transition-colors text-[10px] sm:text-xs whitespace-nowrap"
                   >
                     {link.label}
                   </Link>

@@ -7,59 +7,59 @@ import GTMPageView from '@/components/google/GTMPageView'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  // Título principal (50-60 caracteres)
-  title: "Artag | Desarrollo de Software y Apps en Pereira",
-  // Alternates para SEO
+  // Main title (50-60 characters)
+  title: "Artag | Software and App Development in Pereira",
+  // Alternates for SEO
   alternates: {
     canonical: "https://www.artag.com.co",
   },
-  // Descripción optimizada (150-160 caracteres)
+  // Optimized description (150-160 characters)
   description:
-    "Soluciones digitales innovadoras en Pereira. Desarrollo de software, apps móviles y diseño UI/UX para empresas que buscan destacar en el mundo digital.",
-  // Keywords relevantes
+    "Innovative digital solutions in Pereira. Software development, mobile apps, and UI/UX design for companies looking to stand out in the digital world.",
+  // Relevant keywords
   keywords: [
-    "desarrollo de software",
-    "apps móviles",
+    "software development",
+    "mobile apps",
     "Pereira",
     "front-end",
     "back-end",
     "API",
-    "bases de datos",
-    "diseño UI/UX",
-    "diseño gráfico",
-    "arquitectura de software",
+    "databases",
+    "UI/UX design",
+    "graphic design",
+    "software architecture",
     "Artag",
-    "soluciones digitales",
+    "digital solutions",
   ],
-  // Open Graph para redes sociales
+  // Open Graph for social media
   openGraph: {
-    type: "website", 
-    locale: "es_CO",
+    type: "website",
+    locale: "en", // Keep as is if your primary audience is Spanish-speaking
     url: "https://www.artag.com.co",
-    title: "Artag | Soluciones Digitales en Pereira",
+    title: "Artag | Digital Solutions in Pereira",
     description:
-      "Desarrollo de software, aplicaciones móviles y diseño digital en Pereira. Innovación y tecnología para tu empresa.",
+      "Software development, mobile applications, and digital design in Pereira. Innovation and technology for your business.",
     siteName: "Artag",
     images: [
       {
-        url: "/logo.png", // Coloca esta imagen en /public
+        url: "/logo.png", // Place this image in /public
         width: 1200,
         height: 630,
-        alt: "Artag desarrollo de software en Pereira",
-      },  
-    ],   
+        alt: "Artag software development in Pereira",
+      },
+    ],
   },
-  // Twitter Card  
+  // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "Artag | Desarrollo de Software en Pereira",
+    title: "Artag | Software Development in Pereira",
     description:
-      "Aplicaciones móviles inteligentes y software personalizado desde Pereira, Colombia.",
-    images: ["/twitter-artag.png"], // Coloca esta imagen en /public
+      "Intelligent mobile applications and custom software from Pereira, Colombia.",
+    images: ["/twitter-artag.png"], // Place this image in /public
     site: "@artagdev",
     creator: "@artagdev",
   },
-  // Iconos
+  // Icons
   icons: {
     icon: [
       { url: "/logosinfondo.ico", sizes: "any" },
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
       { url: "/apple-icon.png", sizes: "180x180" },
     ],
   },
-  // Información de contacto y branding
+  // Contact information and branding
   authors: [{ name: "Artag", url: "https://www.artag.com.co" }],
   generator: "Next.js",
   applicationName: "Artag",
@@ -81,9 +81,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  // Verificación de Google Search Console (opcional)
+  // Google Search Console verification (optional)
   verification: {
-    google: "tu-codigo-de-verificacion-google",
+    google: "your-google-verification-code",
   },
   category: "technology",
 }

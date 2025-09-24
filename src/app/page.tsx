@@ -8,13 +8,15 @@ import Skills from "@/components/page_components/Skills";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 overflow-hidden">
       <HeaderMain />
-      <main>
+      <main className="w-full max-w-[100vw]">
         <Hero />
-        <Skills />
-        <Proyects />
-        <About />
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          <Skills />
+          <Proyects />
+          <About />
+        </div>
         <Contact />
       </main>
       <FooterMain />

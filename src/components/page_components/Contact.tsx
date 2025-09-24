@@ -70,9 +70,9 @@ function Contact() {
   }, [])
 
   return (
-    <section id="contact" className="py-20 bg-black">
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+    <section id="contact" className="py-12 sm:py-20 bg-black">
+      <div className="container mx-auto px-3 sm:px-4">
+        <div className="max-w-5xl mx-auto w-full">
           {/* Header */}
           <motion.div
             className="text-center mb-12"
@@ -88,16 +88,16 @@ function Contact() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-5 gap-8">
+          <div className="grid md:grid-cols-5 gap-4 sm:gap-8">
             {/* Contact Form */}
             <motion.div
-              className="md:col-span-3"
+              className="md:col-span-3 w-full"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <Card className="bg-zinc-900 border-zinc-800 overflow-hidden">
-                <CardContent className="p-6">
+              <Card className="bg-zinc-900 border-zinc-800 overflow-hidden w-full">
+                <CardContent className="p-4 sm:p-6">
                   {!isSubmitted ? (
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="space-y-4">
@@ -197,15 +197,15 @@ function Contact() {
 
             {/* Contact Info & Testimonials */}
             <motion.div
-              className="md:col-span-2"
+              className="md:col-span-2 w-full"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               {/* Contact Info */}
-              <Card className="bg-zinc-900 border-zinc-800 mb-6">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-6 text-white">Contact Information</h3>
+              <Card className="bg-zinc-900 border-zinc-800 mb-4 sm:mb-6 w-full">
+                <CardContent className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 text-white">Contact Information</h3>
 
                   <div className="space-y-5">
                     <div className="flex items-start gap-3">
