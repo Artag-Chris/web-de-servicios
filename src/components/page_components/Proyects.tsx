@@ -61,35 +61,36 @@ function Projects() {
     <div>
       
       {/* Projects Section */}
-      <section id="projects" className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">
-            Featured <span className="text-emerald-500">Projects</span>
-          </h2>
-
-          <div ref={carouselRef} className="relative">
-            {/* Carousel Navigation */}
-            <div className="flex justify-between absolute -top-16 right-0 space-x-2">
+      <section id="projects" className="py-12 sm:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          {/* Header with navigation for mobile */}
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-0">
+              Featured <span className="text-emerald-500">Projects</span>
+            </h2>
+            
+            {/* Navigation moved below title on mobile */}
+            <div className="flex items-center space-x-2">
               <button
                 onClick={handlePrevSlide}
-                className="p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors"
+                className="p-1.5 sm:p-2 rounded-full bg-zinc-800/80 hover:bg-zinc-700 transition-colors"
                 aria-label="Previous slide"
               >
-                <ChevronLeft className="h-5 w-5 text-zinc-400" />
+                <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 text-zinc-400" />
               </button>
               <button
                 onClick={handleNextSlide}
-                className="p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors"
+                className="p-1.5 sm:p-2 rounded-full bg-zinc-800/80 hover:bg-zinc-700 transition-colors"
                 aria-label="Next slide"
               >
-                <ChevronRight className="h-5 w-5 text-zinc-400" />
+                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 text-zinc-400" />
               </button>
-              <div className="flex items-center space-x-1 ml-4">
+              <div className="flex items-center space-x-1 ml-2 sm:ml-4">
                 {Array.from({ length: totalSlides }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`h-2 w-2 rounded-full transition-colors ${
+                    className={`h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full transition-colors ${
                       currentIndex === index ? "bg-emerald-500" : "bg-zinc-700"
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
