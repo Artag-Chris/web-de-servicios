@@ -19,8 +19,6 @@ function Hero() {
   const [showCityLoader, setShowCityLoader] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
-  const [mobileVideoLoaded, setMobileVideoLoaded] = useState(false)
-  const [preferVideo, setPreferVideo] = useState(true)
 
   // Handle mobile detection after component mounts to avoid hydration issues
   useEffect(() => {
@@ -29,14 +27,6 @@ function Hero() {
     const checkMobile = () => {
       const mobile = window.innerWidth <= 768
       setIsMobile(mobile)
-      
-      // Check for reduced data preference on mobile
-      if (mobile && 'connection' in navigator) {
-        const connection = (navigator as any).connection
-        if (connection && (connection.saveData || connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')) {
-          setPreferVideo(false)
-        }
-      }
     }
 
     // Initial check
@@ -62,33 +52,21 @@ function Hero() {
 
   // Handle video load and play
   useEffect(() => {
-    if (isMounted && videoRef.current) {
+    if (isMounted && !isMobile && videoRef.current) {
       const video = videoRef.current
 
       const handleCanPlay = () => {
-        if (isMobile) {
-          setMobileVideoLoaded(true)
-        } else {
-          setVideoLoaded(true)
-        }
-        
-        // Preload and play with optimization for mobile
+        setVideoLoaded(true)
         video.play().catch(console.error)
       }
 
       const handleLoadedData = () => {
-        if (isMobile) {
-          setMobileVideoLoaded(true)
-        } else {
-          setVideoLoaded(true)
-        }
+        setVideoLoaded(true)
       }
 
       const handleError = () => {
         console.warn("Video failed to load, using fallback image")
         setVideoLoaded(false)
-        setMobileVideoLoaded(false)
-        setPreferVideo(false)
         // Hide loader even if video fails
         setTimeout(() => setShowCityLoader(false), 1000)
       }
@@ -117,17 +95,10 @@ function Hero() {
     let timer: NodeJS.Timeout
 
     if (isMobile) {
-      // On mobile, hide loader when mobile video loads OR after shorter time
-      if (mobileVideoLoaded && preferVideo) {
-        timer = setTimeout(() => {
-          setShowCityLoader(false)
-        }, 300) // Faster for mobile
-      } else {
-        // Fallback: hide loader after shorter time for mobile
-        timer = setTimeout(() => {
-          setShowCityLoader(false)
-        }, 2000) // Shorter maximum time for mobile
-      }
+      // On mobile, hide loader after minimum time since we don't need to wait for video
+      timer = setTimeout(() => {
+        setShowCityLoader(false)
+      }, 1500)
     } else {
       // On desktop, hide loader when video is loaded OR after maximum time
       if (videoLoaded) {
@@ -145,7 +116,7 @@ function Hero() {
     return () => {
       if (timer) clearTimeout(timer)
     }
-  }, [isMounted, isMobile, videoLoaded, mobileVideoLoaded, preferVideo])
+  }, [isMounted, isMobile, videoLoaded])
 
   // Parallax effect - reduced on mobile
   const parallaxOffset = scrollY * (isMobile ? 0.2 : 0.4)
@@ -172,59 +143,25 @@ function Hero() {
           height: "calc(100% + 200px)",
         }}
       >
-        {/* Mobile Video/Image Background */}
+        {/* Mobile Image Background */}
         <div
           className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
             isMobile ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
         >
-          {/* Mobile Video - optimized version */}
-          {preferVideo && (
-            <video
-              ref={isMobile ? videoRef : undefined}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                mobileVideoLoaded && isMobile && preferVideo ? "opacity-100" : "opacity-0"
-              }`}
-              loop
-              muted
-              playsInline
-              preload="metadata" // Only load metadata initially for faster loading
-              poster="/technology.png" // Show poster while loading
-              // Optimizations for mobile
-              style={{
-                willChange: isMobile ? 'auto' : 'transform'
-              }}
-            >
-              {/* Mobile optimized sources - lower quality for faster loading */}
-              <source 
-                src="/tech4k.mp4" 
-                type="video/mp4" 
-                // Add these attributes for better mobile optimization
-                // We'll use the same file for now until you create the optimized version
-              />
-            </video>
-          )}
-          
-          {/* Fallback image for mobile */}
-          <div
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-              (!mobileVideoLoaded || !preferVideo) && isMobile ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Image
-              src="/technology.png"
-              alt="Technology background"
-              fill
-              priority={isMobile}
-              className="object-cover"
-              onLoad={() => {
-                // Ensure loader hides when image loads on mobile
-                if (isMobile && !preferVideo) {
-                  setTimeout(() => setShowCityLoader(false), 300)
-                }
-              }}
-            />
-          </div>
+          <Image
+            src="/technology.png"
+            alt="Technology background"
+            fill
+            priority={isMobile}
+            className="object-cover"
+            onLoad={() => {
+              // Ensure loader hides when image loads on mobile
+              if (isMobile) {
+                setTimeout(() => setShowCityLoader(false), 500)
+              }
+            }}
+          />
         </div>
 
         {/* Desktop Video Background */}
@@ -234,15 +171,14 @@ function Hero() {
           }`}
         >
           <video
-            ref={!isMobile ? videoRef : undefined}
+            ref={videoRef}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               videoLoaded && !isMobile ? "opacity-100" : "opacity-0"
             }`}
             loop
             muted
             playsInline
-            preload="auto" // Full preload for desktop
-            poster="/technology.png"
+            preload="auto"
           >
             <source src="/tech4k.mp4" type="video/mp4" />
           </video>
@@ -257,15 +193,9 @@ function Hero() {
           </div>
         </div>
 
-        {/* Overlay - optimized for video/image visibility */}
+        {/* Overlay - darker on mobile for better text contrast */}
         <div
-          className={`absolute inset-0 z-10 transition-all duration-500 ${
-            isMobile 
-              ? (mobileVideoLoaded && preferVideo) 
-                ? "bg-black/60" 
-                : "bg-black/70" 
-              : "bg-black/50"
-          }`}
+          className={`absolute inset-0 z-10 transition-all duration-500 ${isMobile ? "bg-black/70" : "bg-black/50"}`}
         />
       </div>
 
