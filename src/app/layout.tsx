@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import { GoogleTagManager } from '@/components/google/GoogleTagManager'
 import GTMPageView from '@/components/google/GTMPageView'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -96,6 +97,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className}>
+        <SpeedInsights />
         <GoogleTagManager />
         <GTMPageView />
         {children}
