@@ -1,10 +1,16 @@
 "use client"
 
 import Link from "next/link"
-import { useState, useEffect } from "react"
-import { Button } from "../ui/button"
-import { Download, Menu, X, Sparkles, Zap } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+import { Button } from "@/components/ui/button"
+import { Download, Menu, X, Sparkles, Zap, User, Code2, Rocket, Mail } from "lucide-react"
 import { handleResumeDownload } from "@/functions/handleResumenDownload"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 function HeaderMain() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -12,14 +18,43 @@ function HeaderMain() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [windowDimensions, setWindowDimensions] = useState({ width: 1920, height: 1080 })
 
+  const headerRef = useRef<HTMLElement>(null)
+  const bottomNavRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setWindowDimensions({ width: window.innerWidth, height: window.innerHeight })
     }
 
+    let lastScrollY = 0
     const handleScroll = () => {
       const scrollPosition = window.scrollY
-      setIsScrolled(scrollPosition > 100)
+      const shouldBeScrolled = scrollPosition > 100
+
+      if (shouldBeScrolled !== isScrolled) {
+        setIsScrolled(shouldBeScrolled)
+
+        // Animación suave con GSAP
+        if (headerRef.current) {
+          gsap.to(headerRef.current, {
+            y: shouldBeScrolled ? -100 : 0,
+            opacity: shouldBeScrolled ? 0 : 1,
+            duration: 0.6,
+            ease: "power3.out",
+          })
+        }
+
+        if (bottomNavRef.current) {
+          gsap.to(bottomNavRef.current, {
+            y: shouldBeScrolled ? 0 : 100,
+            opacity: shouldBeScrolled ? 1 : 0,
+            duration: 0.6,
+            ease: "power3.out",
+          })
+        }
+      }
+
+      lastScrollY = scrollPosition
     }
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -38,18 +73,19 @@ function HeaderMain() {
       window.removeEventListener("mousemove", handleMouseMove)
       window.removeEventListener("resize", handleResize)
     }
-  }, [])
+  }, [isScrolled])
 
   const navLinks = [
-    { href: "#about", label: "About", icon: "👨‍💻" },
-    { href: "#skills", label: "Skills", icon: "⚡" },
-    { href: "#projects", label: "Projects", icon: "🚀" },
-    { href: "#contact", label: "Contact", icon: "📧" },
+    { href: "#about", label: "About", icon: User },
+    { href: "#skills", label: "Skills", icon: Code2 },
+    { href: "#projects", label: "Projects", icon: Rocket },
+    { href: "#contact", label: "Contact", icon: Mail },
   ]
 
   return (
     <>
       <header
+        ref={headerRef}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
           isScrolled ? "transform -translate-y-full opacity-0" : "transform translate-y-0 opacity-100"
         }`}
@@ -91,22 +127,27 @@ function HeaderMain() {
                 <div className="w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:w-full"></div>
               </div>
 
-              <div className="hidden md:flex items-center gap-8">
-                {navLinks.map((link, index) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-white group relative flex items-center gap-2 text-white hover:text-primary transition-all duration-500 hover:scale-110 py-2 px-4 rounded-full hover:bg-white/10 dark:hover:bg-black/20"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <span className="text-sm opacity-70 group-hover:opacity-100 transition-opacity duration-300">
-                      {link.icon}
-                    </span>
-                    <span className="font-medium">{link.label}</span>
-                    <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:w-full group-hover:left-0 rounded-full"></span>
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-sm"></div>
-                  </Link>
-                ))}
+              <div className="hidden md:flex items-center gap-2">
+                {navLinks.map((link, index) => {
+                  const IconComponent = link.icon
+                  return (
+                    <div key={link.href} className="flex items-center">
+                      <Link
+                        href={link.href}
+                        className="text-white group relative flex items-center gap-2 text-white hover:text-primary transition-all duration-500 hover:scale-110 py-2 px-4 rounded-full hover:bg-white/10 dark:hover:bg-black/20"
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        <IconComponent className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:rotate-12" />
+                        <span className="font-medium">{link.label}</span>
+                        <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:w-full group-hover:left-0 rounded-full"></span>
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-sm"></div>
+                      </Link>
+                      {index < navLinks.length - 1 && (
+                        <div className="h-6 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent mx-1"></div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
 
               <Button
@@ -146,18 +187,21 @@ function HeaderMain() {
         >
           <div className="p-8 pt-24">
             <div className="flex flex-col gap-6">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg py-3 px-4 rounded-xl hover:bg-white/10 group"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <span className="text-base group-hover:scale-110 transition-transform duration-300">{link.icon}</span>
-                  <span className="font-medium">{link.label}</span>
-                </Link>
-              ))}
+              {navLinks.map((link, index) => {
+                const IconComponent = link.icon
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg py-3 px-4 rounded-xl hover:bg-white/10 group"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <IconComponent className="w-5 h-5 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12" />
+                    <span className="font-medium">{link.label}</span>
+                  </Link>
+                )
+              })}
               <Button
                 variant="outline"
                 className="flex items-center gap-3 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary transition-all duration-300 mt-6 bg-transparent rounded-xl py-3 group"
@@ -175,6 +219,7 @@ function HeaderMain() {
       </div>
 
       <div
+        ref={bottomNavRef}
         className={`fixed bottom-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
           isScrolled ? "transform translate-y-0 opacity-100" : "transform translate-y-full opacity-0"
         }`}
@@ -192,29 +237,40 @@ function HeaderMain() {
                 </span>
               </div>
 
-              <div className="hidden md:flex items-center gap-8">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-white hover:text-primary transition-all duration-300 text-sm hover:scale-105 py-2 px-3 rounded-full hover:bg-white/10 dark:hover:bg-black/20 font-medium"
-                  >
-                    {link.label}
-                  </Link>
+              <div className="hidden md:flex items-center gap-2">
+                {navLinks.map((link, index) => (
+                  <div key={link.href} className="flex items-center">
+                    <Link
+                      href={link.href}
+                      className="text-white hover:text-primary transition-all duration-300 text-sm hover:scale-105 py-2 px-3 rounded-full hover:bg-white/10 dark:hover:bg-black/20 font-medium"
+                    >
+                      {link.label}
+                    </Link>
+                    {index < navLinks.length - 1 && (
+                      <div className="h-4 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent mx-1"></div>
+                    )}
+                  </div>
                 ))}
               </div>
 
-              <div className="flex md:hidden items-center gap-6">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-white hover:text-primary transition-all duration-300 text-xs hover:scale-110 flex flex-col items-center gap-1"
-                  >
-                    <span className="text-sm">{link.icon}</span>
-                    <span className="font-medium">{link.label}</span>
-                  </Link>
-                ))}
+              <div className="flex md:hidden items-center gap-4">
+                {navLinks.map((link, index) => {
+                  const IconComponent = link.icon
+                  return (
+                    <div key={link.href} className="flex items-center">
+                      <Link
+                        href={link.href}
+                        className="text-white hover:text-primary transition-all duration-300 text-xs hover:scale-110 flex flex-col items-center gap-1"
+                      >
+                        <IconComponent className="w-4 h-4" />
+                        <span className="font-medium">{link.label}</span>
+                      </Link>
+                      {index < navLinks.length - 1 && (
+                        <div className="h-8 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent mx-2"></div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
 
               <Button
