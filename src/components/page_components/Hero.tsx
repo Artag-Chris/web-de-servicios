@@ -3,13 +3,10 @@
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-
-import MoreAboutmeButton from "../compontents/MoreAboutmeButton"
 import TypingAnimation from "../animations/typingAnimation"
 import CityLoader from "../loading/city-loader"
 import CTAButton from "../compontents/CTABottom"
 import { Sparkles } from "lucide-react"
-
 
 function Hero() {
   const videoContainerRef = useRef<HTMLDivElement>(null)
@@ -52,7 +49,7 @@ function Hero() {
 
   // Handle video load and play
   useEffect(() => {
-    if (isMounted && !isMobile && videoRef.current) {
+    if (isMounted && videoRef.current) {
       const video = videoRef.current
 
       const handleCanPlay = () => {
@@ -86,7 +83,7 @@ function Hero() {
         video.removeEventListener("error", handleError)
       }
     }
-  }, [isMounted, isMobile])
+  }, [isMounted])
 
   // Handle city loader visibility
   useEffect(() => {
@@ -94,29 +91,21 @@ function Hero() {
 
     let timer: NodeJS.Timeout
 
-    if (isMobile) {
-      // On mobile, hide loader after minimum time since we don't need to wait for video
+    if (videoLoaded) {
       timer = setTimeout(() => {
         setShowCityLoader(false)
-      }, 1500)
+      }, 500)
     } else {
-      // On desktop, hide loader when video is loaded OR after maximum time
-      if (videoLoaded) {
-        timer = setTimeout(() => {
-          setShowCityLoader(false)
-        }, 500)
-      } else {
-        // Fallback: hide loader after maximum time even if video hasn't loaded
-        timer = setTimeout(() => {
-          setShowCityLoader(false)
-        }, 4000) // Maximum 4 seconds
-      }
+      // Fallback: hide loader after maximum time even if video hasn't loaded
+      timer = setTimeout(() => {
+        setShowCityLoader(false)
+      }, 4000) // Maximum 4 seconds
     }
 
     return () => {
       if (timer) clearTimeout(timer)
     }
-  }, [isMounted, isMobile, videoLoaded])
+  }, [isMounted, videoLoaded])
 
   // Parallax effect - reduced on mobile
   const parallaxOffset = scrollY * (isMobile ? 0.2 : 0.4)
@@ -143,54 +132,39 @@ function Hero() {
           height: "calc(100% + 200px)",
         }}
       >
-        {/* Mobile Image Background */}
+        {/* Video Background */}
+        <video
+          ref={videoRef}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            videoLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          loop
+          muted
+          playsInline
+          preload="auto"
+        >
+          <source src="/tech4k.mp4" type="video/mp4" />
+        </video>
+
+        {/* Fallback image for desktop if video fails to load */}
         <div
           className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-            isMobile ? "opacity-100" : "opacity-0 pointer-events-none"
+            !videoLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
           <Image
             src="/technology.png"
             alt="Technology background"
             fill
-            priority={isMobile}
+            priority
             className="object-cover"
             onLoad={() => {
-              // Ensure loader hides when image loads on mobile
-              if (isMobile) {
+              // Ensure loader hides when fallback image loads
+              if (!videoLoaded) {
                 setTimeout(() => setShowCityLoader(false), 500)
               }
             }}
           />
-        </div>
-
-        {/* Desktop Video Background */}
-        <div
-          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-            !isMobile ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
-        >
-          <video
-            ref={videoRef}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              videoLoaded && !isMobile ? "opacity-100" : "opacity-0"
-            }`}
-            loop
-            muted
-            playsInline
-            preload="auto"
-          >
-            <source src="/tech4k.mp4" type="video/mp4" />
-          </video>
-
-          {/* Fallback image for desktop if video fails to load */}
-          <div
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-              !videoLoaded && !isMobile ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Image src="/technology.png" alt="Technology background fallback" fill className="object-cover" />
-          </div>
         </div>
 
         {/* Overlay - darker on mobile for better text contrast */}
@@ -212,18 +186,19 @@ function Hero() {
             />
           </Badge>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 text-white">
-            Where Innovation Clicks: <span className="text-emerald-500">Experiences </span>  Designed to Captivate
+            Where Innovation Clicks: <span className="text-emerald-500">Experiences </span> Designed to Captivate
           </h1>
           <p className="text-zinc-200 text-base sm:text-lg md:text-xl mb-6 md:mb-8 max-w-2xl">
-            I transform visions into beating-heart realities: crafting emotion-driven web experiences, AI-powered applications, and seamless APIs that make your digital dreams breathe.
+            I transform visions into beating-heart realities: crafting emotion-driven web experiences, AI-powered
+            applications, and seamless APIs that make your digital dreams breathe.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <CTAButton text={"Contac me"} icon={<Sparkles/>} />
+            <CTAButton text={"Contac me"} icon={<Sparkles />} />
           </div>
         </div>
       </section>
-    </div> 
+    </div>
   )
 }
 
