@@ -76,10 +76,10 @@ function HeaderMain() {
   }, [isScrolled])
 
   const navLinks = [
-    { href: "#about", label: "About", icon: User },
-    { href: "#skills", label: "Skills", icon: Code2 },
-    { href: "#projects", label: "Projects", icon: Rocket },
-    { href: "#contact", label: "Contact", icon: Mail },
+    { href: "#about", label: "Acerca de mi", icon: User },
+    { href: "#skills", label: "Habilidades", icon: Code2 },
+    { href: "#projects", label: "Proyectos", icon: Rocket },
+    { href: "#contact", label: "Contacto", icon: Mail },
   ]
 
   return (

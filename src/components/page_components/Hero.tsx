@@ -135,9 +135,8 @@ function Hero() {
         {/* Video Background */}
         <video
           ref={videoRef}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            videoLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? "opacity-100" : "opacity-0"
+            }`}
           loop
           muted
           playsInline
@@ -148,9 +147,8 @@ function Hero() {
 
         {/* Fallback image for desktop if video fails to load */}
         <div
-          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
-            !videoLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${!videoLoaded ? "opacity-100" : "opacity-0"
+            }`}
         >
           <Image
             src="/technology.png"
@@ -178,7 +176,11 @@ function Hero() {
         <div className="max-w-3xl">
           <Badge className="mb-4 bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500/20 transition-colors">
             <TypingAnimation
-              phrases={["Fullstack Developer", "UI/UX Designer", "Problem Solver"]}
+              phrases={[
+                "Desarrollador Fullstack",
+                "Consultor en Automatización",
+                "Impulsor de Crecimiento Digital"
+              ]}
               typeSpeed={80}
               eraseSpeed={40}
               delayBetweenPhrases={1500}
@@ -186,18 +188,22 @@ function Hero() {
             />
           </Badge>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 text-white">
-            Where Innovation Clicks: <span className="text-emerald-500">Experiences </span> Designed to Captivate
+            Donde la Innovación se Activa: <span className="text-emerald-500">Soluciones</span> que Transforman tu Negocio
           </h1>
           <p className="text-zinc-200 text-base sm:text-lg md:text-xl mb-6 md:mb-8 max-w-2xl">
-            I transform visions into beating-heart realities: crafting emotion-driven web experiences, AI-powered
-            applications, and seamless APIs that make your digital dreams breathe.
+            Potencio tu empresa con soluciones que automatizan y hacen crecer tu presencia digital.
+            Integro <b className="text-emerald-500">WhatsApp</b>, <b className="text-emerald-500">Instagram</b> y otras plataformas para <b className="text-emerald-500">conectar con tus clientes</b>,
+            agilizar procesos y maximizar resultados.
+            Mi consultoría te ayuda a construir experiencias web, aplicaciones inteligentes y APIs que impulsan
+            la evolución de tu negocio.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <CTAButton text={"Contac me"} icon={<Sparkles />} />
+            <CTAButton text={"Contáctame"} icon={<Sparkles />} />
           </div>
         </div>
       </section>
+
     </div>
   )
 }
