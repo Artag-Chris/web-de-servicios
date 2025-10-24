@@ -14,13 +14,13 @@ export default function Home() {
       <main className="w-full max-w-[100vw]">
         <Hero />
         <div className="max-w-7xl mx-auto px-3 sm:px-4">
-          <StatsSection 
-            title={"Statistics"}
-            description={"Some interesting statistics about our platform."}
+          <StatsSection
+            title={"Estadisticas"}
+            description={"algunas estadisticas de nuestro trabajo"}
             stats={[
-              { value: "100+", label: "Projects Completed" },
-              { value: "50+", label: "Happy Clients" },
-              { value: "10+", label: "Awards Won" },
+              { value: "100+", label: "Proyectos completados" },
+              { value: "50+", label: "Clientes felices" },
+              { value: "10+", label: "Premios ganados" },
             ]}
           />
           <Proyects />
@@ -32,4 +32,4 @@ export default function Home() {
     </div>
   )
 }
-  
+
