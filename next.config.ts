@@ -10,7 +10,8 @@ const nextConfig: NextConfig = {
             'hebbkx1anhila5yf.public.blob.vercel-storage.com',
             'img.youtube.com',
             'res.cloudinary.com',
-            'images.unsplash.com'
+            'images.unsplash.com',
+            'via.placeholder.com'
         ],
     },
 };
