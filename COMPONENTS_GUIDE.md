@@ -82,9 +82,13 @@ WhyChooseUs (testimonios + razones)
   ↓
 Pricing (planes con toggle mensual/anual)
   ↓
+Team (equipo con modal expandible)
+  ↓
 Projects
   ↓
 About
+  ↓
+CTASection (contacto + newsletter)
   ↓
 Contact
   ↓
@@ -119,6 +123,91 @@ Footer
 - Garantía de devolución
 - Dominio y hosting
 - Métodos de pago
+
+---
+
+### 5. CTA Section (Contact + Newsletter)
+**Ubicación:** `src/components/page_components/CTASection.tsx`
+
+**Características:**
+- Toggle entre formulario de contacto y newsletter
+- Floating labels con animación suave
+- Validación de formularios
+- Mensajes de éxito animados
+- Grid de características con iconos
+- Social proof con métricas
+- CTA card con gradiente
+- Background animado con grid decorativo
+
+**Datos:** `src/data/ctaData.ts`
+
+**Formulario de Contacto:**
+- Campos: Nombre, Email, Mensaje
+- Labels flotantes que se elevan al focus
+- Iconos en cada campo
+- Validación HTML5
+- Animación de envío exitoso
+
+**Newsletter:**
+- Input de email con botón integrado
+- Lista de beneficios con checkmarks
+- Nota de privacidad
+- Confirmación animada
+
+**Características destacadas:**
+- Respuesta rápida (< 24h)
+- 100% Confidencial
+- Consultoría gratuita
+
+**Social Proof:**
+- 2,500+ suscriptores
+- 4.9/5 calificación
+- 150+ proyectos
+
+---
+
+### 6. Team Section
+**Ubicación:** `src/components/page_components/Team.tsx`
+
+**Características:**
+- Grid de 4 miembros del equipo
+- Cards interactivas con hover effects
+- Modal expandible con detalles completos
+- Barras de expertise animadas
+- Social media icons con hover
+- Fun facts y quotes personales
+- Valores del equipo destacados
+- Imágenes con overlay gradient
+
+**Datos:** `src/data/teamData.ts`
+
+**Miembros del equipo:**
+1. **Alejandro Torres** - CEO & Founder
+   - Estrategia Digital, Liderazgo, Innovación
+   - Fun fact: Ha escalado 3 startups
+
+2. **María Rodríguez** - Lead Designer
+   - UI/UX Design, Branding, Design Systems
+   - Fun fact: Colecciona fuentes tipográficas
+
+3. **Carlos Mendoza** - Full Stack Developer
+   - React, Node.js, Cloud Architecture
+   - Fun fact: Resuelve bugs mientras hace yoga
+
+4. **Laura Sánchez** - Marketing Strategist
+   - Digital Marketing, Content Strategy, Analytics
+   - Fun fact: Predice tendencias
+
+**Interacciones:**
+- Hover en card: Muestra social icons y skills
+- Click en card: Abre modal con detalles completos
+- Modal incluye: Bio, quote, fun fact, expertise bars, social links
+
+**Valores destacados:**
+- Colaboración
+- Creatividad
+- Excelencia
+- Compromiso
 
 ---
 

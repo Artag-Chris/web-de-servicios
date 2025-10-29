@@ -1,11 +1,13 @@
 import FooterMain from "@/components/footers/FooterMain";
 import About from "@/components/page_components/About";
 import Contact from "@/components/page_components/Contact";
+import CTASection from "@/components/page_components/CTASection";
 import HeaderMain from "@/components/page_components/Headermain";
 import Hero from "@/components/page_components/Hero";
 import Pricing from "@/components/page_components/Pricing";
 import Proyects from "@/components/page_components/Proyects";
 import Services from "@/components/page_components/Services";
+import Team from "@/components/page_components/Team";
 import WhyChooseUs from "@/components/page_components/WhyChooseUs";
 import { StatsSection } from "@/components/page_components/stats-section";
 
@@ -29,10 +31,12 @@ export default function Home() {
         <Services />
         <WhyChooseUs />
         <Pricing />
+        <Team />
         <div className="max-w-7xl mx-auto px-3 sm:px-4">
           <Proyects />
-          <About />
+         
         </div>
+        <CTASection />
         <Contact />
       </main>
       <FooterMain />

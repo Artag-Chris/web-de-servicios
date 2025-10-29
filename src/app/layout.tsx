@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.artag.com.co'),
   // Main title (50-60 characters)
   title: "Artag | Software and App Development in Pereira",
   // Alternates for SEO
