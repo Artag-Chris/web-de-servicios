@@ -80,6 +80,8 @@ Services (hover con imágenes)
   ↓
 WhyChooseUs (testimonios + razones)
   ↓
+Pricing (planes con toggle mensual/anual)
+  ↓
 Projects
   ↓
 About
@@ -88,6 +90,35 @@ Contact
   ↓
 Footer
 ```
+
+---
+
+### 4. Pricing Section
+**Ubicación:** `src/components/page_components/Pricing.tsx`
+
+**Características:**
+- Toggle mensual/anual con badge de descuento
+- 3 planes de precios (Starter, Business, Premium)
+- Plan "Más Popular" destacado y escalado
+- Lista de características con iconos check/x
+- Cálculo automático de ahorro anual
+- Sección de beneficios con iconos
+- FAQs expandibles con animación
+- Diseño totalmente responsivo
+
+**Datos:** `src/data/pricingData.ts`
+
+**Planes incluidos:**
+- **Starter** ($299/mes) - Para emprendedores
+- **Business** ($599/mes) - Más popular, para empresas en crecimiento
+- **Premium** ($999/mes) - Solución enterprise completa
+
+**FAQs incluidos:**
+- Qué incluye el soporte
+- Cambio de planes
+- Garantía de devolución
+- Dominio y hosting
+- Métodos de pago
 
 ---
 

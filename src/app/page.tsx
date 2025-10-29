@@ -3,6 +3,7 @@ import About from "@/components/page_components/About";
 import Contact from "@/components/page_components/Contact";
 import HeaderMain from "@/components/page_components/Headermain";
 import Hero from "@/components/page_components/Hero";
+import Pricing from "@/components/page_components/Pricing";
 import Proyects from "@/components/page_components/Proyects";
 import Services from "@/components/page_components/Services";
 import WhyChooseUs from "@/components/page_components/WhyChooseUs";
@@ -27,6 +28,7 @@ export default function Home() {
         </div>
         <Services />
         <WhyChooseUs />
+        <Pricing />
         <div className="max-w-7xl mx-auto px-3 sm:px-4">
           <Proyects />
           <About />
