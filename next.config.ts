@@ -9,7 +9,8 @@ const nextConfig: NextConfig = {
         domains: [
             'hebbkx1anhila5yf.public.blob.vercel-storage.com',
             'img.youtube.com',
-            'res.cloudinary.com'
+            'res.cloudinary.com',
+            'images.unsplash.com'
         ],
     },
 };

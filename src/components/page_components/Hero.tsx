@@ -188,7 +188,7 @@ function Hero() {
             />
           </Badge>
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 text-white">
-            Donde la Innovación se Activa: <span className="text-emerald-500">Soluciones</span> que Transforman tu Negocio
+           Tu negocio necesita <span className="text-emerald-500">Soluciones</span>  que funcionen
           </h1>
           <p className="text-zinc-200 text-base sm:text-lg md:text-xl mb-6 md:mb-8 max-w-2xl">
             Potencio tu empresa con soluciones que automatizan y hacen crecer tu presencia digital.

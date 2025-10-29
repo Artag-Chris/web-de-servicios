@@ -4,7 +4,7 @@ import Contact from "@/components/page_components/Contact";
 import HeaderMain from "@/components/page_components/Headermain";
 import Hero from "@/components/page_components/Hero";
 import Proyects from "@/components/page_components/Proyects";
-import Skills from "@/components/page_components/Skills";
+import Services from "@/components/page_components/Services";
 import { StatsSection } from "@/components/page_components/stats-section";
 
 export default function Home() {
@@ -23,6 +23,9 @@ export default function Home() {
               { value: "10+", label: "Premios ganados" },
             ]}
           />
+        </div>
+        <Services />
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
           <Proyects />
           <About />
         </div>

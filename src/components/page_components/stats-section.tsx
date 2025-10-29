@@ -2,7 +2,7 @@
 
 import { TrendingUp } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { motion, useMotionValue, useTransform, animate } from "framer-motion"
 
 interface Stat {
   value: string
@@ -18,6 +18,38 @@ interface StatsHeroSectionProps {
   ctaText?: string
   ctaHref?: string
   onCtaClick?: () => void
+}
+
+// Component for animated counter
+function AnimatedCounter({ value, isVisible }: { value: string; isVisible: boolean }) {
+  const [displayValue, setDisplayValue] = useState("0")
+
+  useEffect(() => {
+    if (!isVisible) return
+
+    // Extract number and suffix (like +, K, M, etc.)
+    const match = value.match(/^(\d+)(.*)$/)
+    if (!match) {
+      setDisplayValue(value)
+      return
+    }
+
+    const targetNumber = parseInt(match[1])
+    const suffix = match[2]
+
+    // Animate from 0 to target number
+    const controls = animate(0, targetNumber, {
+      duration: 2,
+      ease: "easeOut",
+      onUpdate: (latest) => {
+        setDisplayValue(Math.floor(latest) + suffix)
+      },
+    })
+
+    return () => controls.stop()
+  }, [value, isVisible])
+
+  return <>{displayValue}</>
 }
 
 export function StatsSection({
@@ -86,9 +118,9 @@ export function StatsSection({
             </div>
             <span className="text-emerald-400 font-medium text-sm">{tag}</span>
           </div>
-          
+
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-            {title.split(' ').map((word, i) => 
+            {title.split(' ').map((word, i) =>
               i === title.split(' ').length - 1 ? (
                 <span key={i} className="text-emerald-500"> {word}</span>
               ) : (
@@ -112,10 +144,10 @@ export function StatsSection({
               <div className="relative p-6 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-emerald-500/30 transition-all duration-300 overflow-hidden">
                 {/* Glow effect on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 via-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/5 group-hover:via-emerald-500/10 group-hover:to-emerald-500/5 transition-all duration-500"></div>
-                
+
                 <div className="relative z-10">
                   <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">
-                    {stat.value}
+                    <AnimatedCounter value={stat.value} isVisible={isVisible} />
                   </div>
                   <p className="text-sm sm:text-base text-zinc-400 group-hover:text-zinc-300 transition-colors duration-300">
                     {stat.label}
