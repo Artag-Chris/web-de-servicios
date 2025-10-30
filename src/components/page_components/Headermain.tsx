@@ -76,19 +76,19 @@ function HeaderMain() {
   }, [isScrolled])
 
   const navLinks = [
-    { href: "#about", label: "Acerca de mi", icon: User },
-    { href: "#skills", label: "Habilidades", icon: Code2 },
+    { href: "#services", label: "Servicios", icon: Sparkles },
+    { href: "#pricing", label: "Precios", icon: Zap },
+    { href: "#team", label: "Equipo", icon: User },
     { href: "#projects", label: "Proyectos", icon: Rocket },
-    { href: "#contact", label: "Contacto", icon: Mail },
+    { href: "#cta-section", label: "Contacto", icon: Mail },
   ]
 
   return (
     <>
       <header
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
-          isScrolled ? "transform -translate-y-full opacity-0" : "transform translate-y-0 opacity-100"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${isScrolled ? "transform -translate-y-full opacity-0" : "transform translate-y-0 opacity-100"
+          }`}
       >
         {/* Aurora background effect */}
         <div className="absolute inset-0 aurora-bg opacity-30"></div>
@@ -175,15 +175,13 @@ function HeaderMain() {
       </header>
 
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
       >
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
         <div
-          className={`absolute top-0 right-0 h-full w-80 glass-effect-dark border-l border-white/10 transform transition-all duration-500 ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`absolute top-0 right-0 h-full w-80 glass-effect-dark border-l border-white/10 transform transition-all duration-500 ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div className="p-8 pt-24">
             <div className="flex flex-col gap-6">
@@ -220,9 +218,8 @@ function HeaderMain() {
 
       <div
         ref={bottomNavRef}
-        className={`fixed bottom-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${
-          isScrolled ? "transform translate-y-0 opacity-100" : "transform translate-y-full opacity-0"
-        }`}
+        className={`fixed bottom-0 left-0 right-0 z-50 transition-all duration-700 ease-out ${isScrolled ? "transform translate-y-0 opacity-100" : "transform translate-y-full opacity-0"
+          }`}
       >
         <div className="glass-effect dark:glass-effect-dark border-t border-white/20 dark:border-white/10 relative overflow-hidden">
           {/* Subtle aurora effect */}
