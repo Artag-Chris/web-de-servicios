@@ -142,7 +142,7 @@ function Hero() {
           playsInline
           preload="auto"
         >
-          <source src="/tech4k.mp4" type="video/mp4" />
+          <source src="/Fondo.mp4" type="video/mp4" />
         </video>
 
         {/* Fallback image for desktop if video fails to load */}
