@@ -48,6 +48,5 @@
   "main": "tailwind.config.js",
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "license": "ISC"
 }

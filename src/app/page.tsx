@@ -34,10 +34,10 @@ export default function Home() {
         <Team />
         <div className="max-w-7xl mx-auto px-3 sm:px-4">
           <Proyects />
-         
+
         </div>
         <CTASection />
-        <Contact />
+       
       </main>
       <FooterMain />
     </div>
