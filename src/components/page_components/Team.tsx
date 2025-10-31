@@ -70,13 +70,14 @@ export default function Team() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-            Meet the <span className="text-emerald-500">Team</span>
+            Conoce al <span className="text-emerald-500">Equipo</span>
           </h2>
 
           <p className="text-zinc-400 text-lg sm:text-xl max-w-3xl mx-auto mb-12">
             Un equipo diverso de profesionales apasionados, unidos por la creatividad, la colaboración
             y el compromiso con la excelencia. Conoce a las personas que hacen realidad tus proyectos.
           </p>
+
 
           {/* Values */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto">
@@ -115,7 +116,7 @@ export default function Team() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  
+
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
 

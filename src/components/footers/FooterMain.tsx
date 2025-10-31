@@ -27,10 +27,10 @@ function Footer() {
 
   return (
     <footer className="bg-zinc-900 border-t border-zinc-800">
-      {/* Main Footer */}
+      {/* Footer Principal */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Column 1: Logo & About */}
+          {/* Columna 1: Logo y Acerca de */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center">
@@ -40,7 +40,7 @@ function Footer() {
             </div>
 
             <p className="text-zinc-400 text-sm">
-              Creating exceptional digital experiences through innovative solutions and clean, efficient code.
+              Creando experiencias digitales excepcionales a través de soluciones innovadoras y código limpio y eficiente.
             </p>
 
             <div className="flex flex-wrap gap-2 pt-2">
@@ -63,10 +63,10 @@ function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Columna 2: Enlaces rápidos */}
           <div>
             <h3 className="text-white font-semibold mb-4 relative inline-block">
-              Quick Links
+              Enlaces rápidos
               <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-emerald-500"></span>
             </h3>
             <ul className="space-y-2">
@@ -84,10 +84,10 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Services */}
+          {/* Columna 3: Servicios */}
           <div>
             <h3 className="text-white font-semibold mb-4 relative inline-block">
-              Services
+              Servicios
               <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-emerald-500"></span>
             </h3>
             <ul className="space-y-2">
@@ -105,14 +105,14 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Newsletter */}
+          {/* Columna 4: Newsletter */}
           <div>
             <h3 className="text-white font-semibold mb-4 relative inline-block">
               Newsletter
               <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-emerald-500"></span>
             </h3>
             <p className="text-zinc-400 text-sm mb-4">
-              Subscribe to receive updates on new projects and tech articles.
+              Suscríbete para recibir actualizaciones sobre nuevos proyectos y artículos tecnológicos.
             </p>
 
             {!isSubscribed ? (
@@ -120,7 +120,7 @@ function Footer() {
                 <div className="relative">
                   <Input
                     type="email"
-                    placeholder="Your email address"
+                    placeholder="Tu correo electrónico"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -134,30 +134,31 @@ function Footer() {
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>
-                <p className="text-zinc-500 text-xs">I respect your privacy. Unsubscribe at any time.</p>
+                <p className="text-zinc-500 text-xs">
+                  Respeto tu privacidad. Puedes darte de baja cuando desees.
+                </p>
               </form>
             ) : (
               <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-md p-3 text-emerald-400 text-sm">
-                Thanks for subscribing!
+                ¡Gracias por suscribirte!
               </div>
             )}
           </div>
         </div>
       </div>
 
-      {/* Bottom Footer */}
+      {/* Footer Inferior */}
       <div className="border-t border-zinc-800 py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-zinc-500 text-sm mb-4 md:mb-0">© {currentYear} Artag Dev. Todos los.</div>
-
+            <div className="text-zinc-500 text-sm mb-4 md:mb-0">© {currentYear} Artag Dev. Todos los derechos reservados.</div>
             <div className="flex items-center gap-4">
               <Link href="#" className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">
-                Privacy Policy
+                Política de privacidad
               </Link>
               <span className="text-zinc-700">•</span>
               <Link href="#" className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors">
-                Terms of Service
+                Términos de servicio
               </Link>
               <span className="text-zinc-700">•</span>
               <div className="text-zinc-500 text-sm flex items-center">

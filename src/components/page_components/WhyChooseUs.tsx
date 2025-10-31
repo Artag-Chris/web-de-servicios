@@ -85,14 +85,15 @@ function WhyChooseUs() {
                     </div>
 
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-                        Why Choose <span className="text-emerald-500">Us</span>
+                        Por qué <span className="text-emerald-500">nosotros</span>
                     </h2>
 
                     <p className="text-zinc-400 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-                        Combinamos creatividad con estrategia para crear experiencias digitales que generan impacto real.
+                        Combinamos creatividad con estrategia para crear experiencias digitales que generan un impacto real.
                         Nuestra pasión por la innovación y atención al detalle nos distingue en cada proyecto.
                     </p>
                 </motion.div>
+
 
                 {/* Stats Grid */}
                 <motion.div
@@ -241,7 +242,7 @@ function WhyChooseUs() {
                 </motion.div>
 
                 {/* Client Logos */}
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isVisible ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 }}
@@ -273,7 +274,7 @@ function WhyChooseUs() {
                             </motion.div>
                         ))}
                     </div>
-                </motion.div>
+                </motion.div> */}
             </div>
         </section>
     )

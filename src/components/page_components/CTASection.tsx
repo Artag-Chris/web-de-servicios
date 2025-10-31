@@ -102,8 +102,9 @@ export default function CTASection() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-            Let's Create Something <span className="text-emerald-500">Amazing</span>
+            Creemos Algo <span className="text-emerald-500">Increíble</span>
           </h2>
+
 
           <p className="text-zinc-400 text-lg sm:text-xl max-w-3xl mx-auto">
             ¿Tienes un proyecto en mente? Estamos aquí para ayudarte a hacerlo realidad.
@@ -121,22 +122,20 @@ export default function CTASection() {
           <div className="inline-flex items-center gap-2 p-1.5 bg-zinc-900/50 rounded-full border border-zinc-800">
             <button
               onClick={() => setActiveTab("contact")}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                activeTab === "contact"
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${activeTab === "contact"
                   ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20"
                   : "text-zinc-400 hover:text-white"
-              }`}
+                }`}
             >
               <MessageSquare className="h-4 w-4" />
               Enviar Mensaje
             </button>
             <button
               onClick={() => setActiveTab("newsletter")}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                activeTab === "newsletter"
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${activeTab === "newsletter"
                   ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20"
                   : "text-zinc-400 hover:text-white"
-              }`}
+                }`}
             >
               <Mail className="h-4 w-4" />
               Newsletter
@@ -198,11 +197,10 @@ export default function CTASection() {
                             />
                             <label
                               htmlFor="name"
-                              className={`absolute left-4 transition-all duration-300 pointer-events-none ${
-                                focusedField === "name" || isFieldFilled("name")
+                              className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "name" || isFieldFilled("name")
                                   ? "-top-2.5 text-xs bg-zinc-900 px-2 text-emerald-400"
                                   : "top-4 text-base text-zinc-400"
-                              }`}
+                                }`}
                             >
                               Tu nombre
                             </label>
@@ -223,11 +221,10 @@ export default function CTASection() {
                             />
                             <label
                               htmlFor="email"
-                              className={`absolute left-4 transition-all duration-300 pointer-events-none ${
-                                focusedField === "email" || isFieldFilled("email")
+                              className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "email" || isFieldFilled("email")
                                   ? "-top-2.5 text-xs bg-zinc-900 px-2 text-emerald-400"
                                   : "top-4 text-base text-zinc-400"
-                              }`}
+                                }`}
                             >
                               Email
                             </label>
@@ -248,11 +245,10 @@ export default function CTASection() {
                             />
                             <label
                               htmlFor="message"
-                              className={`absolute left-4 transition-all duration-300 pointer-events-none ${
-                                focusedField === "message" || isFieldFilled("message")
+                              className={`absolute left-4 transition-all duration-300 pointer-events-none ${focusedField === "message" || isFieldFilled("message")
                                   ? "-top-2.5 text-xs bg-zinc-900 px-2 text-emerald-400"
                                   : "top-4 text-base text-zinc-400"
-                              }`}
+                                }`}
                             >
                               Cuéntanos sobre tu proyecto
                             </label>

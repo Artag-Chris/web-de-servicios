@@ -17,10 +17,10 @@ function Services() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024)
     }
-    
+
     checkMobile()
     window.addEventListener("resize", checkMobile)
-    
+
     return () => window.removeEventListener("resize", checkMobile)
   }, [])
 
@@ -79,15 +79,14 @@ function Services() {
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/10 border border-emerald-500/20">
               <Sparkles className="h-5 w-5 text-emerald-500" />
             </div>
-            <span className="text-emerald-400 font-medium text-sm">Services</span>
+            <span className="text-emerald-400 font-medium text-sm">Servicios</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-            What we <span className="text-emerald-500">do</span>
+            A qué nos <span className="text-emerald-500">dedicamos</span>
           </h2>
           <p className="text-zinc-400 text-base sm:text-lg max-w-2xl">
-            A glimpse into our creativity—exploring innovative designs, successful collaborations, and transformative
-            digital experiences.
+            Un vistazo a nuestra creatividad: explorando diseños innovadores, colaboraciones exitosas y experiencias digitales transformadoras.
           </p>
         </motion.div>
 
@@ -152,11 +151,10 @@ function Services() {
                 className="group relative"
               >
                 <div
-                  className={`relative p-6 rounded-xl border transition-all duration-300 cursor-pointer overflow-hidden ${
-                    activeService === service.id
-                      ? "bg-zinc-800/80 border-emerald-500/50 shadow-lg shadow-emerald-500/10"
-                      : "bg-zinc-800/30 border-zinc-800 hover:border-zinc-700"
-                  }`}
+                  className={`relative p-6 rounded-xl border transition-all duration-300 cursor-pointer overflow-hidden ${activeService === service.id
+                    ? "bg-zinc-800/80 border-emerald-500/50 shadow-lg shadow-emerald-500/10"
+                    : "bg-zinc-800/30 border-zinc-800 hover:border-zinc-700"
+                    }`}
                 >
                   {/* Animated background gradient */}
                   <motion.div
@@ -168,13 +166,12 @@ function Services() {
 
                   <div className="relative z-10">
                     <h3
-                      className={`text-xl sm:text-2xl font-bold mb-2 transition-colors duration-300 ${
-                        activeService === service.id ? "text-emerald-400" : "text-white"
-                      }`}
+                      className={`text-xl sm:text-2xl font-bold mb-2 transition-colors duration-300 ${activeService === service.id ? "text-emerald-400" : "text-white"
+                        }`}
                     >
                       {service.title}
                     </h3>
-                    
+
                     {/* Description - show on hover/click */}
                     <AnimatePresence>
                       {activeService === service.id && (

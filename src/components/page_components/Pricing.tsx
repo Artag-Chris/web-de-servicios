@@ -59,13 +59,14 @@ function Pricing() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-            Simple & Flexible <span className="text-emerald-500">Pricing</span>
+            Precios <span className="text-emerald-500">Simples y Flexibles</span>
           </h2>
 
           <p className="text-zinc-400 text-lg sm:text-xl max-w-3xl mx-auto mb-8">
             Elige el plan que mejor se adapte a tus necesidades. Todos incluyen diseño profesional,
             código de calidad y soporte dedicado.
           </p>
+
 
           {/* Billing Toggle */}
           <motion.div
@@ -76,21 +77,19 @@ function Pricing() {
           >
             <button
               onClick={() => setBillingCycle("monthly")}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                billingCycle === "monthly"
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${billingCycle === "monthly"
                   ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20"
                   : "text-zinc-400 hover:text-white"
-              }`}
+                }`}
             >
               Mensual
             </button>
             <button
               onClick={() => setBillingCycle("annual")}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 relative ${
-                billingCycle === "annual"
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 relative ${billingCycle === "annual"
                   ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20"
                   : "text-zinc-400 hover:text-white"
-              }`}
+                }`}
             >
               Anual
               <span className="absolute -top-2 -right-2 px-2 py-0.5 bg-emerald-500 text-white text-xs rounded-full">
@@ -124,33 +123,29 @@ function Pricing() {
                 )}
 
                 <div
-                  className={`relative h-full p-8 rounded-2xl border transition-all duration-300 overflow-hidden ${
-                    plan.popular
+                  className={`relative h-full p-8 rounded-2xl border transition-all duration-300 overflow-hidden ${plan.popular
                       ? "bg-gradient-to-br from-zinc-900 to-zinc-800 border-emerald-500/50 shadow-xl shadow-emerald-500/10 lg:scale-105"
                       : "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
-                  }`}
+                    }`}
                 >
                   {/* Glow effect */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br transition-opacity duration-500 ${
-                      plan.popular
+                    className={`absolute inset-0 bg-gradient-to-br transition-opacity duration-500 ${plan.popular
                         ? "from-emerald-500/10 via-emerald-500/5 to-transparent opacity-100"
                         : "from-emerald-500/0 to-emerald-500/0 group-hover:from-emerald-500/5 group-hover:to-emerald-500/5 opacity-0 group-hover:opacity-100"
-                    }`}
+                      }`}
                   ></div>
 
                   <div className="relative z-10">
                     {/* Icon */}
                     <div className="flex items-center justify-between mb-6">
                       <div
-                        className={`p-3 rounded-xl ${
-                          plan.popular ? "bg-emerald-500/20" : "bg-zinc-800"
-                        }`}
+                        className={`p-3 rounded-xl ${plan.popular ? "bg-emerald-500/20" : "bg-zinc-800"
+                          }`}
                       >
                         <Icon
-                          className={`h-6 w-6 ${
-                            plan.popular ? "text-emerald-400" : "text-zinc-400"
-                          }`}
+                          className={`h-6 w-6 ${plan.popular ? "text-emerald-400" : "text-zinc-400"
+                            }`}
                         />
                       </div>
                     </div>
@@ -178,13 +173,12 @@ function Pricing() {
 
                     {/* CTA Button */}
                     <Button
-                      className={`w-full mb-8 py-6 text-base font-semibold rounded-xl transition-all duration-300 ${
-                        plan.popular
+                      className={`w-full mb-8 py-6 text-base font-semibold rounded-xl transition-all duration-300 ${plan.popular
                           ? "bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
                           : plan.buttonVariant === "premium"
                             ? "bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-600 hover:to-emerald-500 text-white"
                             : "bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700 hover:border-emerald-500/50"
-                      }`}
+                        }`}
                     >
                       {plan.buttonText}
                     </Button>
@@ -206,9 +200,8 @@ function Pricing() {
                             </div>
                           )}
                           <span
-                            className={`text-sm ${
-                              feature.included ? "text-zinc-300" : "text-zinc-600"
-                            }`}
+                            className={`text-sm ${feature.included ? "text-zinc-300" : "text-zinc-600"
+                              }`}
                           >
                             {feature.text}
                           </span>
@@ -278,9 +271,8 @@ function Pricing() {
                 >
                   <span className="text-white font-medium pr-4">{faq.question}</span>
                   <ChevronDown
-                    className={`h-5 w-5 text-emerald-500 flex-shrink-0 transition-transform duration-300 ${
-                      openFAQ === index ? "rotate-180" : ""
-                    }`}
+                    className={`h-5 w-5 text-emerald-500 flex-shrink-0 transition-transform duration-300 ${openFAQ === index ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 

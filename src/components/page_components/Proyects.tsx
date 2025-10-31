@@ -59,16 +59,16 @@ function Projects() {
 
   return (
     <div>
-      
+
       {/* Projects Section */}
       <section id="projects" className="py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-3 sm:px-4">
           {/* Header with navigation for mobile */}
           <div className="flex flex-col sm:flex-row items-center justify-between mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-0">
-              Featured <span className="text-emerald-500">Projects</span>
+              Proyectos <span className="text-emerald-500">Destacados</span>
             </h2>
-            
+
             {/* Navigation moved below title on mobile */}
             <div className="flex items-center space-x-2">
               <button
@@ -90,9 +90,8 @@ function Projects() {
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full transition-colors ${
-                      currentIndex === index ? "bg-emerald-500" : "bg-zinc-700"
-                    }`}
+                    className={`h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full transition-colors ${currentIndex === index ? "bg-emerald-500" : "bg-zinc-700"
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
@@ -113,12 +112,12 @@ function Projects() {
                     onMouseLeave={() => handleHover(startIndex + index, false, null)}
                   >
                     <GlowProjectCard
-                        project={project}
-                        index={startIndex + index}
-                        onHover={(isHovered: boolean) =>
-                            handleHover(startIndex + index, isHovered, null)
-                        }
-                        isHovered={hoveredIndex === startIndex + index}
+                      project={project}
+                      index={startIndex + index}
+                      onHover={(isHovered: boolean) =>
+                        handleHover(startIndex + index, isHovered, null)
+                      }
+                      isHovered={hoveredIndex === startIndex + index}
                     />
 
                   </motion.div>
