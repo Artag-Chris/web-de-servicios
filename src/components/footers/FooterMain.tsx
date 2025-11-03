@@ -161,7 +161,7 @@ function Footer() {
                 Términos de servicio
               </Link>
               <span className="text-zinc-700">•</span>
-              <div className="text-zinc-500 text-sm flex items-center">
+              <div className="text-zinc-500 text-sm flex items-center"> 
                 hecho con <Heart className="h-3 w-3 text-emerald-500 mx-1" /> en Pereira
               </div>
             </div>
