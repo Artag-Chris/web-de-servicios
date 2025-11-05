@@ -133,14 +133,14 @@ function Footer() {
                   >
                     <ArrowRight className="h-4 w-4" />
                   </Button>
-                </div>
+                </div> 
                 <p className="text-zinc-500 text-xs">
                   Respeto tu privacidad. Puedes darte de baja cuando desees.
                 </p>
               </form>
             ) : (
               <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-md p-3 text-emerald-400 text-sm">
-                ¡Gracias por suscribirte!
+                ¡Gracias por suscribirte! 
               </div>
             )}
           </div>
