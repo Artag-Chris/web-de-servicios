@@ -1,0 +1,70 @@
+Puedes usar esto como base para crear el contenido de cada sección/página de tu sitio web:
+
+Página Principal: ¿Por qué es importante tener una página web en 2025?
+Visibilidad y confianza: Tener un sitio web propio te da presencia global, posiciona tu marca y permite a tus clientes encontrarte más fácilmente a través de búsquedas en Google y otros motores.​
+
+Automatización y credibilidad: Un sitio bien diseñado automatiza procesos, transmite profesionalismo y aumenta la credibilidad frente a clientes potenciales.​
+
+Control total: Tu web es un espacio digital que controlas al 100%, sin depender de algoritmos de redes sociales, cambios de plataforma o reglas externas.​
+
+Acceso en todo momento: Puedes conectar con tu audiencia 24/7 y ofrecer información clara, formularios automatizados, ventas, soporte y mucho más.
+
+Página de Tecnología: Modernidad y ventajas de Next.js frente a WordPress
+Usamos Next.js y tecnologías modernas, ideales para aplicaciones web de alto rendimiento, interactivas y escalables.
+
+Ventajas de Next.js:
+
+Mayor velocidad y rendimiento con renderizado híbrido (SSR, SSG, ISR).​
+
+SEO avanzado y excelentes prácticas de optimización.
+
+Flexibilidad e integración con APIs modernas.
+
+Experiencia de usuario personalizada y adaptativa.
+
+Seguridad robusta y menos dependencia de plugins.​
+
+¿Por qué NO usamos WordPress en la mayoría de proyectos?
+
+WordPress es excelente para blogs o sitios simples, pero sus limitaciones técnicas aparecen al escalar, personalizar funciones, o buscar rendimiento superior.
+
+Depende mucho de plugins externos y puede ser vulnerable si no se actualiza constantemente.​
+
+La personalización avanzada y la integración con sistemas modernos (APIs, inteligencia artificial, interactividad compleja) es más eficiente con Next.js.
+
+Aplicaciones web y móviles: Desarrollamos soluciones que se adaptan perfectamente tanto a navegadores como a dispositivos móviles. También creamos apps móviles nativas para cubrir todas tus necesidades de negocio.
+
+Página de Experiencia y Diseño: Diseño emocional y tendencias UX 2025
+Diseño orientado a generar emociones: La tendencia actual en UX (experiencia de usuario) es crear conexiones profundas con los usuarios mediante storytelling, emociones y personalización.​
+
+Ejemplos de empresas como Duolingo:
+
+Duolingo, Airbnb, Nike y otros líderes utilizan narrativas y experiencias interactivas para fidelizar, motivar y enganchar a sus usuarios.
+
+El diseño emocional y la gamificación mantienen al usuario comprometido y feliz, lo que genera lealtad y diferenciación.
+
+Personalización con IA: Adaptamos mensajes y funcionalidades en tiempo real, usando IA para mejorar la experiencia, fidelizar y convertir más.​
+
+Accesibilidad multiplataforma: Todas las aplicaciones pueden accederse desde móviles, tablets y escritorios, adaptándose a las necesidades de cada cliente.
+
+Página de Servicios: ¿Cómo nuestras aplicaciones web ayudan a tu negocio?
+Automatización de procesos: Centralizamos ventas, soporte, formularios, reservas, gestión de usuarios, analítica avanzada, etc.
+
+Escalabilidad: Nuestras soluciones permiten crecer de forma óptima y adaptarse a nuevas demandas sin perder rendimiento.​
+
+Integración con sistemas: APIs, sistemas externos, ERPs, CRMs y más.
+
+Soporte y mantenimiento: Acompañamos tu crecimiento con soporte técnico constante y mejoramos tu plataforma de manera continua.
+
+Recomendación de estructura
+¿Te gustaría dividir cada punto anterior en una subpágina? Esto permite que cada tema tenga su propio espacio, optimizando la experiencia y el SEO. Por ejemplo:
+
+Página principal: Presentación y ventajas de tener una web.
+
+Página tecnología: Next.js vs. WordPress y aplicaciones web/móviles.
+
+Página diseño y emociones: UX, ejemplos, tendencias.
+
+Página servicios y automatización: Cómo ayudamos a tu negocio.
+
+Esta estructura facilita el posicionamiento y permite a los usuarios navegar según lo que más les interese.
