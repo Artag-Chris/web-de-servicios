@@ -92,7 +92,7 @@ export default function ServiceWebDevelopment() {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-600/20 via-transparent to-transparent"></div>
                 <div className="relative w-full h-full bg-zinc-900/50 rounded-xl flex items-center justify-center overflow-hidden p-8">
                   <LottieAnimation
-                    animationPath="business-analysis.json"
+                    animationPath="AI data.json"
                     loop={true}
                     autoplay={true}
                   />
