@@ -98,9 +98,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className}>
-        <SpeedInsights />
+        {/* <SpeedInsights />
         <GoogleTagManager />
-        <GTMPageView />
+        <GTMPageView /> */}
         {children}
       </body>
     </html>
