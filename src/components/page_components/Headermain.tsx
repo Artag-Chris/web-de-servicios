@@ -1,9 +1,25 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter, usePathname } from "next/navigation"
 import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { Download, Menu, X, Sparkles, Zap, User, Code2, Rocket, Mail } from "lucide-react"
+import {
+  Download,
+  Menu,
+  X,
+  Sparkles,
+  Zap,
+  User,
+  Rocket,
+  Mail,
+  ChevronDown,
+  Globe,
+  Code2,
+  Palette,
+  Bot,
+  Layers,
+} from "lucide-react"
 import { handleResumeDownload } from "@/functions/handleResumenDownload"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -13,13 +29,17 @@ if (typeof window !== "undefined") {
 }
 
 function HeaderMain() {
+  const router = useRouter()
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [windowDimensions, setWindowDimensions] = useState({ width: 1920, height: 1080 })
 
   const headerRef = useRef<HTMLElement>(null)
   const bottomNavRef = useRef<HTMLDivElement>(null)
+  const servicesDropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -75,12 +95,61 @@ function HeaderMain() {
     }
   }, [isScrolled])
 
+  // Función para navegar con scroll
+  const handleNavigation = (href: string) => {
+    if (href.startsWith("#")) {
+      // Si estamos en otra página, primero ir a home
+      if (pathname !== "/") {
+        router.push(`/${href}`)
+      } else {
+        // Si ya estamos en home, hacer scroll
+        const element = document.querySelector(href)
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+        }
+      }
+    } else {
+      router.push(href)
+    }
+    setIsMobileMenuOpen(false)
+    setIsServicesOpen(false)
+  }
+
+  // Cerrar dropdown al hacer click fuera
+  useEffect(() => {
+    if (!isServicesOpen) return
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node
+      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(target)) {
+        setIsServicesOpen(false)
+      }
+    }
+
+    // Agregar listener después de un pequeño delay
+    const timeoutId = setTimeout(() => {
+      document.addEventListener("click", handleClickOutside)
+    }, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
+      document.removeEventListener("click", handleClickOutside)
+    }
+  }, [isServicesOpen])
+
   const navLinks = [
-    { href: "#services", label: "Servicios", icon: Sparkles },
     { href: "#pricing", label: "Precios", icon: Zap },
     { href: "#team", label: "Equipo", icon: User },
     { href: "#projects", label: "Proyectos", icon: Rocket },
     { href: "#cta-section", label: "Contacto", icon: Mail },
+  ]
+
+  const servicesSubMenu = [
+    { href: "/servicios/desarrollo-web/importancia", label: "¿Por qué tener una web?", icon: Globe },
+    { href: "/servicios/desarrollo-web/tecnologia", label: "Next.js vs WordPress", icon: Code2 },
+    { href: "/servicios/desarrollo-web/diseno-ux", label: "Diseño & UX 2025", icon: Palette },
+    { href: "/servicios/desarrollo-web/automatizacion", label: "Automatización", icon: Bot },
+    { href: "/servicios/identidad-de-marca", label: "Identidad de Marca", icon: Layers },
   ]
 
   return (
@@ -93,7 +162,7 @@ function HeaderMain() {
         {/* Aurora background effect */}
         <div className="absolute inset-0 aurora-bg opacity-30"></div>
 
-        <div className="glass-effect dark:glass-effect-dark border-b border-white/20 dark:border-white/10 relative overflow-hidden">
+        <div className="glass-effect dark:glass-effect-dark border-b border-white/20 dark:border-white/10 relative overflow-visible">
           {/* Floating particles effect */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div
@@ -117,7 +186,7 @@ function HeaderMain() {
 
           <div className="container mx-auto py-6 px-6 relative">
             <nav className="flex items-center justify-between">
-              <div className="text-2xl font-bold group cursor-pointer">
+              <Link href="/" className="text-2xl font-bold group cursor-pointer">
                 <span className="holographic-text text-glow transition-all duration-300 group-hover:scale-110">
                   Artag
                 </span>
@@ -125,23 +194,72 @@ function HeaderMain() {
                   Dev
                 </span>
                 <div className="w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:w-full"></div>
-              </div>
+              </Link>
 
               <div className="hidden md:flex items-center gap-2">
+                {/* Dropdown de Servicios */}
+                <div ref={servicesDropdownRef} className="relative flex items-center">
+                  <button
+                    onClick={() => setIsServicesOpen(!isServicesOpen)}
+                    className="text-white group relative flex items-center gap-2 hover:text-primary transition-all duration-500 hover:scale-110 py-2 px-4 rounded-full hover:bg-white/10 dark:hover:bg-black/20"
+                  >
+                    <Sparkles className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:rotate-12" />
+                    <span className="font-medium">Servicios</span>
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? "rotate-180" : ""}`}
+                    />
+                    <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:w-full group-hover:left-0 rounded-full"></span>
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-sm"></div>
+                  </button>
+
+                  {/* Dropdown Menu */}
+                  {isServicesOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-64 glass-effect-dark border border-white/10 rounded-xl shadow-2xl overflow-hidden z-[100]">
+                      <div className="py-2">
+                        <button
+                          onClick={() => handleNavigation("#services")}
+                          className="w-full text-left px-4 py-3 text-white hover:text-primary hover:bg-white/10 transition-all duration-300 flex items-center gap-2 group"
+                        >
+                          <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+                          <span className="font-medium">Ver todos los servicios</span>
+                        </button>
+                        <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent my-2"></div>
+                        {servicesSubMenu.map((item, idx) => {
+                          const IconComponent = item.icon
+                          return (
+                            <button
+                              key={idx}
+                              onClick={() => handleNavigation(item.href)}
+                              className="w-full text-left px-4 py-3 text-white/80 hover:text-primary hover:bg-white/10 transition-all duration-300 text-sm group flex items-center gap-3"
+                            >
+                              <IconComponent className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:scale-110" />
+                              <span className="group-hover:translate-x-1 inline-block transition-transform duration-300">
+                                {item.label}
+                              </span>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="h-6 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent mx-1"></div>
+                </div>
+
                 {navLinks.map((link, index) => {
                   const IconComponent = link.icon
                   return (
                     <div key={link.href} className="flex items-center">
-                      <Link
-                        href={link.href}
-                        className="text-white group relative flex items-center gap-2 text-white hover:text-primary transition-all duration-500 hover:scale-110 py-2 px-4 rounded-full hover:bg-white/10 dark:hover:bg-black/20"
+                      <button
+                        onClick={() => handleNavigation(link.href)}
+                        className="text-white group relative flex items-center gap-2 hover:text-primary transition-all duration-500 hover:scale-110 py-2 px-4 rounded-full hover:bg-white/10 dark:hover:bg-black/20"
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
                         <IconComponent className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-all duration-300 group-hover:rotate-12" />
                         <span className="font-medium">{link.label}</span>
                         <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-500 group-hover:w-full group-hover:left-0 rounded-full"></span>
                         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-all duration-300 blur-sm"></div>
-                      </Link>
+                      </button>
                       {index < navLinks.length - 1 && (
                         <div className="h-6 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent mx-1"></div>
                       )}
@@ -180,24 +298,63 @@ function HeaderMain() {
       >
         <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
         <div
-          className={`absolute top-0 right-0 h-full w-80 glass-effect-dark border-l border-white/10 transform transition-all duration-500 ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          className={`absolute top-0 right-0 h-full w-80 glass-effect-dark border-l border-white/10 transform transition-all duration-500 overflow-y-auto ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
         >
           <div className="p-8 pt-24">
             <div className="flex flex-col gap-6">
+              {/* Servicios con submenu */}
+              <div>
+                <button
+                  onClick={() => setIsServicesOpen(!isServicesOpen)}
+                  className="flex items-center justify-between w-full text-white hover:text-primary transition-all duration-300 text-lg py-3 px-4 rounded-xl hover:bg-white/10 group"
+                >
+                  <div className="flex items-center gap-3">
+                    <Sparkles className="w-5 h-5 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12" />
+                    <span className="font-medium">Servicios</span>
+                  </div>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${isServicesOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {isServicesOpen && (
+                  <div className="ml-4 mt-2 flex flex-col gap-2">
+                    <button
+                      onClick={() => handleNavigation("#services")}
+                      className="text-left text-white/80 hover:text-primary transition-all duration-300 py-2 px-4 rounded-lg hover:bg-white/5 text-sm"
+                    >
+                      Ver todos los servicios
+                    </button>
+                    {servicesSubMenu.map((item, idx) => {
+                      const IconComponent = item.icon
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => handleNavigation(item.href)}
+                          className="text-left text-white/80 hover:text-primary transition-all duration-300 py-2 px-4 rounded-lg hover:bg-white/5 text-sm flex items-center gap-2"
+                        >
+                          <IconComponent className="w-4 h-4 opacity-70" />
+                          {item.label}
+                        </button>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+
               {navLinks.map((link, index) => {
                 const IconComponent = link.icon
                 return (
-                  <Link
+                  <button
                     key={link.href}
-                    href={link.href}
+                    onClick={() => handleNavigation(link.href)}
                     className="flex items-center gap-3 text-white hover:text-primary transition-all duration-300 text-lg py-3 px-4 rounded-xl hover:bg-white/10 group"
-                    onClick={() => setIsMobileMenuOpen(false)}
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <IconComponent className="w-5 h-5 group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12" />
                     <span className="font-medium">{link.label}</span>
-                  </Link>
+                  </button>
                 )
               })}
               <Button
@@ -227,22 +384,30 @@ function HeaderMain() {
 
           <div className="container mx-auto px-6 py-4 relative">
             <nav className="flex items-center justify-between">
-              <div className="text-xl font-bold group cursor-pointer">
+              <Link href="/" className="text-xl font-bold group cursor-pointer">
                 <span className="holographic-text text-glow">A</span>
                 <span className="text-foreground/90 ml-1 group-hover:text-primary transition-colors duration-300">
                   D
                 </span>
-              </div>
+              </Link>
 
               <div className="hidden md:flex items-center gap-2">
+                <button
+                  onClick={() => handleNavigation("#services")}
+                  className="text-white hover:text-primary transition-all duration-300 text-sm hover:scale-105 py-2 px-3 rounded-full hover:bg-white/10 dark:hover:bg-black/20 font-medium"
+                >
+                  Servicios
+                </button>
+                <div className="h-4 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent mx-1"></div>
+
                 {navLinks.map((link, index) => (
                   <div key={link.href} className="flex items-center">
-                    <Link
-                      href={link.href}
+                    <button
+                      onClick={() => handleNavigation(link.href)}
                       className="text-white hover:text-primary transition-all duration-300 text-sm hover:scale-105 py-2 px-3 rounded-full hover:bg-white/10 dark:hover:bg-black/20 font-medium"
                     >
                       {link.label}
-                    </Link>
+                    </button>
                     {index < navLinks.length - 1 && (
                       <div className="h-4 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent mx-1"></div>
                     )}
@@ -251,18 +416,27 @@ function HeaderMain() {
               </div>
 
               <div className="flex md:hidden items-center gap-4">
-                {navLinks.map((link, index) => {
+                <button
+                  onClick={() => handleNavigation("#services")}
+                  className="text-white hover:text-primary transition-all duration-300 text-xs hover:scale-110 flex flex-col items-center gap-1"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span className="font-medium">Servicios</span>
+                </button>
+                <div className="h-8 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent mx-2"></div>
+
+                {navLinks.slice(0, 3).map((link, index) => {
                   const IconComponent = link.icon
                   return (
                     <div key={link.href} className="flex items-center">
-                      <Link
-                        href={link.href}
+                      <button
+                        onClick={() => handleNavigation(link.href)}
                         className="text-white hover:text-primary transition-all duration-300 text-xs hover:scale-110 flex flex-col items-center gap-1"
                       >
                         <IconComponent className="w-4 h-4" />
                         <span className="font-medium">{link.label}</span>
-                      </Link>
-                      {index < navLinks.length - 1 && (
+                      </button>
+                      {index < 2 && (
                         <div className="h-8 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent mx-2"></div>
                       )}
                     </div>
