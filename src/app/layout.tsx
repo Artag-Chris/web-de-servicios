@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   // Contact information and branding
   authors: [{ name: "Artag", url: "https://www.artag.com.co" }],
-  generator: "Next.js",
+  generator: "Next.js", 
   applicationName: "Artag",
   referrer: "origin-when-cross-origin",
   creator: "Artag",
