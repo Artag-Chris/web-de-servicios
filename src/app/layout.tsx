@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Artag", url: "https://www.artag.com.co" }],
   generator: "Next.js",  
   applicationName: "Artag",
-  referrer: "origin-when-cross-origin",
+  referrer: "origin-when-cross-origin", 
   creator: "Artag",
   publisher: "Artag",
   formatDetection: {
