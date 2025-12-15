@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "software development",
     "mobile apps",
     "Pereira",
-    "front-end",
+    "front-end",   
     "back-end",
     "API",
     "databases",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
   generator: "Next.js",  
   applicationName: "Artag",
   referrer: "origin-when-cross-origin", 
-  creator: "Artag",
+  creator: "Artag", 
   publisher: "Artag",
   formatDetection: {
     email: false,
