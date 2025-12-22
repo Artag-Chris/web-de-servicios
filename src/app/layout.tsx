@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     "Innovative digital solutions in Pereira. Software development, mobile apps, and UI/UX design for companies looking to stand out in the digital world.",
   // Relevant keywords
   keywords: [
-    "software development",
+    "software development",  
     "mobile apps",
     "Pereira",
     "front-end",   
-    "back-end", 
+    "back-end",   
     "API",
     "databases", 
     "UI/UX design",
